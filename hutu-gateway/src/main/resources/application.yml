@@ -15,8 +15,9 @@ spring:
         - Path=/a/**
         filters:
         - StripPrefix=1
+
       - id: host_route
-        uri: http://localhost:8763
+        uri: http://localhost:8765
         predicates:
         - Path=/b/**
         filters:

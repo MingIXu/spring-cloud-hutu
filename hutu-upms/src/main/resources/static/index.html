@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-container>
+        <el-header style="background-color: antiquewhite">
+            <p>这里是header</p>
+        </el-header>
+        <el-main>
+        <el-table
+                :data="list"
+                border
+                style="width: 100%">
+            <el-table-column
+                    prop="date"
+                    label="日期"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="姓名"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="地址">
+            </el-table-column>
+        </el-table>
+
+        <el-button @click="visible = true">Button</el-button>
+        <el-dialog :visible.sync="visible" title="Hello world">
+            <p>Try Element</p>
+        </el-dialog>
+        </el-main>
+        <el-footer style="background-color: deepskyblue">
+            <p>这里是footer</p>
+        </el-footer>
+    </el-container>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const basePath = 'http://localhost:8765/js'
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                visible: false,
+                list: [],
+                name: ''
+            }
+        },
+        watch: {
+            list: {
+                handler(val, oldVal) {
+                    console.log(val)},
+                deep: true
+            }
+        },
+        mounted() {
+            this.init()
+        },
+        methods: {
+            init() {
+                this.name = 'hutu'
+                axios({
+                    method: 'get',
+                    url: basePath + '/test.json'
+                }).then(response => (
+                    this.list = response.data.tableData)
+                )
+            }
+        }
+    })
+</script>
+</html>

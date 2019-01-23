@@ -7,7 +7,9 @@ import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.server.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,11 +17,10 @@ import java.util.Map;
  *
  * <p>异常时用JSON代替HTML异常信息<p>
  *
- * @author yinjihuan
- *
  */
 public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
-
+    private final static String CODE = "code";
+    private final static String MSG = "msg";
     public JsonExceptionHandler(ErrorAttributes errorAttributes, ResourceProperties resourceProperties,
                                 ErrorProperties errorProperties, ApplicationContext applicationContext) {
         super(errorAttributes, resourceProperties, errorProperties, applicationContext);
@@ -34,9 +35,14 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
         Throwable error = super.getError(request);
         if (error instanceof org.springframework.cloud.gateway.support.NotFoundException) {
             code = 404;
+        } else if (error instanceof org.springframework.web.server.ResponseStatusException) {
+            ResponseStatusException responseStatusException = (ResponseStatusException) error;
+            code = responseStatusException.getStatus().value();
         }
-//        return R.error(code, this.buildMessage(request, error));
-        return null;
+        HashMap<String, Object> map = new HashMap<>();
+        map.put(CODE,code);
+        map.put(MSG,this.buildMessage(request, error));
+        return map;
     }
 
     /**
@@ -54,7 +60,7 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
      */
     @Override
     protected HttpStatus getHttpStatus(Map<String, Object> errorAttributes) {
-        int statusCode = (int) errorAttributes.get("code");
+        int statusCode = (int) errorAttributes.get(CODE);
         return HttpStatus.valueOf(statusCode);
     }
 
