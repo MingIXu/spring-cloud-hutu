@@ -44,8 +44,8 @@ public class ThreadPoolExecutorTemplate {
                 KEEP_ALIVE_TIME,
                 TimeUnit.MINUTES,
                 new ArrayBlockingQueue<>(QUEUE_SIZE),
-                new BaseThreadFactory(),
-                new BaseRejectedExecutionHandler());
+                new CustomThreadFactory(),
+                new CustomRejectedExecutionHandler());
     }
 
 

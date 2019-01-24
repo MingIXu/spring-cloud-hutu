@@ -10,7 +10,7 @@ spring:
       - AddResponseHeader=X-Response-Default-Foo, Default-Bar
       routes:
       - id: host_route
-        uri: http://localhost:8764
+        uri: http://localhost:8763
         predicates:
         - Path=/a/**
         filters:
