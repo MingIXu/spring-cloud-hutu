@@ -28,6 +28,7 @@
         <module>nacos-discovery-provider-example</module>
         <module>hutu-dependencies</module>
         <module>hutu-common</module>
+        <module>hutu-cache</module>
         <module>hutu-gateway</module>
         <module>hutu-upms</module>
     </modules>

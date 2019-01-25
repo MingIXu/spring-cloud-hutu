@@ -10,12 +10,16 @@ import java.io.Serializable;
 public class CallerInfo implements Serializable {
 
     /**
+     * 用户ID
+     */
+    public Integer uid;
+    /**
      * 用户名
      */
     public String name = "";
     /**
-     * 用户ID
+     * 昵称
      */
-    public String uid = "";
+    public String nick = "";
 
 }
