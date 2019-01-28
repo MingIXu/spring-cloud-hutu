@@ -1,6 +1,8 @@
 server:
   port: 8765
 spring:
+  application:
+    name: hutu-upms
   redis:
     open: true  # 是否开启redis缓存  true开启   false关闭
     database: 0
@@ -14,3 +16,7 @@ spring:
         max-wait: 1500ms    # 连接池最大阻塞等待时间（使用负值表示没有限制）
         max-idle: 200       # 连接池中的最大空闲连接
         min-idle: 20        # 连接池中的最小空闲连接
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
