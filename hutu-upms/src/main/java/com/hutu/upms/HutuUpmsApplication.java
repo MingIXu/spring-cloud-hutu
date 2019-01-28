@@ -30,7 +30,7 @@ public class HutuUpmsApplication {
     @RestController
     class test {
         @Cacheable(value = CACHE_NAME, unless = "#result == null or #result.empty")
-        @CacheExpire(expire = 1000)
+        @CacheExpire(expire = 10000)
         @GetMapping("hello")
         public R hello(String name) {
             ArrayList<Object> list = new ArrayList<>();

@@ -4,42 +4,66 @@
     <meta charset="UTF-8">
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
 <div id="app">
     <el-container>
-        <el-header style="background-color: cyan">
-            <p>这里是header</p>
+        <el-header style="">
+            <p align="center" style="font-weight: bold">缓存列表</p>
         </el-header>
         <el-main>
+            <div class="filter-container">
+                <el-input
+                        placeholder="请输入内容"
+                        v-model="keyWord"
+                        style="width: 200px"
+                        clearable>
+                </el-input>
+                <el-button class="filter-item" type="primary" icon="el-icon-search" @click="init">搜索</el-button>
+            </div>
+
             <el-table
                     :data="list"
                     border
                     style="width: 100%">
                 <el-table-column
-                        prop="date"
-                        label="日期"
-                        width="180">
+                        prop="key"
+                        align="center"
+                        label="key"
+                        min-width="20%">
                 </el-table-column>
                 <el-table-column
-                        prop="name"
-                        label="姓名"
-                        width="180">
+                        prop="value"
+                        align="center"
+                        label="json值"
+                        min-width="60%">
                 </el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="地址">
+                        label="操作"
+                        align="center"
+                        min-width="20%">
+                    <template slot-scope="scope">
+                        <el-button @click="setTempKey(scope.row.key)" type="success" size="small">续租</el-button>
+                        <el-button @click="handleDelete(scope.row.key)" type="danger" size="small">删除</el-button>
+                    </template>
                 </el-table-column>
             </el-table>
 
-            <el-button @click="visible = true">Button</el-button>
-            <el-dialog :visible.sync="visible" title="Hello world">
-                <p>Try Element</p>
+            <el-dialog :visible.sync="visible" title="续租">
+                <el-input
+                        placeholder="请输入续租时间，单位秒"
+                        v-model="expire"
+                        style="width: 200px"
+                        align="center"
+                        clearable>
+                </el-input>
+                <el-button type="primary" @click="handleExpire">确定</el-button>
             </el-dialog>
         </el-main>
-        <el-footer style="background-color: deepskyblue">
-            <p>这里是footer</p>
-        </el-footer>
+        <!--<el-footer style="">-->
+        <!--<p align="center">缓存列表</p>-->
+        <!--</el-footer>-->
     </el-container>
 </div>
 </body>
@@ -48,13 +72,16 @@
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/common.js"></script>
 <script>
-    const basePath = 'http://localhost:8765/json'
     new Vue({
         el: '#app',
         data: function () {
             return {
                 visible: false,
+                keyWord: '',
+                tempKey: '',
+                expire: null,
                 list: []
             }
         },
@@ -63,13 +90,71 @@
         },
         methods: {
             init() {
-                this.name = 'hutu'
                 axios({
-                    method: 'get',
-                    url: basePath + '/test.json'
-                }).then(response => (
-                    this.list = response.data.tableData)
+                    method: api.list.method,
+                    url: api.list.url,
+                    params: {
+                        keyWord: this.keyWord
+                    }
+                }).then(response => {
+                        this.list = response.data
+                    }
                 )
+            },
+            handleExpire() {
+                if (this.expire==null||this.expire === 0) {
+                    return
+                }
+                axios({
+                    method: api.expire.method,
+                    url: api.expire.url,
+                    params: {
+                        key: this.tempKey,
+                        expire: this.expire
+                    }
+                }).then(response => {
+                        if (response.data) {
+                            this.$message({
+                                message: '续租成功',
+                                type: 'success'
+                            });
+                        } else {
+                            this.$message.error('续租失败');
+                        }
+                    }
+                )
+                this.visible = false
+                this.reInit()
+                this.init()
+            },
+            handleDelete(key) {
+                axios({
+                    method: api.delete.method,
+                    url: api.delete.url,
+                    params: {
+                        key: key
+                    }
+                }).then(response => {
+                        if (response.data) {
+                            this.$message({
+                                message: '删除成功',
+                                type: 'success'
+                            });
+                        } else {
+                            this.$message.error('删除失败');
+                        }
+                    }
+                )
+                this.reInit()
+                this.init()
+            },
+            setTempKey(key) {
+                this.visible = true
+                this.tempKey = key
+            },
+            reInit() {
+                this.tempKey = ''
+                this.expire = 0
             }
         }
     })
