@@ -30,6 +30,8 @@ spring:
               burst-capacity: 2
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        serverAddr: 127.0.0.1:8848
+      dataId: sc-gateway
+      group: xujin_test
 server:
   port: 8762
