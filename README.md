@@ -2,9 +2,10 @@
 
 技术栈：
 ```
-注册与配置中心 - nacos
-服务限流与降级 - sentinel
-网关服务 - springCloudGateway
+注册与配置中心   - nacos
+服务限流与降级   - sentinel
+网关服务        - springCloudGateway
+缓存  jetCache
 ```
 目录：
 ```
