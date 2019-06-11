@@ -1,0 +1,5 @@
+org\springframework\cloud\alibaba\cloud\examples\ConsumerApplication$EchoService.class
+org\springframework\cloud\alibaba\cloud\examples\ConsumerApplication.class
+org\springframework\cloud\alibaba\cloud\examples\FeignConfiguration.class
+org\springframework\cloud\alibaba\cloud\examples\EchoServiceFallback.class
+org\springframework\cloud\alibaba\cloud\examples\TestController.class
