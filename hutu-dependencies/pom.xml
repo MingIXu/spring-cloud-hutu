@@ -24,10 +24,16 @@
         <jwt.version>0.10.5</jwt.version>
         <caffeine.version>2.6.2</caffeine.version>
         <curator.version>2.10.0</curator.version>
+        <jetcache.version>2.5.12</jetcache.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!--mybatisplus 三方包导入-->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -55,11 +61,6 @@
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${spring4all.swagger.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.velocity</groupId>
@@ -123,6 +124,11 @@
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis-lettuce</artifactId>
+                <version>${jetcache.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

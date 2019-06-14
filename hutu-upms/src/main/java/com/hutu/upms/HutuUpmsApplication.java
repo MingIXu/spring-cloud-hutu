@@ -1,14 +1,23 @@
 package com.hutu.upms;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.alicp.jetcache.anno.CacheInvalidate;
+import com.alicp.jetcache.anno.CacheRefresh;
+import com.alicp.jetcache.anno.CacheUpdate;
+import com.alicp.jetcache.anno.Cached;
+import com.alicp.jetcache.anno.config.EnableMethodCache;
+import com.hutu.cache.annotation.EnableHutuCache;
+import com.hutu.common.entity.R;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@EnableMethodCache(basePackages = "com.hutu.upms")
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableHutuCache
 public class HutuUpmsApplication {
 
     public static void main(String[] args) {
@@ -16,10 +25,25 @@ public class HutuUpmsApplication {
     }
 
     @RestController
-    class test {
-        @GetMapping("hello")
-        public String hello(String name) {
-            return "hello: " + name;
+    class Test {
+        @RequestMapping("get")
+        @CacheRefresh(refresh = 50,stopRefreshAfterLastAccess = 600)
+        @Cached(name = "test-",key = "#name",expire = 60)
+        public R getHelloWord(String name){
+            System.out.println("hello "+name);
+            return R.ok().put("helloWord",name);
+        }
+        @RequestMapping("update")
+        @CacheUpdate(name = "test-",key = "#name",value="#name")
+        public boolean updateHelloWord(String name){
+            System.out.println("update "+name);
+            return true;
+        }
+        @RequestMapping("del")
+        @CacheInvalidate(name = "test-", key = "#name")
+        public boolean delHelloWord(String name){
+            System.out.println("del "+name);
+            return true;
         }
     }
 }

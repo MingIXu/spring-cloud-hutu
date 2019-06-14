@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static com.hutu.cache.constant.CacheConstant.CACHE_NAME;
-
 /**
  * 缓存管理
  *
@@ -34,7 +32,9 @@ public class CacheManagerRest {
      */
     @GetMapping("list")
     public List getCache(@RequestParam(required = false) String keyWord) {
-        Set keys = redisTemplate.keys(CACHE_NAME+"::"+keyWord+"*");
+
+        System.out.println("coming cache"+keyWord+"*");
+        Set keys = redisTemplate.keys(keyWord+"*");
         List list = redisTemplate.opsForValue().multiGet(keys);
         ArrayList<Object> retList = new ArrayList<>();
         int n = 0;
@@ -47,7 +47,6 @@ public class CacheManagerRest {
         }
         return retList;
     }
-
     /**
      * 删除缓存
      */

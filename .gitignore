@@ -1,7 +1,15 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
+### maven ###
+target/
+*.war
+*.ear
+*.zip
+*.tar
+*.tar.gz
+
+### logs ####
 /logs/
 *.log
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

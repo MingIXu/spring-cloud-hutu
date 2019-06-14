@@ -3,7 +3,7 @@ package com.hutu.gateway.constant;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class GateConstant {
+public class  GateConstant {
     /**
      * 不处理的请求前缀
      */

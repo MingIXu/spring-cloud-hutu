@@ -1,0 +1,19 @@
+server:
+  port: 8765
+
+hutu:
+  nacos:
+    server-addr: 127.0.0.1:8848
+
+spring:
+  application:
+    name: hutu-upms
+  cloud:
+    nacos:
+      config:
+        server-addr: ${hutu.nacos.server-addr}
+#        file-extension: yml
+#        shared-dataids: common.yml
+#        refreshable-dataids: common.yml
+      discovery:
+        server-addr: ${hutu.nacos.server-addr}
