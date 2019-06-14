@@ -17,8 +17,6 @@
     </developers>
 
     <modules>
-        <module>nacos-discovery-consumer-example</module>
-        <module>nacos-discovery-provider-example</module>
         <module>hutu-dependencies</module>
         <module>hutu-common</module>
         <module>hutu-config</module>
