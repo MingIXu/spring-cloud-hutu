@@ -10,7 +10,8 @@
     </parent>
 
     <artifactId>hutu-gateway</artifactId>
-    <name>hutu-gateway</name>
+    <packaging>jar</packaging>
+    <description>网关</description>
 
     <dependencies>
 

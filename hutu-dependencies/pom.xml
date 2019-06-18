@@ -17,7 +17,6 @@
         <druid-spring-boot-starter>1.1.9</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
         <springboot.admin.version>2.0.1</springboot.admin.version>
-        <mybatisplus.version>2.3</mybatisplus.version>
         <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
         <servlet-api.version>3.1.0</servlet-api.version>
         <hutool.version>4.5.11</hutool.version>
@@ -97,12 +96,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.vsersion}</version>
-            </dependency>
-            <!--mybatisplus 三方包导入-->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus</artifactId>
-                <version>${mybatisplus.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>

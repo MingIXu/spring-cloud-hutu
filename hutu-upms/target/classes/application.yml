@@ -1,13 +1,2 @@
 
-jetcache:
-  statIntervalMinutes: 0
-  areaInCacheName: false
-  local:
-    default:
-      type: linkedhashmap
-      keyConvertor: fastjson
-  remote:
-    default:
-      type: redis.lettuce
-      keyConvertor: fastjson
-      uri: redis://127.0.0.1:6379
+

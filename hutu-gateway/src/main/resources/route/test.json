@@ -1,0 +1,21 @@
+{
+  "id": "upms",
+  "uri": "http://localhost:8765",
+  "order": 0,
+  "predicates": [
+    {
+      "name": "Path",
+      "args": {
+        "pattern": "/b/**"
+      }
+    }
+  ],
+  "filters": [
+    {
+      "name": "StripPrefix",
+      "args": {
+        "_genkey_0": "1"
+      }
+    }
+  ]
+}

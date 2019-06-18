@@ -45,7 +45,8 @@ public class DynamicRouteServiceImplByNacos {
                 @Override
                 public void receiveConfigInfo(String configInfo) {
                     RouteDefinition definition= JSON.parseObject(configInfo, RouteDefinition.class);
-                    dynamicRouteService.update(definition);
+                    String result = dynamicRouteService.update(definition);
+                    System.out.println("update route : "+result);
                 }
                 @Override
                 public Executor getExecutor() {
@@ -53,6 +54,7 @@ public class DynamicRouteServiceImplByNacos {
                 }
             });
         } catch (NacosException e) {
+            System.out.println("更新路由规则失败");
             //todo 提醒:异常自行处理此处省略
         }
     }

@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>hutu-upms</artifactId>
-    <name>hutu-upms</name>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

@@ -1,7 +1,7 @@
 package com.hutu.common.threadpool;
 
-import com.hutu.common.exception.GlobalException;
 import com.hutu.common.enums.ErrorMsgEnum;
+import com.hutu.common.exception.GlobalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
