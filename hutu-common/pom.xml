@@ -16,6 +16,7 @@
 		<module>hutu-common-core</module>
         <module>hutu-common-cache</module>
 		<module>hutu-common-db</module>
+		<module>hutu-common-security</module>
 		<module>hutu-common-web</module>
 	</modules>
 </project>
