@@ -22,6 +22,16 @@
 			<artifactId>hutu-common-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.hutu</groupId>
+			<artifactId>hutu-common-db</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hutu</groupId>
+			<artifactId>hutu-common-security</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

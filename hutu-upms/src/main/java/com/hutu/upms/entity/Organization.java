@@ -8,12 +8,11 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
  * <p>
- * 系统用户表
+ * 组织
  * </p>
  *
  * @author generator
@@ -21,53 +20,32 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_upms_user")
-public class User implements Serializable {
+@TableName("t_upms_organization")
+public class Organization implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 编号
+     */
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
     /**
-     * 用户名
+     * 所属上级
+     */
+	private Integer pId;
+    /**
+     * 组织名称
      */
 	private String name;
     /**
-     * 密码
+     * 组织描述
      */
-	private String pass;
-    /**
-     * 昵称姓名
-     */
-	private String nick;
-    /**
-     * 头像
-     */
-	private String avatar;
-    /**
-     * 邮箱
-     */
-	private String email;
-    /**
-     * 手机号
-     */
-	private String phone;
-    /**
-     * 性别(男：0，女：1)
-     */
-	private Integer sex;
-    /**
-     * 用户状态（1=正常，0=禁用）
-     */
-	private Integer status;
+	private String description;
     /**
      * 排序
      */
 	private Integer orders;
-    /**
-     * 生日
-     */
-	private LocalDate birthday;
     /**
      * 创建人名称
      */
