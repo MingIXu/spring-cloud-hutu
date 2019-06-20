@@ -2,6 +2,8 @@ package com.hutu.common.web.handler;
 
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.enums.ErrorMsgEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CustomRestNotFoundHandler implements ErrorController {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String ERROR_PATH = "/error";
 
     @RequestMapping(value = ERROR_PATH)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public R handleError() {
+        logger.info(ErrorMsgEnum.NOT_FOUND.toString());
         return R.error(ErrorMsgEnum.NOT_FOUND);
     }
 

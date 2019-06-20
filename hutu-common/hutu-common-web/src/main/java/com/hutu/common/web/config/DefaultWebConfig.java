@@ -1,5 +1,5 @@
 
-package com.hutu.upms.config;
+package com.hutu.common.web.config;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -29,16 +29,7 @@ import java.util.List;
  * @date 2017-04-20 22:30
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
-
-//    @Autowired
-//    AuthorizationInterceptor authorizationInterceptor;
-//
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        // 注册自定义拦截器，添加拦截路径和排除拦截路径
-//        registry.addInterceptor(authorizationInterceptor);
-//    }
+public class DefaultWebConfig implements WebMvcConfigurer {
 
     /**
      * 跨域配置

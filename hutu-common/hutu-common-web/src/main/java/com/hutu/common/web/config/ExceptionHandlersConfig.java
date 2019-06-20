@@ -13,9 +13,11 @@ import org.springframework.context.annotation.Import;
  * ErrorMvcAutoConfiguration 会先配置 BasicErrorController导致 404 mapping重复
  * 此处在 ErrorMvcAutoConfiguration 之前配置会导致 BasicErrorController 不装载。
  * 详情看 BasicErrorController 装载条件。
+ * @author hutu
+ * @date 2019/6/20 14:40
  */
 @Import({GlobalExceptionHandler.class, CustomRestNotFoundHandler.class})
 @Configuration
 @AutoConfigureBefore(ErrorMvcAutoConfiguration.class)
-public class CommonConfig {
+public class ExceptionHandlersConfig {
 }
