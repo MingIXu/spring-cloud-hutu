@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 自定义springboot的404处理
+ * something
  *
  * @author hutu
- * @date 2018/10/11 下午2:04
+ * @date 2019/6/20 15:17
  */
 @RestController
 public class AuthHandler{
