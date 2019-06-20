@@ -14,13 +14,13 @@
 ├─hutu-common 公共模块
 │  ├─hutu-common-cache 公共缓存模块
 │  ├─hutu-common-core 公共核心模块
-│  ├─hutu-common-db 公共网关模块
+│  ├─hutu-common-db 数据库配置模块
 │  ├─hutu-common-job 公共任务调度模块
 │  ├─hutu-common-log 公共日志模块
 │  ├─hutu-common-security 公共安全模块
 │  ├─hutu-common-swagger 公共api展示模块
 │  ├─hutu-common-transaction 公共事务模块
-│  └─hutu-common-web 公共事务模块
+│  └─hutu-common-web 公共MVC模块
 │ 
 ├─hutu-config 配置模块
 │ 
