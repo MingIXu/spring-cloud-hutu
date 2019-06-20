@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hutu.common.web.config.CommonConfig
+com.hutu.common.core.config.CommonConfig

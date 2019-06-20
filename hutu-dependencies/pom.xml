@@ -12,9 +12,10 @@
     <properties>
         <bucket4j.version>4.3.0</bucket4j.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <spring4all.swagger.version>1.7.1.RELEASE</spring4all.swagger.version>
-        <mybatis-plus-boot-starter>3.1.1</mybatis-plus-boot-starter>
-        <druid-spring-boot-starter>1.1.9</druid-spring-boot-starter>
+        <spring4all.swagger.version>1.9.0.RELEASE</spring4all.swagger.version>
+        <mybatis-plus-boot-starter>3.1.0</mybatis-plus-boot-starter>
+        <mysql.version>8.0.11</mysql.version>
+        <druid-spring-boot-starter>1.1.10</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
         <springboot.admin.version>2.0.1</springboot.admin.version>
         <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
@@ -38,6 +39,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.github.vladimir-bukhtoyarov/bucket4j-core -->
             <dependency>
