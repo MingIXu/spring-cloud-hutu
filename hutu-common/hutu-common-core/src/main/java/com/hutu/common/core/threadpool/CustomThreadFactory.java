@@ -1,8 +1,6 @@
 package com.hutu.common.core.threadpool;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.lang.NonNull;
-
 import javax.validation.constraints.NotNull;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;

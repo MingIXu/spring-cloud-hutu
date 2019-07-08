@@ -18,6 +18,11 @@ public class GlobalException extends RuntimeException {
         this.code = ErrorMsgEnum.INTERNAL_SERVER_ERROR.code;
     }
 
+    public GlobalException(String msg, Throwable e) {
+        super(msg, e);
+        this.code = ErrorMsgEnum.INTERNAL_SERVER_ERROR.code;
+    }
+
     public GlobalException(ErrorMsgEnum eme) {
         super(eme.desc);
         this.code = eme.code;
@@ -35,6 +40,4 @@ public class GlobalException extends RuntimeException {
     public void setCode(int code) {
         this.code = code;
     }
-
-
 }

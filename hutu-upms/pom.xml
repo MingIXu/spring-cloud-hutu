@@ -17,6 +17,7 @@
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-config</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

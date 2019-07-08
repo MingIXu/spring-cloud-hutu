@@ -25,6 +25,8 @@
         <caffeine.version>2.6.2</caffeine.version>
         <curator.version>2.10.0</curator.version>
         <jetcache.version>2.5.12</jetcache.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <javax.validation.version>2.0.1.Final</javax.validation.version>
     </properties>
 
     <dependencyManagement>
@@ -128,6 +130,28 @@
                 <groupId>com.alicp.jetcache</groupId>
                 <artifactId>jetcache-starter-redis-lettuce</artifactId>
                 <version>${jetcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${javax.validation.version}</version>
+            </dependency>
+
+            <!--自己的版本-->
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-common</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -22,5 +22,8 @@ public class CallerInfo implements Serializable {
      * 昵称
      */
     public String nick = "";
-
+    /**
+     * 租户id
+     */
+    public Integer tenantId = null;
 }
