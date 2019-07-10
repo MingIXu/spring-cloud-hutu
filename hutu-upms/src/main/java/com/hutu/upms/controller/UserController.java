@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.validator.group.UpdateGroup;
+import com.hutu.common.security.annotation.RequiresPermissions;
 import com.hutu.upms.entity.User;
 import com.hutu.upms.service.UserService;
 import io.swagger.annotations.Api;
@@ -31,6 +32,7 @@ public class UserController{
     private UserService userService;
 
     @ApiOperation("获取page")
+    @RequiresPermissions("")
     @GetMapping("/page/{current}/{pageSize}")
     public R getPage(@ApiParam("当前页")@PathVariable("current")int current, @ApiParam("分页大小")@PathVariable("pageSize")int pageSize,
                      @ApiParam("关键字") @RequestParam(required = false) String keyWord) {
