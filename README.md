@@ -19,8 +19,7 @@
 │  ├─hutu-common-log 公共日志模块
 │  ├─hutu-common-security 公共安全模块
 │  ├─hutu-common-swagger 公共api展示模块
-│  ├─hutu-common-transaction 公共事务模块
-│  └─hutu-common-web 公共MVC模块
+│  └─hutu-common-transaction 公共事务模块
 │ 
 ├─hutu-config 配置模块
 │ 

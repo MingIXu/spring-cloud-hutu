@@ -1,5 +1,5 @@
 
-package com.hutu.common.web.config;
+package com.hutu.common.security.config;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.DeserializationFeature;

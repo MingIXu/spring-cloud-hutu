@@ -2,9 +2,10 @@ package com.hutu.common.security.aspect;
 
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
-import com.hutu.common.core.util.JwtUtils;
 import com.hutu.common.security.annotation.Logical;
 import com.hutu.common.security.annotation.RequiresPermissions;
+import com.hutu.common.security.service.HutuPermissionService;
+import com.hutu.common.security.utils.JwtUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -31,8 +32,8 @@ public class PermissionsAspect {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-//	@Autowired
-//	LoginService loginService;
+	@Autowired
+	HutuPermissionService hutuPermissionService;
 
 	@Pointcut("@annotation(com.hutu.common.security.annotation.RequiresPermissions)")
 	public void permissionsPointCut() {}
@@ -40,30 +41,30 @@ public class PermissionsAspect {
 	@Before("permissionsPointCut()")
 	public void doBefore(JoinPoint joinPoint) {
 		logger.info("---此处权限校验---");
-//		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-//		Method method = signature.getMethod();
-//
-//		List<String> permissions = loginService.getUserPermissions(JwtUtils.getCallerInfo().uid);
-//		RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
-//		boolean havePermission = false;
-//		if(requiresPermissions != null){
-//			String[] reqPermissions = requiresPermissions.value();
-//			if (reqPermissions.length > 0){
-//				if (requiresPermissions.logical().equals(Logical.AND)) {
-//						havePermission = permissions.containsAll(Arrays.asList(reqPermissions));
-//				}else {
-//					for (String permission:reqPermissions) {
-//						if (permissions.contains(permission)){
-//							havePermission = true;
-//							break;
-//						}
-//					}
-//				}
-//			}
-//		}
-//		if (!havePermission){
-//			logger.info("无权限访问,需要权限："+ Arrays.toString(requiresPermissions.value()));
-//			throw new GlobalException(ErrorMsgEnum.UNAUTHORIZED);
-//		}
+		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+		Method method = signature.getMethod();
+
+		List<String> permissions = hutuPermissionService.getUserPermissions(JwtUtils.getCallerInfo().uid);
+		RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
+		boolean havePermission = false;
+		if(requiresPermissions != null){
+			String[] reqPermissions = requiresPermissions.value();
+			if (reqPermissions.length > 0){
+				if (requiresPermissions.logical().equals(Logical.AND)) {
+						havePermission = permissions.containsAll(Arrays.asList(reqPermissions));
+				}else {
+					for (String permission:reqPermissions) {
+						if (permissions.contains(permission)){
+							havePermission = true;
+							break;
+						}
+					}
+				}
+			}
+		}
+		if (!havePermission){
+			logger.info("无权限访问,需要权限："+ Arrays.toString(requiresPermissions.value()));
+			throw new GlobalException(ErrorMsgEnum.UNAUTHORIZED);
+		}
 	}
 }

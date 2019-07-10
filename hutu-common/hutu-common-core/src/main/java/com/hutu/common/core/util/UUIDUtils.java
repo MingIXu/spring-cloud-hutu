@@ -1,9 +1,12 @@
 package com.hutu.common.core.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.UUID;
 
 /**
- * Created by ace on 2017/9/27.
+ * https://blog.csdn.net/lyfxjt/article/details/45825003
+ * @author hutu
  */
 public class UUIDUtils {
     public static String[] chars = new String[]{"a", "b", "c", "d", "e", "f",
@@ -23,6 +26,9 @@ public class UUIDUtils {
             shortBuffer.append(chars[x % 0x3E]);
         }
         return shortBuffer.toString();
+    }
 
+    public static String get32Uuid() {
+        return StringUtils.replace("", "-", UUID.randomUUID().toString());
     }
 }

@@ -1,4 +1,4 @@
-package com.hutu.common.web.handler;
+package com.hutu.common.security.handler;
 
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.exception.GlobalException;

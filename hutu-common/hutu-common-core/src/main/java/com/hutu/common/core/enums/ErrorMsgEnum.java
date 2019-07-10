@@ -10,7 +10,8 @@ public enum ErrorMsgEnum {
 
     AUTH_FAIL(20002, "鉴权失败"),
     THREAD_POOL_OVERFLOW(20001, "线程池满载"),
-    USER_NO_PERMISSION(10007, "用户无任何权限信息"),
+
+    USER_NO_PERMISSION(10008, "用户无任何权限信息"),
     USER_NO_ROLE(10007, "用户无任何角色信息"),
     TOKEN_IS_EXPIRE(10006, "token 过期"),
     NOT_FOUNT_TOKEN(10005, "not found token"),

@@ -1,4 +1,4 @@
-package com.hutu.common.core.util;
+package com.hutu.common.security.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.hutu.common.core.entity.CallerInfo;
@@ -6,19 +6,23 @@ import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 
 /**
- * jwt工具类
+ * jwt 工具类
  *
  * @author hutu
- * @date 2018/4/2 16:41
+ * @date 2019/7/10 13:44
  */
-
 public class JwtUtils {
+
+    private final static Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     /**
      * 签名key
      */
@@ -116,5 +120,53 @@ public class JwtUtils {
             throw new GlobalException(ErrorMsgEnum.TOKEN_IS_INVALID, e);
         }
     }
-}
 
+    /**
+     * 获取用户id 此系统以用户id做subject
+     *
+     * @return subject
+     */
+    public static CallerInfo getCallerInfo(String token) {
+        if (StringUtils.isNotEmpty(token)) {
+            Claims claim = getClaimByToken(token);
+            if (claim != null) {
+                return JSON.parseObject(claim.getSubject(), CallerInfo.class);
+            }
+            throw new GlobalException(ErrorMsgEnum.INTERNAL_SERVER_ERROR);
+        } else {
+            throw new GlobalException(ErrorMsgEnum.NOT_FOUNT_TOKEN);
+        }
+    }
+
+    public static CallerInfo getCallerInfo() {
+        return getCallerInfo(HttpContextUtils.getRequestToken());
+    }
+
+
+    public static Integer getUserId() {
+
+        try {
+            return getCallerInfo().uid;
+        } catch (Exception e) {
+            logger.info("getUserId 失败");
+            return 0;
+        }
+    }
+
+    public static String getUserName() {
+        try {
+            return getCallerInfo().nick;
+        } catch (Exception e) {
+            logger.info("getUserName 失败");
+            return "unknown";
+        }
+    }
+    public static Integer getTenantId() {
+        try {
+            return getCallerInfo().tenantId;
+        } catch (Exception e) {
+            logger.error("getTenantId 失败");
+            throw e;
+        }
+    }
+}

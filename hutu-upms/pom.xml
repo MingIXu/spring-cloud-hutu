@@ -11,7 +11,7 @@
 
     <artifactId>hutu-upms</artifactId>
     <packaging>jar</packaging>
-    <description>Demo project for Spring Boot</description>
+    <description>用户管理中心</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -39,7 +39,7 @@
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-web</artifactId>
+            <artifactId>hutu-common-security</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
