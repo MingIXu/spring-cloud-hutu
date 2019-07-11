@@ -1,6 +1,6 @@
-package com.hutu.common.security.annotation;
+package com.hutu.common.log.annotation;
 
-import com.hutu.common.core.enums.OperateEnum;
+import com.hutu.common.log.enums.OperateEnum;
 
 import java.lang.annotation.*;
 

@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(GlobalException.class)
     public R handleGlobalException(GlobalException e) {
         logger.error(e.getMessage(), e);
-        return R.error().put(R.CODE, e.getCode()).put(R.MSG, e.getMessage());
+        return R.error(e.getCode(),e.getMessage());
     }
 
     /**

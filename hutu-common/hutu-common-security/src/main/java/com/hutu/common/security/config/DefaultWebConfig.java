@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
- * MVC配置
+ * MVC配置 跨域与时间格式
  *
  * @author hutu
  * @date 2017-04-20 22:30

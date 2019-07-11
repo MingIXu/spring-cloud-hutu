@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
 /**
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Profile;
  * @author hutu
  * @date 2019/06/21
  */
-@Import(DateMetaObjectHandler.class)
 public class DefaultMybatisPlusConfig {
 
     /**
@@ -37,7 +35,7 @@ public class DefaultMybatisPlusConfig {
      * 设置 dev test 环境开启
      */
     @Bean
-    @Profile({"dev","test"})
+    @Profile({"dev","test","hutu"})
     public PerformanceInterceptor performanceInterceptor() {
         return new PerformanceInterceptor();
     }

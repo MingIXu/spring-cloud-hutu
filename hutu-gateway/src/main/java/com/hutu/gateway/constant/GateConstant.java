@@ -10,7 +10,7 @@ public class  GateConstant {
     public static final String START_WITH = "upms,cms,api";
     public final static String DOU_HAO = ",";
     public final static String XIE_GANG = "/";
-    public final static String TOKEN = "hutu-token";
+    public final static String TOKEN = "token";
     /**
      * 白名单
      */

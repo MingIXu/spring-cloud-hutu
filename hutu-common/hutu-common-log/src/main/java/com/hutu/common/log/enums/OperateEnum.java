@@ -1,4 +1,4 @@
-package com.hutu.common.core.enums;
+package com.hutu.common.log.enums;
 
 /**
  * 操作类型枚举

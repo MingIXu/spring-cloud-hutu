@@ -13,6 +13,8 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
+import static com.hutu.common.core.constant.HutuConstant.TOKEN;
+
 /**
  * http请求上下文工具类
  *
@@ -22,8 +24,6 @@ import java.util.Enumeration;
 public class HttpContextUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpContextUtils.class);
-    private static final String TOKEN = "token";
-    private static final String EXPIRE = "expire";
 
     public static HttpServletRequest getHttpServletRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -34,13 +34,6 @@ public class HttpContextUtils {
      */
     public static String getRequestToken() {
         return getRequestParameter(TOKEN);
-    }
-
-    /**
-     * 获取请求的expire
-     */
-    public static String getRequestExpire() {
-        return getRequestParameter(EXPIRE);
     }
 
     /**
