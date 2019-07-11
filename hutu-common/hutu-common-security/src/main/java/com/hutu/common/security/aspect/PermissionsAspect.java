@@ -5,7 +5,6 @@ import com.hutu.common.core.exception.GlobalException;
 import com.hutu.common.security.annotation.Logical;
 import com.hutu.common.security.annotation.RequiresPermissions;
 import com.hutu.common.security.service.HutuPermissionService;
-import com.hutu.common.security.utils.JwtUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
