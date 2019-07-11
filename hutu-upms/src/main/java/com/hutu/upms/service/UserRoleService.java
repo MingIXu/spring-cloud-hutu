@@ -12,5 +12,5 @@ import com.hutu.upms.entity.UserRole;
  * @since 2019-06-05
  */
 public interface UserRoleService extends IService<UserRole> {
-	
+
 }

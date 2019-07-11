@@ -16,5 +16,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper, RolePermission> implements RolePermissionService {
-	
+
 }

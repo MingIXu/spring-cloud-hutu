@@ -12,5 +12,5 @@ import com.hutu.upms.entity.Attachment;
  * @since 2019-06-05
  */
 public interface AttachmentService extends IService<Attachment> {
-	
+
 }

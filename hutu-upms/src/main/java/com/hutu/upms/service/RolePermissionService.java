@@ -12,5 +12,5 @@ import com.hutu.upms.entity.RolePermission;
  * @since 2019-06-05
  */
 public interface RolePermissionService extends IService<RolePermission> {
-	
+
 }

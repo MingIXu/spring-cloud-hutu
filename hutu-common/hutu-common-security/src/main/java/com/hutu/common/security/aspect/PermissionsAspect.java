@@ -44,17 +44,17 @@ public class PermissionsAspect {
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
 
-		List<String> permissions = hutuPermissionService.getUserPermissions(JwtUtils.getCallerInfo().uid);
+		List<String> permissions = hutuPermissionService.getUserPermissions(1);
 		RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
 		boolean havePermission = false;
-		if(requiresPermissions != null){
+		if (permissions != null && permissions.size() > 0) {
 			String[] reqPermissions = requiresPermissions.value();
-			if (reqPermissions.length > 0){
+			if (reqPermissions.length > 0) {
 				if (requiresPermissions.logical().equals(Logical.AND)) {
-						havePermission = permissions.containsAll(Arrays.asList(reqPermissions));
-				}else {
-					for (String permission:reqPermissions) {
-						if (permissions.contains(permission)){
+					havePermission = permissions.containsAll(Arrays.asList(reqPermissions));
+				} else {
+					for (String permission : reqPermissions) {
+						if (permissions.contains(permission)) {
 							havePermission = true;
 							break;
 						}

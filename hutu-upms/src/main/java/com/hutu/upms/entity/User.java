@@ -1,9 +1,6 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -56,10 +53,16 @@ public class User implements Serializable {
      * 性别(男：0，女：1)
      */
 	private Integer sex;
+    private String sexShow;
     /**
      * 用户状态（1=正常，0=禁用）
      */
 	private Integer status;
+    private String statusShow;
+    /**
+     * 部门id
+     */
+	private Integer departmentId;
     /**
      * 排序
      */
@@ -71,32 +74,38 @@ public class User implements Serializable {
     /**
      * 创建人名称
      */
+    @TableField(fill = FieldFill.INSERT)
 	private String createName;
     /**
      * 创建人ID
      */
+    @TableField(fill = FieldFill.INSERT)
 	private Integer createId;
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
     /**
      * 更新人名称
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
 	private String updateName;
     /**
      * 更新人ID
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
 	private Integer updateId;
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
 	private LocalDateTime updateTime;
     /**
      * 逻辑删除标记(已删除：1，未删除：0)
      */
     @TableLogic
-	private Boolean isDeleted;
+	private Integer isDeleted;
 
 
 }

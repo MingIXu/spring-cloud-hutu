@@ -1,13 +1,13 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * <p>
@@ -17,7 +17,8 @@ import java.time.LocalDateTime;
  * @author generator
  * @since 2019-06-05
  */
-@Data
+@Getter
+@Setter
 @Accessors(chain = true)
 @TableName("t_upms_role_permission")
 public class RolePermission implements Serializable {
@@ -40,11 +41,25 @@ public class RolePermission implements Serializable {
     /**
      * 创建人
      */
-	private Integer createId;
+    @TableField(fill = FieldFill.INSERT)
+    private Integer createId;
     /**
      * 创建时间
      */
-	private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RolePermission that = (RolePermission) o;
+        return Objects.equals(roleId, that.roleId) &&
+                Objects.equals(permissionId, that.permissionId);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(roleId, permissionId);
+    }
 }

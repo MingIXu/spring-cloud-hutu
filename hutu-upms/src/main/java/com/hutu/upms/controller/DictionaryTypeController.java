@@ -14,6 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * <p>
  * 字典类别表 前端控制器
@@ -62,5 +66,17 @@ public class DictionaryTypeController{
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
         return R.ok().put("info",dictionaryTypeService.getById(id));
     }
-
+    @ApiOperation("获取字典类型树")
+    @GetMapping("getDicTypeTree")
+    public R getDicTypeTree(){
+        List<DictionaryType> list = dictionaryTypeService.list();
+        List treeList = new ArrayList<>();
+        for (DictionaryType obj : list) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("label",obj.getValueCn());
+            map.put("key",obj.getKey());
+            treeList.add(map);
+        }
+        return R.ok().put("treeData", treeList);
+    }
 }

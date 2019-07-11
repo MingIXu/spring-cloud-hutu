@@ -1,8 +1,6 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -40,11 +38,13 @@ public class UserOrganization implements Serializable {
     /**
      * 创建人
      */
-	private Integer createId;
+    @TableField(fill = FieldFill.INSERT)
+    private Integer createId;
     /**
      * 创建时间
      */
-	private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
 
 
 }

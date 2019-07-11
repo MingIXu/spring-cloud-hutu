@@ -12,5 +12,5 @@ import com.hutu.upms.entity.Log;
  * @since 2019-06-05
  */
 public interface LogService extends IService<Log> {
-	
+
 }

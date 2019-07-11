@@ -12,5 +12,5 @@ import com.hutu.upms.entity.Dictionary;
  * @since 2019-06-05
  */
 public interface DictionaryService extends IService<Dictionary> {
-	
+
 }

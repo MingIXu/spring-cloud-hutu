@@ -12,5 +12,5 @@ import com.hutu.upms.entity.User;
  * @since 2019-06-05
  */
 public interface UserService extends IService<User> {
-	
+
 }

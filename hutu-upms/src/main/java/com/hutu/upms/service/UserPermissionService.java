@@ -12,5 +12,5 @@ import com.hutu.upms.entity.UserPermission;
  * @since 2019-06-05
  */
 public interface UserPermissionService extends IService<UserPermission> {
-	
+
 }

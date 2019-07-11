@@ -1,9 +1,6 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -34,6 +31,7 @@ public class Dictionary implements Serializable {
     /**
      * 字典值表达式
      */
+    @TableField("`key`")
 	private String key;
     /**
      * 字典值英文名称
@@ -53,28 +51,40 @@ public class Dictionary implements Serializable {
 	private Integer orders;
     /**
      * 创建人名称
-
      */
+	@TableField(fill = FieldFill.INSERT)
 	private String createName;
-    /**
-     * 创建人ID
-
-     */
+	/**
+	 * 创建人ID
+	 */
+	@TableField(fill = FieldFill.INSERT)
 	private Integer createId;
-    /**
-     * 创建时间
-
-     */
+	/**
+	 * 创建时间
+	 */
+	@TableField(fill = FieldFill.INSERT)
 	private LocalDateTime createTime;
+	/**
+	 * 更新人名称
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private String updateName;
+	/**
+	 * 更新人ID
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Integer updateId;
+	/**
+	 * 更新时间
+	 */
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private LocalDateTime updateTime;
     /**
      * 逻辑删除标记(已删除：1，未删除：0)
 
      */
     @TableLogic
-	private Boolean isDeleted;
+	private Integer isDeleted;
 
 
 }

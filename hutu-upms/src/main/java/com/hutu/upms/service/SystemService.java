@@ -11,5 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2019-06-05
  */
 public interface SystemService extends IService<System> {
-	
+
 }

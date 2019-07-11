@@ -1,9 +1,6 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -37,15 +34,20 @@ public class Permission implements Serializable {
     /**
      * 所属上级
      */
-	private Integer pId;
+	private Integer pid;
     /**
-     * 名称
+     * 权限标识
      */
-	private String name;
+	private String code;
+    /**
+     * 权限名称
+     */
+    private String name;
     /**
      * 类型(1:目录,2:菜单,3:按钮)
      */
 	private Integer type;
+    private String typeShow;
     /**
      * 权限值
      */
@@ -62,6 +64,7 @@ public class Permission implements Serializable {
      * 状态(0:禁止,1:正常)
      */
 	private Integer status;
+    private String statusShow;
     /**
      * 排序
      */
@@ -69,32 +72,38 @@ public class Permission implements Serializable {
     /**
      * 创建人名称
      */
-	private String createName;
+    @TableField(fill = FieldFill.INSERT)
+    private String createName;
     /**
      * 创建人ID
      */
-	private Integer createId;
+    @TableField(fill = FieldFill.INSERT)
+    private Integer createId;
     /**
      * 创建时间
      */
-	private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
     /**
      * 更新人名称
      */
-	private String updateName;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateName;
     /**
      * 更新人ID
      */
-	private Integer updateId;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer updateId;
     /**
      * 更新时间
      */
-	private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
     /**
      * 逻辑删除标记(已删除：1，未删除：0)
      */
     @TableLogic
-	private Boolean isDeleted;
+	private Integer isDeleted;
 
 
 }

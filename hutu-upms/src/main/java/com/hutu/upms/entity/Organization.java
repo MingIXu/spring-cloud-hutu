@@ -1,9 +1,6 @@
 package com.hutu.upms.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -37,7 +34,12 @@ public class Organization implements Serializable {
     /**
      * 组织名称
      */
-	private String name;
+    private String name;
+    /**
+     * 组织类别
+     */
+    private String type;
+    private String typeShow;
     /**
      * 组织描述
      */
@@ -49,32 +51,38 @@ public class Organization implements Serializable {
     /**
      * 创建人名称
      */
-	private String createName;
+    @TableField(fill = FieldFill.INSERT)
+    private String createName;
     /**
      * 创建人ID
      */
-	private Integer createId;
+    @TableField(fill = FieldFill.INSERT)
+    private Integer createId;
     /**
      * 创建时间
      */
-	private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
     /**
      * 更新人名称
      */
-	private String updateName;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateName;
     /**
      * 更新人ID
      */
-	private Integer updateId;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Integer updateId;
     /**
      * 更新时间
      */
-	private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
     /**
      * 逻辑删除标记(已删除：1，未删除：0)
      */
     @TableLogic
-	private Boolean isDeleted;
+	private Integer isDeleted;
 
 
 }

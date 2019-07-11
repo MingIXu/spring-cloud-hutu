@@ -16,5 +16,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DictionaryTypeServiceImpl extends ServiceImpl<DictionaryTypeMapper, DictionaryType> implements DictionaryTypeService {
-	
+
 }

@@ -12,5 +12,5 @@ import com.hutu.upms.entity.UserOrganization;
  * @since 2019-06-05
  */
 public interface UserOrganizationService extends IService<UserOrganization> {
-	
+
 }

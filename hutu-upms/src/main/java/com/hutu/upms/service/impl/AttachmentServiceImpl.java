@@ -16,5 +16,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AttachmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachment> implements AttachmentService {
-	
+
 }

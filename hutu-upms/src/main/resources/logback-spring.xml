@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 开发、测试环境 -->
-    <springProfile name="dev,test">
+    <springProfile name="dev,test,hutu">
         <logger name="org.springframework.web" level="INFO"/>
         <logger name="org.springboot.sample" level="INFO" />
         <logger name="com.hutu" level="DEBUG" />

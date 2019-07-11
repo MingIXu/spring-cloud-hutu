@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * something
+ * 鉴权
  *
  * @author hutu
  * @date 2019/6/20 15:17
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthHandler{
 
     @RequestMapping("auth")
-    public R handleError() {
+    public R auth() {
         return R.ok();
     }
 
