@@ -19,6 +19,7 @@ public enum ErrorMsgEnum {
     TOKEN_IS_INVALID(10003, "token无效"),
     PASSWORD_ERROR(10002, "密码错误"),
     USERNAME_NOT_EXIST(10001, "用户名不存在"),
+    USERNAME_OR_PASS_ERROR(10000,"用户名或密码错误"),
 
     INTERNAL_SERVER_ERROR(500, "后台系统错误"),
     NOT_FOUND(404, "找不到请求资源"),

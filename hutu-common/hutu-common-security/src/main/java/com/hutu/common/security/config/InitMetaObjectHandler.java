@@ -21,6 +21,7 @@ public class InitMetaObjectHandler implements MetaObjectHandler {
     private final static String UPDATE_TIME = "updateTime";
     private final static String UPDATE_ID = "updateId";
     private final static String UPDATE_NAME = "updateName";
+    private final static String TENANT_ID = "tenantId";
 
     /**
      * 插入填充，字段为空自动填充
@@ -35,30 +36,35 @@ public class InitMetaObjectHandler implements MetaObjectHandler {
         Object updateId = getFieldValByName(UPDATE_ID, metaObject);
         Object updateName = getFieldValByName(UPDATE_NAME, metaObject);
 
-        if (createTime == null || updateTime == null) {
-            LocalDateTime date = LocalDateTime.now();
-            Integer userId = TokenUtils.getUserId();
-            String userName = TokenUtils.getUserName();
+        Object tenantId = getFieldValByName(TENANT_ID, metaObject);
 
-            if (createTime == null) {
-                setFieldValByName(CREATE_TIME, date, metaObject);
-            }
-            if (createId == null) {
-                setFieldValByName(CREATE_ID, userId, metaObject);
-            }
-            if (createName == null) {
-                setFieldValByName(CREATE_NAME, userName, metaObject);
-            }
 
-            if (updateTime == null) {
-                setFieldValByName(UPDATE_TIME, date, metaObject);
-            }
-            if (updateId == null) {
-                setFieldValByName(UPDATE_ID, userId, metaObject);
-            }
-            if (updateName == null) {
-                setFieldValByName(UPDATE_NAME, userName, metaObject);
-            }
+        LocalDateTime date = LocalDateTime.now();
+        Integer userId = TokenUtils.getUserId();
+        String userName = TokenUtils.getUserName();
+        Integer userTenantId = TokenUtils.getTenantId();
+
+        if (createTime == null) {
+            setFieldValByName(CREATE_TIME, date, metaObject);
+        }
+        if (createId == null) {
+            setFieldValByName(CREATE_ID, userId, metaObject);
+        }
+        if (createName == null) {
+            setFieldValByName(CREATE_NAME, userName, metaObject);
+        }
+
+        if (updateTime == null) {
+            setFieldValByName(UPDATE_TIME, date, metaObject);
+        }
+        if (updateId == null) {
+            setFieldValByName(UPDATE_ID, userId, metaObject);
+        }
+        if (updateName == null) {
+            setFieldValByName(UPDATE_NAME, userName, metaObject);
+        }
+        if (tenantId == null) {
+            setFieldValByName(TENANT_ID, userTenantId, metaObject);
         }
     }
 
