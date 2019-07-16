@@ -1,3 +1,5 @@
+server:
+  port: 8761
 spring:
   application:
     name: hutu-gateway
@@ -9,29 +11,27 @@ spring:
 #      - PrefixPath=/httpbin
       - AddResponseHeader=X-Response-Default-Foo, Default-Bar
       routes:
-      - id: host_route_01
-        uri: http://localhost:8763
+      - id: hutu-auth
+        uri: http://localhost:8762
         predicates:
-        - Path=/a/**
+        - Path=/auth/**
         filters:
         - StripPrefix=1
-#
-#      - id: host_route_02
-#        uri: http://localhost:8765
-#        predicates:
-#        - Path=/b/**
-#        filters:
-#        - StripPrefix=1
-#        - name: RequestRateLimiter
-#          args:
-#            keyResolver: '#{@ipAddressKeyResolver}'
-#            in-memory-rate-limiter:
-#              replenish-rate: 1
-#              burst-capacity: 2
+
+      - id: hutu-upms
+        uri: http://localhost:8765
+        predicates:
+        - Path=/upms1/**
+        filters:
+        - StripPrefix=1
+        - name: RequestRateLimiter
+          args:
+            keyResolver: '#{@ipAddressKeyResolver}'
+            in-memory-rate-limiter:
+              replenish-rate: 1
+              burst-capacity: 2
     nacos:
       discovery:
         serverAddr: 127.0.0.1:8848
       dataId: gateway
       group: test
-server:
-  port: 8762

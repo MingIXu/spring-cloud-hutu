@@ -1,7 +1,7 @@
 package com.hutu.common.security.aspect;
 
-import com.hutu.common.core.enums.ErrorMsgEnum;
-import com.hutu.common.core.exception.GlobalException;
+import com.hutu.auth.enums.ErrorMsgEnum;
+import com.hutu.auth.exception.GlobalException;
 import com.hutu.common.security.annotation.Logical;
 import com.hutu.common.security.annotation.RequiresPermissions;
 import com.hutu.common.security.service.HutuPermissionService;
@@ -31,7 +31,7 @@ public class PermissionsAspect {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired
+	@Autowired(required = false)
 	HutuPermissionService hutuPermissionService;
 
 	@Pointcut("@annotation(com.hutu.common.security.annotation.RequiresPermissions)")
@@ -42,7 +42,10 @@ public class PermissionsAspect {
 		logger.info("---此处权限校验---");
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
-
+		if (hutuPermissionService == null) {
+			logger.info("没有实现获取用户权限接口");
+			throw new GlobalException("没有实现获取用户权限接口");
+		}
 		List<String> permissions = hutuPermissionService.getUserPermissions(1);
 		RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
 		boolean havePermission = false;

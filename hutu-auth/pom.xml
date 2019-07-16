@@ -15,7 +15,18 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.hutu</groupId>
-			<artifactId>hutu-common-web</artifactId>
+			<artifactId>hutu-common-security</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.hutu</groupId>
+					<artifactId>hutu-common-db</artifactId>
+				</exclusion>
+			</exclusions>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hutu</groupId>
+			<artifactId>hutu-upms-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

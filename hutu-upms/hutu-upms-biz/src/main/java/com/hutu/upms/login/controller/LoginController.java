@@ -1,10 +1,11 @@
 package com.hutu.upms.login.controller;
 
-import com.hutu.common.core.entity.CallerInfo;
-import com.hutu.common.core.entity.R;
+import com.hutu.auth.entity.CallerInfo;
+import com.hutu.auth.entity.R;
 import com.hutu.common.security.annotation.AuthIgnore;
 
 import com.hutu.common.security.utils.TokenUtils;
+import com.hutu.upms.api.feign.RemoteLoginService;
 import com.hutu.upms.login.dto.UserInfo;
 import com.hutu.upms.login.service.LoginService;
 import com.hutu.upms.admin.entity.Organization;
@@ -75,5 +76,4 @@ public class LoginController {
         System.out.println("456");
         return R.ok();
     }
-
 }

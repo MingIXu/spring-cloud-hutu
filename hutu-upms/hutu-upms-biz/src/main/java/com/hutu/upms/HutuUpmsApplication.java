@@ -1,18 +1,10 @@
 package com.hutu.upms;
 
-import com.alicp.jetcache.anno.CacheInvalidate;
-import com.alicp.jetcache.anno.CacheRefresh;
-import com.alicp.jetcache.anno.CacheUpdate;
-import com.alicp.jetcache.anno.Cached;
-import com.alicp.jetcache.anno.config.EnableMethodCache;
-import com.hutu.common.cache.annotation.EnableHutuCache;
-import com.hutu.common.core.entity.R;
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableSwagger2Doc
 //@EnableHutuCache

@@ -13,7 +13,7 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-import static com.hutu.common.core.constant.HutuConstant.TOKEN;
+import static com.hutu.auth.constant.HutuConstant.TOKEN;
 
 /**
  * http请求上下文工具类

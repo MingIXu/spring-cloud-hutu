@@ -1,8 +1,8 @@
 package com.hutu.common.security.handler;
 
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.exception.GlobalException;
-import com.hutu.common.core.enums.ErrorMsgEnum;
+import com.hutu.auth.entity.R;
+import com.hutu.auth.exception.GlobalException;
+import com.hutu.auth.enums.ErrorMsgEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;

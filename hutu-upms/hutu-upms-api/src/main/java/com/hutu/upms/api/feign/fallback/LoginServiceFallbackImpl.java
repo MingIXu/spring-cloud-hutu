@@ -19,8 +19,8 @@
 
 package com.hutu.upms.api.feign.fallback;
 
-import com.hutu.common.core.entity.R;
-import com.hutu.upms.api.feign.LoginService;
+import com.hutu.auth.entity.R;
+import com.hutu.upms.api.feign.RemoteLoginService;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class LoginServiceFallbackImpl implements LoginService {
+public class LoginServiceFallbackImpl implements RemoteLoginService {
 	@Setter
 	private Throwable cause;
 

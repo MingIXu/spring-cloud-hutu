@@ -1,6 +1,6 @@
 package com.hutu.upms.login.dto;
 
-import com.hutu.common.core.entity.CallerInfo;
+import com.hutu.auth.entity.CallerInfo;
 
 /**
  * 用户信息
