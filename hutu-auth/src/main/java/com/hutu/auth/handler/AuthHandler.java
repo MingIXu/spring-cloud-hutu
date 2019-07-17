@@ -1,7 +1,6 @@
 package com.hutu.auth.handler;
 
-import com.hutu.auth.entity.R;
-import com.hutu.common.security.utils.HttpContextUtils;
+import com.hutu.common.core.entity.R;
 import com.hutu.upms.api.feign.RemoteLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

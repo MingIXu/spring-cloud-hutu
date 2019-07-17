@@ -1,7 +1,7 @@
 package com.hutu.common.security.aspect;
 
-import com.hutu.auth.enums.ErrorMsgEnum;
-import com.hutu.auth.exception.GlobalException;
+import com.hutu.common.core.enums.ErrorMsgEnum;
+import com.hutu.common.core.exception.GlobalException;
 import com.hutu.common.security.annotation.Logical;
 import com.hutu.common.security.annotation.RequiresPermissions;
 import com.hutu.common.security.service.HutuPermissionService;

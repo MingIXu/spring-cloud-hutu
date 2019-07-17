@@ -19,7 +19,7 @@
 
 package com.hutu.upms.api.feign.fallback;
 
-import com.hutu.auth.entity.R;
+import com.hutu.common.core.entity.R;
 import com.hutu.upms.api.feign.RemoteLoginService;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

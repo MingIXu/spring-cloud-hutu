@@ -1,10 +1,10 @@
 package com.hutu.common.security.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.hutu.auth.entity.CallerInfo;
-import com.hutu.auth.enums.ErrorMsgEnum;
-import com.hutu.auth.exception.GlobalException;
-import com.hutu.auth.util.JwtUtils;
+import com.hutu.common.core.entity.CallerInfo;
+import com.hutu.common.core.enums.ErrorMsgEnum;
+import com.hutu.common.core.exception.GlobalException;
+import com.hutu.common.core.util.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

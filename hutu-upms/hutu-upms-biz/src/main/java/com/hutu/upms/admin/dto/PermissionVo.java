@@ -1,6 +1,6 @@
 package com.hutu.upms.admin.dto;
 
-import com.hutu.auth.entity.TreeNode;
+import com.hutu.common.core.entity.TreeNode;
 import com.hutu.upms.admin.entity.Permission;
 
 public class PermissionVo extends TreeNode {

@@ -1,8 +1,8 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.auth.entity.TreeNode;
-import com.hutu.auth.util.TreeUtil;
+import com.hutu.common.core.entity.TreeNode;
+import com.hutu.common.core.util.TreeUtil;
 import com.hutu.upms.admin.entity.Organization;
 import com.hutu.upms.admin.mapper.OrganizationMapper;
 import com.hutu.upms.admin.service.OrganizationService;

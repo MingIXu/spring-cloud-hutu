@@ -2,8 +2,8 @@ package com.hutu.upms.admin.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hutu.auth.entity.R;
-import com.hutu.auth.util.TreeUtil;
+import com.hutu.common.core.entity.R;
+import com.hutu.common.core.util.TreeUtil;
 import com.hutu.upms.admin.dto.PermissionVo;
 import com.hutu.upms.admin.entity.Permission;
 import com.hutu.upms.admin.service.PermissionService;

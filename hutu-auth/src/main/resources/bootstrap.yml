@@ -7,7 +7,7 @@ hutu:
 
 spring:
   application:
-    name: hutu-auth
+    name: hutu-core
   cloud:
     nacos:
       config:

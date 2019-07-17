@@ -14,5 +14,5 @@ public class  GateConstant {
     /**
      * 白名单
      */
-    public final static HashSet<String> WHITE_PATHS = new HashSet<>(Arrays.asList("auth/login", "auth/test"));
+    public final static HashSet<String> WHITE_PATHS = new HashSet<>(Arrays.asList("core/login", "core/test"));
 }
