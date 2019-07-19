@@ -5,7 +5,6 @@ import com.alicp.jetcache.anno.CacheRefresh;
 import com.alicp.jetcache.anno.CacheUpdate;
 import com.alicp.jetcache.anno.Cached;
 import com.hutu.common.cache.annotation.EnableHutuCache;
-import com.hutu.common.core.entity.R;
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,15 +27,15 @@ public class HutuUpmsApplication {
         @RequestMapping("get")
         @CacheRefresh(refresh = 50,stopRefreshAfterLastAccess = 600)
         @Cached(name = "test-",key = "#name",expire = 60)
-        public R getHelloWord(String name){
+        public String getHelloWord(String name){
             System.out.println("hello "+name);
-            return R.ok().put("helloWord",name);
+            return name;
         }
         @RequestMapping("update")
         @CacheUpdate(name = "test-",key = "#name",value="#name")
-        public boolean updateHelloWord(String name){
+        public String updateHelloWord(String name){
             System.out.println("update "+name);
-            return true;
+            return name;
         }
         @RequestMapping("del")
         @CacheInvalidate(name = "test-", key = "#name")
