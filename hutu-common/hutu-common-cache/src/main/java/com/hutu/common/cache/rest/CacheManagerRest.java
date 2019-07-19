@@ -61,5 +61,4 @@ public class CacheManagerRest {
     public boolean expire(String key, Integer expire){
         return getCommands().expire(key,expire);
     }
-
 }
