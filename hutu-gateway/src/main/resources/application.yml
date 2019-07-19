@@ -11,10 +11,10 @@ spring:
 #      - PrefixPath=/httpbin
       - AddResponseHeader=X-Response-Default-Foo, Default-Bar
       routes:
-      - id: hutu-core
+      - id: hutu-auth
         uri: http://localhost:8762
         predicates:
-        - Path=/core/**
+        - Path=/auth/**
         filters:
         - StripPrefix=1
 

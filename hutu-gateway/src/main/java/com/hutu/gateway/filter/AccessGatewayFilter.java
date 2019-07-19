@@ -72,7 +72,7 @@ public class AccessGatewayFilter implements GlobalFilter {
             return true;
         }
         for (String s : GateConstant.START_WITH.split(GateConstant.DOU_HAO)) {
-            if (requestUri.startsWith(s) || requestUri.startsWith(s)) {
+            if (requestUri.startsWith(s)) {
                 return true;
             }
         }

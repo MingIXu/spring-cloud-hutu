@@ -1,5 +1,6 @@
 package com.hutu.common.core.util;
 
+import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSON;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
@@ -7,6 +8,7 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -79,6 +81,13 @@ public class JwtUtils {
                     .getBody();
             return claims != null && (boolean) claims.get(IS_REFRESH_TOKEN) ? null : claims;
         } catch (ExpiredJwtException e) {
+            Claims claims = e.getClaims();
+            Integer exp = (Integer) claims.get("exp");
+            long currentSeconds = DateUtil.currentSeconds();
+
+            if (REFRESH_EXPIRE_TIME > (currentSeconds - exp)) {
+                refreshToken(claims);
+            }
             throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE, e);
         } catch (Exception e) {
             throw new GlobalException(ErrorMsgEnum.TOKEN_IS_INVALID, e);
@@ -88,17 +97,8 @@ public class JwtUtils {
     /**
      * 生成RefreshToken
      */
-    public static String refreshToken(String token) {
+    public static String refreshToken(Claims claims) {
 
-        try {
-            Claims claims = Jwts.parser()
-                    .setSigningKey(SECRET_KEY)
-                    .parseClaimsJws(token)
-                    .getBody();
-            if (claims == null) {
-                return null;
-            }
-            claims.put(IS_REFRESH_TOKEN, false);
             Date nowDate = new Date();
             //过期时间
             Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
@@ -109,10 +109,11 @@ public class JwtUtils {
                     .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                     .compact();
             return newToken;
-        } catch (ExpiredJwtException e) {
-            throw new GlobalException("refresh token is invalid !", e);
-        } catch (Exception e) {
-            throw new GlobalException(ErrorMsgEnum.TOKEN_IS_INVALID, e);
-        }
+    }
+
+    public static void main(String[] args) {
+//        String token = createToken("123", 10, false);
+//        System.out.println(token);
+        parseToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc1JlZnJlc2hUb2tlbiI6ZmFsc2UsInN1YiI6IlwiMTIzXCIiLCJpYXQiOjE1NjM1MjYwMDIsImV4cCI6MTU2MzUyNjAwMn0.Zc-ZQ8UyEUs5V3o1Ar0CCnUx_ydWnt-NjxFsqgxYgKI");
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @author lengleng
+ * @author
  * @date 2018/6/22
  */
 @FeignClient(value = ServiceNameConstant.UPMS, fallbackFactory = LoginServiceFallbackFactory.class)
