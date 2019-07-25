@@ -13,6 +13,16 @@ public class GlobalException extends RuntimeException {
 
     private int code;
 
+    public GlobalException() {
+        super(ErrorMsgEnum.INTERNAL_SERVER_ERROR.desc);
+        this.code = ErrorMsgEnum.INTERNAL_SERVER_ERROR.code;
+    }
+
+    public GlobalException(Throwable e) {
+        super(e);
+        this.code = ErrorMsgEnum.INTERNAL_SERVER_ERROR.code;
+    }
+
     public GlobalException(String msg) {
         super(msg);
         this.code = ErrorMsgEnum.INTERNAL_SERVER_ERROR.code;

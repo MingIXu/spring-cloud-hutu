@@ -7,24 +7,29 @@ package com.hutu.common.core.enums;
  * @date 2018/6/26 16:27
  */
 public enum ErrorMsgEnum {
+    /**
+     *
+     */
+    AUTH_FAIL(1200, "鉴权失败"),
 
-    AUTH_FAIL(20002, "鉴权失败"),
-    THREAD_POOL_OVERFLOW(20001, "线程池满载"),
+    TOKEN_NEED_REFRESH(1103, "请刷新 token"),
+    TOKEN_IS_EXPIRE(1102, "token 过期"),
+    NOT_FOUNT_TOKEN(1101, "请求中无 token 信息"),
+    TOKEN_IS_INVALID(1100, "token 无效"),
 
-    USER_NO_PERMISSION(10008, "用户无任何权限信息"),
-    USER_NO_ROLE(10007, "用户无任何角色信息"),
-    TOKEN_IS_EXPIRE(10006, "token 过期"),
-    NOT_FOUNT_TOKEN(10005, "not found token"),
-    NULL_POINTER_EXCEPTION(10004, "空指针异常"),
-    TOKEN_IS_INVALID(10003, "token无效"),
-    PASSWORD_ERROR(10002, "密码错误"),
-    USERNAME_NOT_EXIST(10001, "用户名不存在"),
-    USERNAME_OR_PASS_ERROR(10000,"用户名或密码错误"),
+    USER_NO_PERMISSION(1004, "用户无任何权限信息"),
+    USER_NO_ROLE(1003, "用户无任何角色信息"),
+    PASSWORD_ERROR(1002, "密码错误"),
+    USERNAME_NOT_EXIST(1001, "用户名不存在"),
+    USERNAME_OR_PASS_ERROR(1000,"用户名或密码错误"),
 
-    INTERNAL_SERVER_ERROR(500, "后台系统错误"),
     NOT_FOUND(404, "找不到请求资源"),
     SERVER_BUSY(402, "系统繁忙"),
-    UNAUTHORIZED(401, "未授权");
+    UNAUTHORIZED(401, "未授权"),
+
+    THREAD_POOL_OVERFLOW(511, "线程池满载"),
+    NULL_POINTER_EXCEPTION(510, "空指针异常"),
+    INTERNAL_SERVER_ERROR(500, "后台系统错误");
 
 
     public int code;

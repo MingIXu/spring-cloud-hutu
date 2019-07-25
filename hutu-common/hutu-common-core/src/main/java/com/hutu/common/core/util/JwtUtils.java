@@ -1,16 +1,16 @@
 package com.hutu.common.core.util;
 
-import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson.JSON;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import javax.crypto.SecretKey;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * jwt 工具类
@@ -26,41 +26,21 @@ public class JwtUtils {
     private final static String KEY = "bWluZyBodWEgcWlhbmcgTE9WRSB4dSB0YWkgbGlhbiAh";
 
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(KEY.getBytes());
-
-    private static final String IS_REFRESH_TOKEN = "isRefreshToken";
     /**
-     * 过期时间 16小时
+     * 过期时间 1小时
      */
-    private final static long EXPIRE_TIME = 1000 * 60 * 60 * 16L;
-    /**
-     * 更新token过期时间 15天
-     */
-    private final static long REFRESH_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 15L;
+    private final static long EXPIRE_TIME = 1000 * 60 * 60;
 
     /**
      * 生成 jwt token
      */
-    public static String generateToken(Object sourceToken) {
-        return createToken(sourceToken, EXPIRE_TIME, false);
-    }
-
-    /**
-     * 生成 RefreshToken
-     */
-    public static String generateRefreshToken(Object sourceToken) {
-        return createToken(sourceToken, REFRESH_EXPIRE_TIME, true);
-    }
-
-    private static String createToken(Object sourceToken, long expireTime, boolean isRefreshToken) {
+    public static String createToken(Object sourceToken) {
+        //发布时间
         Date nowDate = new Date();
         //过期时间
-        Date expireDate = new Date(nowDate.getTime() + expireTime);
+        Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
         String subject = JSON.toJSONString(sourceToken);
-        JwtBuilder builder = Jwts.builder();
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put(IS_REFRESH_TOKEN, isRefreshToken);
-        builder.setClaims(hashMap);
-        String token = builder
+        String token = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setSubject(subject)
                 .setIssuedAt(nowDate)
@@ -79,41 +59,56 @@ public class JwtUtils {
                     .setSigningKey(SECRET_KEY)
                     .parseClaimsJws(token)
                     .getBody();
-            return claims != null && (boolean) claims.get(IS_REFRESH_TOKEN) ? null : claims;
+            return claims;
         } catch (ExpiredJwtException e) {
             Claims claims = e.getClaims();
-            Integer exp = (Integer) claims.get("exp");
-            long currentSeconds = DateUtil.currentSeconds();
-
-            if (REFRESH_EXPIRE_TIME > (currentSeconds - exp)) {
-                refreshToken(claims);
+            long expire = ((Integer) claims.get("exp")).longValue();
+            long difference = System.currentTimeMillis() - expire*1000;
+            if (EXPIRE_TIME > difference) {
+                throw new GlobalException(ErrorMsgEnum.TOKEN_NEED_REFRESH, e);
             }
             throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE, e);
         } catch (Exception e) {
-            throw new GlobalException(ErrorMsgEnum.TOKEN_IS_INVALID, e);
+            throw new GlobalException(e);
         }
     }
 
     /**
-     * 生成RefreshToken
+     * 刷新Token
      */
-    public static String refreshToken(Claims claims) {
+    public static String refreshToken(String token) {
+        Claims claims = null;
+        try {
+             claims = Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+             claims = e.getClaims();
+        } catch (Exception e) {
+            throw new GlobalException(e);
+        }
 
+        long expire = ((Integer) claims.get("exp")).longValue();
+        long difference = System.currentTimeMillis() - expire*1000;
+        if (EXPIRE_TIME > difference) {
             Date nowDate = new Date();
-            //过期时间
             Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
-            JwtBuilder builder = Jwts.builder();
-            String newToken = builder.setIssuedAt(nowDate)
-                    .setExpiration(expireDate)
+            return Jwts.builder()
+                    .setHeaderParam("typ", "JWT")
                     .setClaims(claims)
+                    .setIssuedAt(nowDate)
+                    .setExpiration(expireDate)
                     .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                     .compact();
-            return newToken;
+        }
+        throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE);
     }
 
     public static void main(String[] args) {
-//        String token = createToken("123", 10, false);
+//        String token = createToken("123");
 //        System.out.println(token);
-        parseToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc1JlZnJlc2hUb2tlbiI6ZmFsc2UsInN1YiI6IlwiMTIzXCIiLCJpYXQiOjE1NjM1MjYwMDIsImV4cCI6MTU2MzUyNjAwMn0.Zc-ZQ8UyEUs5V3o1Ar0CCnUx_ydWnt-NjxFsqgxYgKI");
+        String token = refreshToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJcIjEyM1wiIiwiaWF0IjoxNTY0MDQ1NzIzLCJleHAiOjE1NjQwNDkzMjN9.aYe2pr7TY-rrGih6o9zXbUoi4znoHzQh5ZaxqbsqLD0");
+        System.out.println(parseToken(token).toString());
     }
 }
