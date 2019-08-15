@@ -1,5 +1,6 @@
 package com.hutu.common.core.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
@@ -8,6 +9,8 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -20,6 +23,7 @@ import java.util.Date;
  */
 public class JwtUtils {
 
+    private final static Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     /**
      * 签名key
      */
@@ -27,24 +31,29 @@ public class JwtUtils {
 
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(KEY.getBytes());
     /**
-     * 过期时间 1小时
+     * 可刷新时间段1小时到2小时之间
      */
-    private final static long EXPIRE_TIME = 1000 * 60 * 60;
+    private final static long REFRESH_TIME = 1000 * 60 * 60;
+    /**
+     * 过期时间1小时
+     */
+    private final static long EXPIRE_TIME = 1000 * 60 * 60 * 2;
 
     /**
      * 生成 jwt token
      */
     public static String createToken(Object sourceToken) {
+        String subject = JSON.toJSONString(sourceToken);
         //发布时间
         Date nowDate = new Date();
         //过期时间
         Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
-        String subject = JSON.toJSONString(sourceToken);
         String token = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setSubject(subject)
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)
+                .setId(IdGenerator.getIdStr())
                 .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
         return token;
@@ -53,20 +62,14 @@ public class JwtUtils {
     /**
      * 解析jwt token
      */
-    public static Claims parseToken(String token) {
+    public static Claims parseToken(String sourceToken) {
         try {
             Claims claims = Jwts.parser()
                     .setSigningKey(SECRET_KEY)
-                    .parseClaimsJws(token)
+                    .parseClaimsJws(sourceToken)
                     .getBody();
             return claims;
         } catch (ExpiredJwtException e) {
-            Claims claims = e.getClaims();
-            long expire = ((Integer) claims.get("exp")).longValue();
-            long difference = System.currentTimeMillis() - expire*1000;
-            if (EXPIRE_TIME > difference) {
-                throw new GlobalException(ErrorMsgEnum.TOKEN_NEED_REFRESH, e);
-            }
             throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE, e);
         } catch (Exception e) {
             throw new GlobalException(e);
@@ -77,32 +80,36 @@ public class JwtUtils {
      * 刷新Token
      */
     public static String refreshToken(String token) {
-        Claims claims = null;
+        if (StrUtil.isEmpty(token)){
+            throw new GlobalException(ErrorMsgEnum.NOT_FOUNT_TOKEN);
+        }
         try {
-             claims = Jwts.parser()
+            Claims claims = Jwts.parser()
                     .setSigningKey(SECRET_KEY)
                     .parseClaimsJws(token)
                     .getBody();
+            long issuedAt = claims.getIssuedAt().getTime();
+            long difference = System.currentTimeMillis() - issuedAt;
+            if (difference > REFRESH_TIME) {
+                //发布时间
+                Date nowDate = new Date();
+                //过期时间
+                Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
+                return Jwts.builder()
+                        .setHeaderParam("typ", "JWT")
+                        .setClaims(claims)
+                        .setIssuedAt(nowDate)
+                        .setExpiration(expireDate)
+                        .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
+                        .compact();
+            } else {
+                return null;
+            }
         } catch (ExpiredJwtException e) {
-             claims = e.getClaims();
+            throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE, e);
         } catch (Exception e) {
             throw new GlobalException(e);
         }
-
-        long expire = ((Integer) claims.get("exp")).longValue();
-        long difference = System.currentTimeMillis() - expire*1000;
-        if (EXPIRE_TIME > difference) {
-            Date nowDate = new Date();
-            Date expireDate = new Date(nowDate.getTime() + EXPIRE_TIME);
-            return Jwts.builder()
-                    .setHeaderParam("typ", "JWT")
-                    .setClaims(claims)
-                    .setIssuedAt(nowDate)
-                    .setExpiration(expireDate)
-                    .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
-                    .compact();
-        }
-        throw new GlobalException(ErrorMsgEnum.TOKEN_IS_EXPIRE);
     }
 
     public static void main(String[] args) {
