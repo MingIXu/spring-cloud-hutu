@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
             callerInfo.uid = user.getId();
             callerInfo.name = user.getName();
             callerInfo.nick = user.getNick();
-            token = TokenUtils.generateToken(callerInfo);
+            token = TokenUtils.createToken(callerInfo);
         }
         return R.ok().put("token",token);
     }

@@ -28,6 +28,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import static com.hutu.common.core.constant.HutuConstant.TOKEN;
+
 /**
  * MVC配置 跨域与时间格式
  *
@@ -53,7 +55,7 @@ public class DefaultWebConfig implements WebMvcConfigurer {
         // 放行哪些原始域(头部信息)
         config.addAllowedHeader("*");
         // 暴露哪些头部信息（因为跨域访问默认不能获取全部头部信息）
-        config.addExposedHeader("*");
+        config.addExposedHeader(TOKEN);
         UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
         configSource.registerCorsConfiguration("/**", config);
         return new CorsFilter(configSource);
