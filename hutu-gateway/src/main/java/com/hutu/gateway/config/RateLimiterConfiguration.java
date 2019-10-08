@@ -25,6 +25,11 @@ import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RateLimiter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import static com.hutu.gateway.constant.GateConstant.TOKEN;
 
 /**
  * @author hutu
@@ -42,4 +47,5 @@ public class RateLimiterConfiguration {
 	public KeyResolver ipAddressKeyResolver() {
 		return new IpAddressKeyResolver();
 	}
+
 }

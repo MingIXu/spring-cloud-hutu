@@ -2,6 +2,7 @@ package com.hutu.gateway.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.hutu.gateway.constant.GateConstant;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -44,15 +45,8 @@ public class AccessGatewayFilter implements GlobalFilter {
 //            map = new HashMap<>();
 //            map.put("code",500);
 //            map.put("msg","not found token");
+//            log.info(JSON.toJSONString(map));
 //            return getVoidMono(exchange, map);
-//        } else {
-//            boolean isOk = true;// 判断权限
-//            if (!isOk) {
-//                map = new HashMap<>();
-//                map.put("code",500);
-//                map.put("msg","not found token");
-//                return getVoidMono(exchange, map);
-//            }
 //        }
 
         ServerHttpRequest build = mutate.build();
