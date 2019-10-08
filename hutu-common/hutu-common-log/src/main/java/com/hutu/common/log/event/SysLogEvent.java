@@ -1,14 +1,14 @@
 package com.hutu.common.log.event;
 
-import org.springframework.context.ApplicationEvent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
- * @author
+ * @author lengleng
  * 系统日志事件
  */
-public class SysLogEvent extends ApplicationEvent {
-
-	public SysLogEvent(Object source) {
-		super(source);
-	}
+@Getter
+@AllArgsConstructor
+public class SysLogEvent {
+	private final String sysLog;
 }

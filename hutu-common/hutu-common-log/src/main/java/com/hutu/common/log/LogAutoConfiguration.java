@@ -19,10 +19,11 @@
 
 package com.hutu.common.log;
 
-import com.hutu.common.log.aspect.LogAspect;
+import com.hutu.common.log.aspect.SysLogAspect;
 import com.hutu.common.log.event.SysLogListener;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -46,7 +47,7 @@ public class LogAutoConfiguration {
 	}
 
 	@Bean
-	public LogAspect sysLogAspect() {
-		return new LogAspect();
+	public SysLogAspect sysLogAspect(ApplicationEventPublisher publisher) {
+		return new SysLogAspect(publisher);
 	}
 }

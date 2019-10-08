@@ -30,13 +30,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- Dependency Versions -->
-        <spring-cloud-alibaba.version>0.9.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-<!--        <spring-cloud-commons.version>2.0.2.RELEASE</spring-cloud-commons.version>-->
-<!--        <spring-cloud-netflix.version>2.0.2.RELEASE</spring-cloud-netflix.version>-->
-<!--        <spring-cloud-openfeign.version>2.0.2.RELEASE</spring-cloud-openfeign.version>-->
-<!--        <spring-cloud-gateway.version>2.0.2.RELEASE</spring-cloud-gateway.version>-->
         <!-- Maven Plugin Versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
@@ -76,7 +72,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
+                <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>

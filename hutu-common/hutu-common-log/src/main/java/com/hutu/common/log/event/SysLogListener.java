@@ -8,20 +8,20 @@ import org.springframework.scheduling.annotation.Async;
 
 
 /**
- * @author
- * 异步监听日志事件
+ * @author 异步监听日志事件
  */
 @Slf4j
 @AllArgsConstructor
 public class SysLogListener {
-	private final Object remoteLogService;
+    private final Object remoteLogService;
 
-//	@Async("自定义线程池")
-	@Async
-	@Order
-	@EventListener(SysLogEvent.class)
-	public void saveSysLog(SysLogEvent event) {
-//		SysLog sysLog = (SysLog) event.getSource();
+    //	@Async("自定义线程池")
+    @Async
+    @Order
+    @EventListener(SysLogEvent.class)
+    public void saveSysLog(SysLogEvent event) {
+        String sysLog = event.getSysLog();
+        log.info(sysLog);
 //		remoteLogService.saveLog(sysLog, SecurityConstants.FROM_IN);
-	}
+    }
 }
