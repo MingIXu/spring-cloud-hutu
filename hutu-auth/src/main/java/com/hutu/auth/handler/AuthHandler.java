@@ -1,6 +1,7 @@
 package com.hutu.auth.handler;
 
 import com.hutu.common.core.entity.R;
+import com.hutu.upms.api.feign.RemoteLogService;
 import com.hutu.upms.api.feign.RemoteLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthHandler{
     @Autowired
     RemoteLoginService remoteLoginService;
-
+    @Autowired
+    RemoteLogService remoteLogService;
     @RequestMapping("login")
     public R login(String username, String password) {
         return remoteLoginService.login(username, password);

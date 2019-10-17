@@ -1,6 +1,6 @@
 package com.hutu.common.core.threadpool;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 import javax.validation.constraints.NotNull;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,7 +38,7 @@ public class CustomThreadFactory implements ThreadFactory {
 
 
     public CustomThreadFactory(String prefix, boolean isDaemon) {
-        this.prefix = StringUtils.isNotEmpty(prefix) ? prefix + "-thread-" : "";
+        this.prefix = StrUtil.isNotEmpty(prefix) ? prefix + "-thread-" : "";
         daemonThread = isDaemon;
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s == null) ? Thread.currentThread().getThreadGroup() : s.getThreadGroup();

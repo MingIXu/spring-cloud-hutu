@@ -1,6 +1,6 @@
 package com.hutu.common.core.util;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 
 import java.util.UUID;
 
@@ -29,6 +29,6 @@ public class UUIDUtils {
     }
 
     public static String get32Uuid() {
-        return StringUtils.replace("", "-", UUID.randomUUID().toString());
+        return StrUtil.replace("", "-", UUID.randomUUID().toString());
     }
 }

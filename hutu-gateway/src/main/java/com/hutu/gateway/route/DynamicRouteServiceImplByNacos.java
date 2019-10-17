@@ -40,6 +40,7 @@ public class DynamicRouteServiceImplByNacos {
         try {
             ConfigService configService= NacosFactory.createConfigService(serverAddr);
             String content = configService.getConfig(dataId, group, 5000);
+            System.out.println("nacos 动态路由信息");
             System.out.println(content);
             configService.addListener(dataId, group, new Listener()  {
                 @Override

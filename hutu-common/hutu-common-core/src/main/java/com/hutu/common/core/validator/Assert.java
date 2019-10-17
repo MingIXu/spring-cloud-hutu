@@ -1,7 +1,7 @@
 package com.hutu.common.core.validator;
 
+import cn.hutool.core.util.StrUtil;
 import com.hutu.common.core.exception.GlobalException;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * 数据校验
@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 public abstract class Assert {
 
     public static void isBlank(String str, String message) {
-        if (StringUtils.isBlank(str)) {
+        if (StrUtil.isBlank(str)) {
             throw new GlobalException(message);
         }
     }

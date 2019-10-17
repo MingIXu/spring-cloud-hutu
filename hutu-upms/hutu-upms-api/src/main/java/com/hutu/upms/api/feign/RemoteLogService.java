@@ -21,4 +21,10 @@ public interface RemoteLogService {
     @PostMapping("log/create")
     R create(@RequestBody Log log);
 
+    /**
+     * 记录日志
+     * @return
+     */
+    @GetMapping("log/read/{id}")
+    R read(@PathVariable("id") String id);
 }
