@@ -21,6 +21,7 @@ package com.hutu.common.log;
 
 import com.hutu.common.log.aspect.SysLogAspect;
 import com.hutu.common.log.event.SysLogListener;
+import com.hutu.upms.api.feign.RemoteLogService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.ApplicationEventPublisher;
@@ -39,7 +40,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @AllArgsConstructor
 @ConditionalOnWebApplication
 public class LogAutoConfiguration {
-	private final Object remoteLogService;
+	private final RemoteLogService remoteLogService;
 
 	@Bean
 	public SysLogListener sysLogListener() {

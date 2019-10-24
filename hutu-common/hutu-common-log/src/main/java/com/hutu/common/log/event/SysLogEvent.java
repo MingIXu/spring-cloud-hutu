@@ -1,5 +1,6 @@
 package com.hutu.common.log.event;
 
+import com.hutu.upms.api.dto.Log;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,5 +11,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SysLogEvent {
-	private final String sysLog;
+	private final Log sysLog;
 }

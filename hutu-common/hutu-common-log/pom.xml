@@ -20,5 +20,10 @@
             <artifactId>hutu-common-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-upms-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
