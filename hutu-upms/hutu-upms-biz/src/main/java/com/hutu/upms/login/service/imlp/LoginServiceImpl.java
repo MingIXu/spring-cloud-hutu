@@ -1,12 +1,12 @@
 package com.hutu.upms.login.service.imlp;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hutu.common.boot.utils.TokenUtils;
 import com.hutu.common.core.entity.CallerInfo;
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.entity.TreeNode;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.util.TreeUtil;
-import com.hutu.common.security.utils.TokenUtils;
 import com.hutu.upms.admin.entity.*;
 import com.hutu.upms.admin.mapper.*;
 import com.hutu.upms.admin.service.RolePermissionService;

@@ -1,8 +1,8 @@
-package com.hutu.common.security.config;
+package com.hutu.common.boot.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.hutu.common.security.utils.TokenUtils;
 import org.apache.ibatis.reflection.MetaObject;
+import com.hutu.common.boot.utils.TokenUtils;
 
 import java.time.LocalDateTime;
 

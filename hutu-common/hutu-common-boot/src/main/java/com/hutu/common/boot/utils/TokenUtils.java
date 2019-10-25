@@ -1,12 +1,12 @@
-package com.hutu.common.security.utils;
+package com.hutu.common.boot.utils;
 
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
 import com.hutu.common.core.entity.CallerInfo;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
 import com.hutu.common.core.util.JwtUtils;
 import io.jsonwebtoken.Claims;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ public class TokenUtils extends JwtUtils {
      * @return subject
      */
     public static CallerInfo getCallerInfo(String token) {
-        if (StringUtils.isNotEmpty(token)) {
+        if (StrUtil.isNotEmpty(token)) {
             Claims claim = parseToken(token);
             if (claim != null) {
                 return JSON.parseObject(claim.getSubject(), CallerInfo.class);

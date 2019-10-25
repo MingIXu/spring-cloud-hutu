@@ -1,6 +1,6 @@
-package com.hutu.common.security.utils;
+package com.hutu.common.boot.utils;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -44,9 +44,9 @@ public class HttpContextUtils {
         //从header中获取
         String value = httpServletRequest.getHeader(param);
         //如果header中不存在
-        if (StringUtils.isBlank(value)) {
+        if (StrUtil.isBlank(value)) {
             value = httpServletRequest.getParameter(param);
-            if (StringUtils.isBlank(value)) {
+            if (StrUtil.isBlank(value)) {
                 logger.error("从Request获取参数:" + param + " 失败");
                 value = null;
             }

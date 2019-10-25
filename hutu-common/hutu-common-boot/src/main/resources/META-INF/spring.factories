@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.hutu.common.boot.config.ExceptionHandlersConfig,\
+com.hutu.common.boot.config.DefaultWebConfig,\
+com.hutu.common.boot.config.MybatisPlusConfig,\
+org.springframework.cloud.openfeign.DefaultHystrixFeignTargeterConfiguration

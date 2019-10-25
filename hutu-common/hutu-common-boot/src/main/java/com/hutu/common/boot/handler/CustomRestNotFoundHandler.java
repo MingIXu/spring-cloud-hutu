@@ -1,4 +1,4 @@
-package com.hutu.common.security.handler;
+package com.hutu.common.boot.handler;
 
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.enums.ErrorMsgEnum;

@@ -1,7 +1,7 @@
-package com.hutu.common.security.config;
+package com.hutu.common.boot.config;
 
-import com.hutu.common.security.handler.GlobalExceptionHandler;
-import com.hutu.common.security.handler.CustomRestNotFoundHandler;
+import com.hutu.common.boot.handler.CustomRestNotFoundHandler;
+import com.hutu.common.boot.handler.GlobalExceptionHandler;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.context.annotation.Configuration;

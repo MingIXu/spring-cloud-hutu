@@ -25,12 +25,12 @@
     <dependencies>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-upms-api</artifactId>
+            <artifactId>hutu-config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-config</artifactId>
+            <artifactId>hutu-upms-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -40,18 +40,11 @@
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-security</artifactId>
+            <artifactId>hutu-common-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <!--swagger api生成-->
-        <dependency>
-            <groupId>com.spring4all</groupId>
-            <artifactId>swagger-spring-boot-starter</artifactId>
-        </dependency>
+
+        <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

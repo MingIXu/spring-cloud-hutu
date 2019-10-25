@@ -13,8 +13,9 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>hutu-common-boot</module>
+		<module>hutu-common-cache</module>
 		<module>hutu-common-core</module>
-        <module>hutu-common-cache</module>
 		<module>hutu-common-db</module>
 		<module>hutu-common-log</module>
 		<module>hutu-common-security</module>

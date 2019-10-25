@@ -2,6 +2,7 @@ package com.hutu.common.log.aspect;
 
 import com.hutu.common.log.annotation.OperationLog;
 import com.hutu.common.log.event.SysLogEvent;
+import com.hutu.upms.api.dto.Log;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.ApplicationEventPublisher;
+
+import java.util.Date;
 
 /**
  * 系统日志，切面处理类
@@ -32,7 +35,10 @@ public class SysLogAspect {
 		Long startTime = System.currentTimeMillis();
 		Object obj = point.proceed();
 		Long endTime = System.currentTimeMillis();
-		publisher.publishEvent(new SysLogEvent("此处日志对象"));
+		Long spendTime = endTime - startTime;
+		Log log = new Log();
+		log.setStartTime(new Date()).setMethod(strMethodName).setSpendTime(spendTime);
+		publisher.publishEvent(log);
 		return obj;
 	}
 
