@@ -1,5 +1,6 @@
 package com.hutu.upms.admin.handler;
 
+import com.hutu.common.boot.utils.TokenUtils;
 import com.hutu.common.security.service.HutuPermissionService;
 import com.hutu.upms.login.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UpmsPermissionServiceImpl implements HutuPermissionService {
     private LoginService loginService;
 
     @Override
-    public List<String> getUserPermissions(Integer userId) {
-        return loginService.getUserPermissions(userId);
+    public List<String> getUserPermissions() {
+        return loginService.getUserPermissions(TokenUtils.getUserId());
     }
 }

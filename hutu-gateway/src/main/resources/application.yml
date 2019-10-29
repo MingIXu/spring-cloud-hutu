@@ -21,7 +21,7 @@ spring:
       - id: hutu-upms
         uri: http://localhost:8765
         predicates:
-        - Path=/upms1/**
+        - Path=/upms/**
         filters:
         - StripPrefix=1
         - name: RequestRateLimiter
@@ -34,4 +34,4 @@ spring:
       discovery:
         serverAddr: 127.0.0.1:8848
       dataId: gateway
-      group: test
+      group: DEFAULT_GROUP

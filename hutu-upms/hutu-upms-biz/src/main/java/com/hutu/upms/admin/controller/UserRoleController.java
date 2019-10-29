@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.validator.group.UpdateGroup;
+import com.hutu.common.security.annotation.PreAuth;
 import com.hutu.upms.api.entity.UserRole;
 import com.hutu.upms.admin.service.UserRoleService;
 import io.swagger.annotations.Api;

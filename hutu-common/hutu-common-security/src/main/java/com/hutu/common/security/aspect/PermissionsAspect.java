@@ -3,7 +3,7 @@ package com.hutu.common.security.aspect;
 import com.hutu.common.core.enums.ErrorMsgEnum;
 import com.hutu.common.core.exception.GlobalException;
 import com.hutu.common.security.annotation.Logical;
-import com.hutu.common.security.annotation.RequiresPermissions;
+import com.hutu.common.security.annotation.PreAuth;
 import com.hutu.common.security.service.HutuPermissionService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -34,7 +34,7 @@ public class PermissionsAspect {
 	@Autowired(required = false)
 	HutuPermissionService hutuPermissionService;
 
-	@Pointcut("@annotation(com.hutu.common.security.annotation.RequiresPermissions)")
+	@Pointcut("@annotation(com.hutu.common.security.annotation.PreAuth)")
 	public void permissionsPointCut() {}
 
 	@Before("permissionsPointCut()")
@@ -46,13 +46,13 @@ public class PermissionsAspect {
 			logger.info("没有实现获取用户权限接口");
 			throw new GlobalException("没有实现获取用户权限接口");
 		}
-		List<String> permissions = hutuPermissionService.getUserPermissions(1);
-		RequiresPermissions requiresPermissions = method.getAnnotation(RequiresPermissions.class);
+		List<String> permissions = hutuPermissionService.getUserPermissions();
+		PreAuth PreAuth = method.getAnnotation(PreAuth.class);
 		boolean havePermission = false;
 		if (permissions != null && permissions.size() > 0) {
-			String[] reqPermissions = requiresPermissions.value();
+			String[] reqPermissions = PreAuth.value();
 			if (reqPermissions.length > 0) {
-				if (requiresPermissions.logical().equals(Logical.AND)) {
+				if (PreAuth.logical().equals(Logical.AND)) {
 					havePermission = permissions.containsAll(Arrays.asList(reqPermissions));
 				} else {
 					for (String permission : reqPermissions) {
@@ -65,7 +65,7 @@ public class PermissionsAspect {
 			}
 		}
 		if (!havePermission){
-			logger.info("无权限访问,需要权限："+ Arrays.toString(requiresPermissions.value()));
+			logger.info("无权限访问,需要权限："+ Arrays.toString(PreAuth.value()));
 			throw new GlobalException(ErrorMsgEnum.UNAUTHORIZED);
 		}
 	}

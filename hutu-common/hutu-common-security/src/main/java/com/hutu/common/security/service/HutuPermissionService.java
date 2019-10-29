@@ -12,7 +12,7 @@ public interface HutuPermissionService {
     /**
      * 获取用户权限集合
      */
-   default List<String> getUserPermissions(Integer userId){
+   default List<String> getUserPermissions(){
        return null;
    }
 }

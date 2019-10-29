@@ -1,21 +1,44 @@
-{
-  "id": "upms",
-  "uri": "http://localhost:8765",
-  "order": 0,
-  "predicates": [
-    {
-      "name": "Path",
-      "args": {
-        "pattern": "/b/**"
+[
+  {
+    "id": "upms",
+    "uri": "lb://hutu-upms",
+    "order": 0,
+    "predicates": [
+      {
+        "name": "Path",
+        "args": {
+          "pattern": "/a/**"
+        }
       }
-    }
-  ],
-  "filters": [
-    {
-      "name": "StripPrefix",
-      "args": {
-        "_genkey_0": "1"
+    ],
+    "filters": [
+      {
+        "name": "StripPrefix",
+        "args": {
+          "_genkey_0": "1"
+        }
       }
-    }
-  ]
-}
+    ]
+  },
+  {
+    "id": "auth",
+    "uri": "lb://hutu-auth",
+    "order": 1,
+    "predicates": [
+      {
+        "name": "Path",
+        "args": {
+          "pattern": "/b/**"
+        }
+      }
+    ],
+    "filters": [
+      {
+        "name": "StripPrefix",
+        "args": {
+          "_genkey_0": "1"
+        }
+      }
+    ]
+  }
+]

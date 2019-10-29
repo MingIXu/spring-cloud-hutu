@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.validator.group.UpdateGroup;
 import com.hutu.common.security.annotation.Logical;
-import com.hutu.common.security.annotation.RequiresPermissions;
+import com.hutu.common.security.annotation.PreAuth;
 import com.hutu.upms.api.entity.User;
 import com.hutu.upms.admin.service.OrganizationService;
 import com.hutu.upms.admin.service.UserService;
@@ -37,7 +37,7 @@ public class UserController{
     private UserService userService;
 
     @ApiOperation("获取page")
-    @RequiresPermissions(value = {"user:page","user:add","user:aaa"},logical = Logical.OR)
+    @PreAuth(value = {"user:page","user:add","user:aaa"},logical = Logical.OR)
     @GetMapping("/page/{current}/{pageSize}")
     public R getPage(@ApiParam("当前页")@PathVariable("current")int current, @ApiParam("分页大小")@PathVariable("pageSize")int pageSize,
                      @ApiParam("所在部门") @RequestParam(required = false) String departmentId, @ApiParam("关键字") @RequestParam(required = false) String keyWord) {
@@ -66,6 +66,7 @@ public class UserController{
         return userService.updateById(data)?R.ok():R.error("更新错误");
     }
     @ApiOperation("通过ID获取一条数据")
+    @PreAuth("addRole")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
         return R.ok().put("info",userService.getById(id));
