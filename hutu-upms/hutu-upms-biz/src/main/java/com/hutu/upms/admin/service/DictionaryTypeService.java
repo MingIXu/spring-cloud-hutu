@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hutu.upms.admin.entity.DictionaryType;
+import com.hutu.upms.api.entity.DictionaryType;
 
 /**
  * <p>

@@ -1,4 +1,4 @@
-package com.hutu.upms.admin.entity;
+package com.hutu.upms.api.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 用户组织关联表
+ * 用户权限关联表
  * </p>
  *
  * @author generator
@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_upms_user_organization")
-public class UserOrganization implements Serializable {
+@TableName("t_upms_user_permission")
+public class UserPermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,9 +32,13 @@ public class UserOrganization implements Serializable {
      */
 	private Integer userId;
     /**
-     * 组织编号
+     * 权限编号
      */
-	private Integer organizationId;
+	private Integer permissionId;
+    /**
+     * 权限类型(-1:减权限,1:增权限)
+     */
+	private Boolean type;
     /**
      * 创建人
      */
@@ -45,6 +49,5 @@ public class UserOrganization implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
 
 }

@@ -1,4 +1,4 @@
-package com.hutu.upms.admin.entity;
+package com.hutu.upms.api.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 权限
+ * 系统
  * </p>
  *
  * @author generator
@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_upms_permission")
-public class Permission implements Serializable {
+@TableName("t_upms_system")
+public class System implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,43 +28,38 @@ public class Permission implements Serializable {
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
     /**
-     * 所属系统
-     */
-	private Integer systemId;
-    /**
-     * 所属上级
-     */
-	private Integer pid;
-    /**
-     * 权限标识
-     */
-	private String code;
-    /**
-     * 权限名称
-     */
-    private String name;
-    /**
-     * 类型(1:目录,2:菜单,3:按钮)
-     */
-	private Integer type;
-    private String typeShow;
-    /**
-     * 权限值
-     */
-	private String permissionValue;
-    /**
-     * 路径
-     */
-	private String uri;
-    /**
      * 图标
      */
 	private String icon;
     /**
-     * 状态(0:禁止,1:正常)
+     * 背景
+     */
+	private String banner;
+    /**
+     * 主题
+     */
+	private String theme;
+    /**
+     * 根目录
+     */
+	private String basepath;
+    /**
+     * 状态(黑名单:0,正常:1)
      */
 	private Integer status;
     private String statusShow;
+    /**
+     * 系统名称
+     */
+	private String name;
+    /**
+     * 系统标题
+     */
+	private String title;
+    /**
+     * 系统描述
+     */
+	private String description;
     /**
      * 排序
      */

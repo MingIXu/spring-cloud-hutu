@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.upms.admin.entity.Attachment;
+import com.hutu.upms.api.entity.Attachment;
 import com.hutu.upms.admin.mapper.AttachmentMapper;
 import com.hutu.upms.admin.service.AttachmentService;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hutu.upms.admin.entity.UserPermission;
+import com.hutu.upms.api.entity.UserPermission;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

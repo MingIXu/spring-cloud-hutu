@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hutu.upms.admin.mapper.SystemMapper;
 import com.hutu.upms.admin.service.SystemService;
 import org.springframework.stereotype.Service;
+import com.hutu.upms.api.entity.System;
 
 /**
  * <p>

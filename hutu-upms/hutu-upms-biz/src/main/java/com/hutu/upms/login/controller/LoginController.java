@@ -6,7 +6,7 @@ import com.hutu.common.core.entity.R;
 import com.hutu.common.boot.utils.TokenUtils;
 import com.hutu.upms.login.dto.UserInfo;
 import com.hutu.upms.login.service.LoginService;
-import com.hutu.upms.admin.entity.Organization;
+import com.hutu.upms.api.entity.Organization;
 import com.hutu.upms.admin.service.OrganizationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

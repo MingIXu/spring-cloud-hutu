@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hutu.upms.admin.entity.Role;
+import com.hutu.upms.api.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

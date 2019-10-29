@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.upms.admin.entity.Permission;
+import com.hutu.upms.api.entity.Permission;
 import com.hutu.upms.admin.mapper.PermissionMapper;
 import com.hutu.upms.admin.service.PermissionService;
 import org.springframework.stereotype.Service;

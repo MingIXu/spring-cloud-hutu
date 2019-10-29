@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.upms.admin.entity.Log;
+import com.hutu.upms.api.entity.Log;
 import com.hutu.upms.admin.mapper.LogMapper;
 import com.hutu.upms.admin.service.LogService;
 import org.springframework.stereotype.Service;

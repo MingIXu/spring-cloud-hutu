@@ -8,6 +8,9 @@ package com.hutu.common.core.enums;
  */
 public enum InfoMsgEnum {
 
+    /**
+     * 通用成功枚举
+     */
     OK(200, "成功");
     public int code;
     public String desc;

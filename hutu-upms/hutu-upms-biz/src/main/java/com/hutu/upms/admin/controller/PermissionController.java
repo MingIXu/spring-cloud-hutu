@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.common.core.entity.R;
 import com.hutu.common.core.util.TreeUtil;
 import com.hutu.upms.admin.dto.PermissionVo;
-import com.hutu.upms.admin.entity.Permission;
+import com.hutu.upms.api.entity.Permission;
 import com.hutu.upms.admin.service.PermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

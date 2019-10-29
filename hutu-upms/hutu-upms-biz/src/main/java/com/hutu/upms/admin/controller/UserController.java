@@ -6,7 +6,7 @@ import com.hutu.common.core.entity.R;
 import com.hutu.common.core.validator.group.UpdateGroup;
 import com.hutu.common.security.annotation.Logical;
 import com.hutu.common.security.annotation.RequiresPermissions;
-import com.hutu.upms.admin.entity.User;
+import com.hutu.upms.api.entity.User;
 import com.hutu.upms.admin.service.OrganizationService;
 import com.hutu.upms.admin.service.UserService;
 import io.swagger.annotations.Api;

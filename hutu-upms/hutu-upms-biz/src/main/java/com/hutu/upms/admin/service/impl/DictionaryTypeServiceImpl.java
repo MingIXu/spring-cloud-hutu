@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.upms.admin.entity.DictionaryType;
+import com.hutu.upms.api.entity.DictionaryType;
 import com.hutu.upms.admin.mapper.DictionaryTypeMapper;
 import com.hutu.upms.admin.service.DictionaryTypeService;
 import org.springframework.stereotype.Service;

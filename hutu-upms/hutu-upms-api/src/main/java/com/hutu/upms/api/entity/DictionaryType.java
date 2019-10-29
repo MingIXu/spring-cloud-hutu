@@ -1,4 +1,4 @@
-package com.hutu.upms.admin.entity;
+package com.hutu.upms.api.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 字典表
+ * 字典类别表
  * </p>
  *
  * @author generator
@@ -17,34 +17,17 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_common_dictionary")
-public class Dictionary implements Serializable {
+@TableName("t_common_dictionary_type")
+public class DictionaryType implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 	@TableId(value="id", type= IdType.AUTO)
 	private Integer id;
-    /**
-     * 字典类型值表达式
-     */
-	private String typeKey;
-    /**
-     * 字典值表达式
-     */
-    @TableField("`key`")
+	@TableField("`key`")
 	private String key;
-    /**
-     * 字典值英文名称
-     */
-	private String valueEN;
-    /**
-     * 字典值中文名称
-     */
+	private String valueEn;
 	private String valueCn;
-    /**
-     * 扩展字段
-     */
-	private String extDesc;
     /**
      * 排序
      */

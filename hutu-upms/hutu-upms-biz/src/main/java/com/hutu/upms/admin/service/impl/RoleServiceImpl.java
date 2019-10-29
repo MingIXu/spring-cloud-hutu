@@ -1,7 +1,7 @@
 package com.hutu.upms.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hutu.upms.admin.entity.Role;
+import com.hutu.upms.api.entity.Role;
 import com.hutu.upms.admin.mapper.RoleMapper;
 import com.hutu.upms.admin.service.RoleService;
 import org.springframework.stereotype.Service;
