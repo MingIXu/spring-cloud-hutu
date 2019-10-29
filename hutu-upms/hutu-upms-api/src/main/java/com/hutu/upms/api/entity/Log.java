@@ -44,7 +44,7 @@ public class Log implements Serializable {
     /**
      * 消耗时间
      */
-	private Integer spendTime;
+	private Long spendTime;
     /**
      * 根路径
      */

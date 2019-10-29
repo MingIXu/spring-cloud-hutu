@@ -1,6 +1,6 @@
 package com.hutu.common.log.event;
 
-import com.hutu.upms.api.dto.Log;
+import com.hutu.upms.api.entity.Log;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

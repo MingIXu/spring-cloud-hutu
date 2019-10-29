@@ -1,6 +1,6 @@
 package com.hutu.common.log.event;
 
-import com.hutu.upms.api.dto.Log;
+import com.hutu.upms.api.entity.Log;
 import com.hutu.upms.api.feign.RemoteLogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

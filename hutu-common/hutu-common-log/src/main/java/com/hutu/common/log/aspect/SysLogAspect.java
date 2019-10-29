@@ -1,8 +1,7 @@
 package com.hutu.common.log.aspect;
 
 import com.hutu.common.log.annotation.OperationLog;
-import com.hutu.common.log.event.SysLogEvent;
-import com.hutu.upms.api.dto.Log;
+import com.hutu.upms.api.entity.Log;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
