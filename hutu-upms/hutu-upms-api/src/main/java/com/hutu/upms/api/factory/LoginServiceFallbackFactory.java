@@ -1,7 +1,7 @@
-package com.hutu.upms.api.feign.factory;
+package com.hutu.upms.api.factory;
 
-import com.hutu.upms.api.feign.RemoteLoginService;
-import com.hutu.upms.api.feign.fallback.LoginServiceFallbackImpl;
+import com.hutu.upms.api.RemoteLoginService;
+import com.hutu.upms.api.fallback.LoginServiceFallbackImpl;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 

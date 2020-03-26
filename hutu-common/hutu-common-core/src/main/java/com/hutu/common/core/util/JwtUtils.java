@@ -112,10 +112,10 @@ public class JwtUtils {
         }
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 //        String token = createToken("123");
 //        System.out.println(token);
         String token = refreshToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJcIjEyM1wiIiwiaWF0IjoxNTY0MDQ1NzIzLCJleHAiOjE1NjQwNDkzMjN9.aYe2pr7TY-rrGih6o9zXbUoi4znoHzQh5ZaxqbsqLD0");
         System.out.println(parseToken(token).toString());
-    }
+    }*/
 }

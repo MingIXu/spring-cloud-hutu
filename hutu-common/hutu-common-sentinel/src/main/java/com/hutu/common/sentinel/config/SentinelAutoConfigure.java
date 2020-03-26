@@ -21,9 +21,9 @@ public class SentinelAutoConfigure {
     }
 
     /**
-     * 限流、熔断统一处理类
+     * 限流、熔断统一处理类,此处只能处理url为资源名（例如：@GetMapping（"/test"）的情况
      */
-    public class CustomUrlBlockHandler implements UrlBlockHandler {
+    public static class CustomUrlBlockHandler implements UrlBlockHandler {
         @Override
         public void blocked(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws IOException {
             httpServletResponse.getWriter().print(JSON.toJSONString(R.error("flow-limiting")));

@@ -49,7 +49,7 @@ public class SignHelper {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // 生成随机公钥，私钥
 //        Sign sign1 = SecureUtil.sign(SignAlgorithm.MD5withRSA);
 //        String publicKeyBase64 = sign1.getPublicKeyBase64();
@@ -63,5 +63,5 @@ public class SignHelper {
         String sign = SignHelper.sign(before);
         boolean b = SignHelper.verify(before, sign);
         System.out.println(b);
-    }
+    }*/
 }

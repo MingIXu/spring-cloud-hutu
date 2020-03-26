@@ -52,6 +52,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public R handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return R.error();
+        return R.error(e.getMessage());
     }
 }

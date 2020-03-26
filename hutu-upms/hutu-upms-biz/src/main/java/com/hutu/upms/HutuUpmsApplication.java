@@ -1,14 +1,17 @@
 package com.hutu.upms;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alicp.jetcache.anno.CacheInvalidate;
 import com.alicp.jetcache.anno.CacheRefresh;
 import com.alicp.jetcache.anno.CacheUpdate;
 import com.alicp.jetcache.anno.Cached;
 import com.hutu.common.cache.annotation.EnableHutuCache;
+import com.hutu.common.core.entity.R;
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,6 +45,18 @@ public class HutuUpmsApplication {
         public boolean delHelloWord(String name){
             System.out.println("del "+name);
             return true;
+        }
+        /**
+         * 测试限流
+         * @return
+         */
+        @SentinelResource(value = "test",fallback = "fallbackTest")
+        @GetMapping("/test")
+        public R test(){
+            return R.ok().put("info","123456");
+        }
+        public R fallbackTest(){
+            return R.error("limiting ");
         }
     }
 }

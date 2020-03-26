@@ -1,8 +1,8 @@
-package com.hutu.upms.api.feign;
+package com.hutu.upms.api;
 
 import com.hutu.common.core.constant.ServiceNameConstant;
 import com.hutu.common.core.entity.R;
-import com.hutu.upms.api.feign.factory.LoginServiceFallbackFactory;
+import com.hutu.upms.api.factory.LoginServiceFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

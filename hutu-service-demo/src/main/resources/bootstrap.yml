@@ -1,0 +1,23 @@
+server:
+  port: 8766
+
+hutu:
+  nacos:
+    server-addr: 127.0.0.1:8848
+
+spring:
+  application:
+    name: hutu-service-demo
+  cloud:
+    nacos:
+      config:
+        server-addr: ${hutu.nacos.server-addr}
+      discovery:
+        server-addr: ${hutu.nacos.server-addr}
+
+# 日志
+logging:
+  #  生成日志文件名称
+  file: ${spring.application.name}
+  #  日志文件输出目录，没有会自动生成目录
+  path: ./logs

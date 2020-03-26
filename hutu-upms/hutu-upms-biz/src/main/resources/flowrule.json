@@ -1,6 +1,6 @@
 [
   {
-    "resource": "/log/read/*",
+    "resource": "test123",
     "controlBehavior": 0,
     "count": 1,
     "grade": 1,
@@ -8,7 +8,7 @@
     "strategy": 0
   },
   {
-    "resource": "/test",
+    "resource": "test",
     "controlBehavior": 0,
     "count": 1,
     "grade": 1,

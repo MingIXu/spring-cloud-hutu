@@ -21,6 +21,7 @@
         <module>hutu-common</module>
         <module>hutu-config</module>
         <module>hutu-gateway</module>
+        <module>hutu-service-demo</module>
         <module>hutu-upms</module>
         <module>hutu-auth</module>
     </modules>

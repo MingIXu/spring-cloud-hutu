@@ -1,13 +1,12 @@
 package com.hutu.common.log.event;
 
 import com.hutu.upms.api.entity.Log;
-import com.hutu.upms.api.feign.RemoteLogService;
+import com.hutu.demo.RemoteLogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
-import sun.security.util.SecurityConstants;
 
 
 /**
