@@ -28,6 +28,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
         <!--json处理-->
         <dependency>
             <groupId>com.alibaba</groupId>

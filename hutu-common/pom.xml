@@ -19,5 +19,6 @@
 		<module>hutu-common-db</module>
 		<module>hutu-common-log</module>
 		<module>hutu-common-security</module>
+		<module>hutu-common-sentinel</module>
 	</modules>
 </project>

@@ -43,7 +43,11 @@
             <artifactId>hutu-common-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-common-sentinel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

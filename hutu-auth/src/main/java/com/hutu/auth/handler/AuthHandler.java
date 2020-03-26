@@ -23,4 +23,9 @@ public class AuthHandler{
     public R login(String username, String password) {
         return remoteLoginService.login(username, password);
     }
+
+    @RequestMapping("log")
+    public R redLog(String id) {
+        return remoteLogService.read(id);
+    }
 }

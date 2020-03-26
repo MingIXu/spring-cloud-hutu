@@ -5,7 +5,14 @@ spring:
     password: ${hutu.datasource.password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-
+  cloud:
+    sentinel:
+      datasource:
+        ds1:
+          file:
+            file: 'classpath: flowrule.json'
+            data-type: json
+            rule-type: flow
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   global-config:

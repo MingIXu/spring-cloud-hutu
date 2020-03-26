@@ -17,6 +17,7 @@ spring:
 #        refreshable-dataids: common.yml
       discovery:
         server-addr: ${hutu.nacos.server-addr}
+
 # 日志
 logging:
   #  生成日志文件名称

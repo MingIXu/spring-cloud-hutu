@@ -10,28 +10,35 @@ spring:
       default-filters:
 #      - PrefixPath=/httpbin
       - AddResponseHeader=X-Response-Default-Foo, Default-Bar
-      routes:
-      - id: hutu-auth
-        uri: http://localhost:8762
-        predicates:
-        - Path=/auth/**
-        filters:
-        - StripPrefix=1
-
-      - id: hutu-upms
-        uri: http://localhost:8765
-        predicates:
-        - Path=/upms/**
-        filters:
-        - StripPrefix=1
-        - name: RequestRateLimiter
-          args:
-            keyResolver: '#{@ipAddressKeyResolver}'
-            in-memory-rate-limiter:
-              replenish-rate: 1
-              burst-capacity: 2
+#      routes:
+#      - id: hutu-auth
+#        uri: http://localhost:8762
+#        predicates:
+#        - Path=/auth/**
+#        filters:
+#        - StripPrefix=1
+#
+#      - id: hutu-upms
+#        uri: http://localhost:8765
+#        predicates:
+#        - Path=/upms/**
+#        filters:
+#        - StripPrefix=1
+#        - name: RequestRateLimiter
+#          args:
+#            keyResolver: '#{@ipAddressKeyResolver}'
+#            in-memory-rate-limiter:
+#              replenish-rate: 1
+#              burst-capacity: 2
     nacos:
       discovery:
         serverAddr: 127.0.0.1:8848
       dataId: gateway
       group: DEFAULT_GROUP
+
+# 阿里云AHAS在线高可用服务
+#ahas:
+#  namespace: default
+#  license: a9dc8a65ae5f4fbfa99bc3fe9c13cadb
+#project:
+#      name: AppName
