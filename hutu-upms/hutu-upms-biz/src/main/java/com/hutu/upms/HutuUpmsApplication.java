@@ -1,6 +1,7 @@
 package com.hutu.upms;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alicp.jetcache.anno.CacheInvalidate;
 import com.alicp.jetcache.anno.CacheRefresh;
 import com.alicp.jetcache.anno.CacheUpdate;
@@ -26,7 +27,8 @@ public class HutuUpmsApplication {
     }
 
     @RestController
-    class Test {
+    public class Test {
+        /*jetCache缓存测试*/
         @RequestMapping("get")
         @CacheRefresh(refresh = 50,stopRefreshAfterLastAccess = 600)
         @Cached(name = "test-",key = "#name",expire = 60)
@@ -50,13 +52,27 @@ public class HutuUpmsApplication {
          * 测试限流
          * @return
          */
-        @SentinelResource(value = "test",fallback = "fallbackTest")
         @GetMapping("/test")
         public R test(){
             return R.ok().put("info","123456");
         }
-        public R fallbackTest(){
-            return R.error("limiting ");
+
+        @GetMapping("/hello")
+        @SentinelResource(value = "hello", fallback = "helloFallback")
+        public R hello(long s) {
+            return R.ok(""+s);
+        }
+
+        // Fallback 函数，函数签名与原函数一致或加一个 Throwable 类型的参数.
+        public R helloFallback(long s) {
+            return R.error(""+s);
+        }
+
+        // Block 异常处理函数，参数最后多一个 BlockException，其余与原函数一致.
+        public String exceptionHandler(long s, BlockException ex) {
+            // Do some log here.
+            ex.printStackTrace();
+            return "Oops, error occurred at " + s;
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.hutu.common.boot.handler;
+package com.hutu.upms.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;

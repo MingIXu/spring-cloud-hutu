@@ -24,7 +24,7 @@
         <jwt.version>0.10.5</jwt.version>
         <caffeine.version>2.6.2</caffeine.version>
         <curator.version>2.10.0</curator.version>
-        <jetcache.version>2.6.0.M3</jetcache.version>
+        <jetcache.version>2.6.0.RC</jetcache.version>
         <slf4j.version>1.7.25</slf4j.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
     </properties>

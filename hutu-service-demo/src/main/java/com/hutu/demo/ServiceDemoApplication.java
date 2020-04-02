@@ -1,7 +1,8 @@
 package com.hutu.demo;
+
 import com.hutu.common.core.entity.R;
 import com.hutu.upms.api.RemoteLogService;
-import com.spring4all.swagger.EnableSwagger2Doc;
+import com.hutu.upms.api.RemoteLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@EnableSwagger2Doc
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.hutu.upms.api")
 @SpringBootApplication
@@ -22,7 +22,8 @@ public class ServiceDemoApplication {
 
     @Autowired
     RemoteLogService remoteLogService;
-
+    @Autowired
+    RemoteLoginService remoteLoginService;
     @RestController
     class Test {
         @RequestMapping("get")
@@ -34,6 +35,10 @@ public class ServiceDemoApplication {
         @RequestMapping("log")
         public R redLog(String id) {
             return remoteLogService.read(id);
+        }
+        @RequestMapping("login")
+        public R login(String username, String password) {
+            return remoteLoginService.login(username, password);
         }
     }
 }

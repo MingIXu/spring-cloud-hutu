@@ -1,6 +1,5 @@
-package com.hutu.common.boot.config;
+package com.hutu.upms.config;
 
-import com.hutu.common.boot.handler.InitMetaObjectHandler;
 import com.hutu.common.db.config.DefaultMybatisPlusConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

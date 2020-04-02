@@ -3,7 +3,6 @@ package com.hutu.common.cache.annotation;
 import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
 import com.alicp.jetcache.anno.config.EnableMethodCache;
 import com.hutu.common.cache.config.JetCacheAutoConfiguration;
-import com.hutu.common.cache.rest.CacheManagerRest;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -18,7 +17,7 @@ import java.lang.annotation.*;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({JetCacheAutoConfiguration.class,CacheManagerRest.class})
+@Import({JetCacheAutoConfiguration.class})
 @Documented
 @EnableCreateCacheAnnotation
 @EnableMethodCache(basePackages = {})

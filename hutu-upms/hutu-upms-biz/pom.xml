@@ -40,6 +40,11 @@
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
+            <artifactId>hutu-common-db</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
             <artifactId>hutu-common-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -47,6 +52,16 @@
             <groupId>com.hutu</groupId>
             <artifactId>hutu-common-sentinel</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-common-sentinel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--swagger api生成-->
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
         </dependency>
         <!--测试-->
         <dependency>
