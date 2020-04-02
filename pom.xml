@@ -31,9 +31,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- Dependency Versions -->
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
-        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <!-- Maven Plugin Versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>

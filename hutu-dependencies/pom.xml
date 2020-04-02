@@ -13,6 +13,7 @@
         <bucket4j.version>4.3.0</bucket4j.version>
         <fastjson.version>1.2.47</fastjson.version>
         <spring4all.swagger.version>1.9.0.RELEASE</spring4all.swagger.version>
+        <knife4j.version>2.0.2</knife4j.version>
         <mybatis-plus-boot-starter>3.2.0</mybatis-plus-boot-starter>
         <mysql.version>8.0.11</mysql.version>
         <druid-spring-boot-starter>1.1.20</druid-spring-boot-starter>
@@ -71,6 +72,16 @@
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${spring4all.swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
             <!--模板引擎-->
             <dependency>

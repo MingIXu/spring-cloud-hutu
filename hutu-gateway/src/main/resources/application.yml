@@ -24,12 +24,7 @@ spring:
 #        - Path=/upms/**
 #        filters:
 #        - StripPrefix=1
-#        - name: RequestRateLimiter
-#          args:
-#            keyResolver: '#{@ipAddressKeyResolver}'
-#            in-memory-rate-limiter:
-#              replenish-rate: 1
-#              burst-capacity: 2
+
     nacos:
       discovery:
         serverAddr: 127.0.0.1:8848
@@ -42,3 +37,12 @@ spring:
 #  license: a9dc8a65ae5f4fbfa99bc3fe9c13cadb
 #project:
 #      name: AppName
+
+# 聚合文档配置
+hutu:
+  document:
+    resources:
+      - name: 用户系统
+        location: /a
+      - name: 权限系统
+        location: /b

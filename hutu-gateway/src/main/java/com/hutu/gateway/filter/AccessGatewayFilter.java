@@ -1,87 +1,74 @@
 package com.hutu.gateway.filter;
 
-import com.alibaba.fastjson.JSON;
-import com.hutu.gateway.constant.GateConstant;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hutu.gateway.props.AuthProperties;
+import com.hutu.gateway.provider.AuthProvider;
+import com.hutu.gateway.provider.ResponseProvider;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 
 /**
  * @author hutu
  * @create 2018/3/12.
  */
-@Configuration
+@Slf4j
+@Order(-10)
+@Component
 public class AccessGatewayFilter implements GlobalFilter {
-    private final static Logger log = LoggerFactory.getLogger(AccessGatewayFilter.class);
+
+    private AuthProperties authProperties;
+    private ObjectMapper objectMapper;
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        String requestUri = request.getPath().pathWithinApplication().value();
-        requestUri = requestUri.substring(1);
-        ServerHttpRequest.Builder mutate = request.mutate();
-
-        log.info("requestUri: {}, method: {},params {}", requestUri, request.getMethodValue(), request.getQueryParams().toSingleValueMap());
-        // 不进行拦截的地址
-        if (isWhitePath(requestUri)) {
-            ServerHttpRequest build = mutate.build();
-            return chain.filter(exchange.mutate().request(build).build());
+        String path = request.getURI().getPath();
+        log.info("requestUri: {}, method: {},params {}", path, request.getMethodValue(), request.getQueryParams().toSingleValueMap());
+        if (isSkip(path)) {
+            return chain.filter(exchange);
         }
-        String token = exchange.getRequest().getHeaders().getFirst(GateConstant.TOKEN);
-        HashMap<String, Object> map;
-        // token不存在
-//        if (StringUtils.isEmpty(token)) {
-//            map = new HashMap<>();
-//            map.put("code",500);
-//            map.put("msg","not found token");
-//            log.info(JSON.toJSONString(map));
-//            return getVoidMono(exchange, map);
-//        }
-
-        ServerHttpRequest build = mutate.build();
-        return chain.filter(exchange.mutate().request(build).build());
+        ServerHttpResponse resp = exchange.getResponse();
+        String headerToken = exchange.getRequest().getHeaders().getFirst(AuthProvider.AUTH_KEY);
+        String paramToken = exchange.getRequest().getQueryParams().getFirst(AuthProvider.AUTH_KEY);
+        if (StringUtils.isAllBlank(headerToken, paramToken)) {
+            return unAuth(resp, "缺失令牌,鉴权失败");
+        }
+        String auth = StringUtils.isBlank(headerToken) ? paramToken : headerToken;
+        // TODO 验证token是否为我们自己的
+        String token = "";
+        return chain.filter(exchange);
     }
 
-
-
-    /**
-     * URI是否不过滤
-     *
-     * @param requestUri 请求方法uri
-     * @return boolean
-     */
-    private boolean isWhitePath(String requestUri) {
-        if (GateConstant.WHITE_PATHS.contains(requestUri)) {
-            return true;
-        }
-        for (String s : GateConstant.START_WITH.split(GateConstant.DOU_HAO)) {
-            if (requestUri.startsWith(s)) {
-                return true;
-            }
-        }
-        return false;
+    private boolean isSkip(String path) {
+        return AuthProvider.getDefaultSkipUrl().stream().map(url -> url.replace(AuthProvider.TARGET, AuthProvider.REPLACEMENT)).anyMatch(path::contains);
+//                || authProperties.getSkipUrl().stream().map(url -> url.replace(AuthProvider.TARGET, AuthProvider.REPLACEMENT)).anyMatch(path::contains);
     }
 
-    /**
-     * 网关抛异常
-     *
-     * @param body
-     */
-    private Mono<Void> getVoidMono(ServerWebExchange serverWebExchange, Object body) {
-        serverWebExchange.getResponse().setStatusCode(HttpStatus.OK);
-        byte[] bytes = JSON.toJSONString(body).getBytes(StandardCharsets.UTF_8);
-        DataBuffer buffer = serverWebExchange.getResponse().bufferFactory().wrap(bytes);
-        return serverWebExchange.getResponse().writeWith(Flux.just(buffer));
+    private Mono<Void> unAuth(ServerHttpResponse resp, String msg) {
+        resp.setStatusCode(HttpStatus.UNAUTHORIZED);
+        resp.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
+        String result = "";
+        try {
+            result = objectMapper.writeValueAsString(ResponseProvider.unAuth(msg));
+        } catch (JsonProcessingException e) {
+            log.error(e.getMessage(), e);
+        }
+        DataBuffer buffer = resp.bufferFactory().wrap(result.getBytes(StandardCharsets.UTF_8));
+        return resp.writeWith(Flux.just(buffer));
     }
 }

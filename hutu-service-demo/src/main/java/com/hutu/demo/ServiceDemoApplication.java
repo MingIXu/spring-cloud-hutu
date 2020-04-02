@@ -1,8 +1,8 @@
 package com.hutu.demo;
 
 import com.hutu.common.core.entity.R;
-import com.hutu.upms.api.RemoteLogService;
-import com.hutu.upms.api.RemoteLoginService;
+import com.hutu.api.RemoteLogService;
+import com.hutu.api.RemoteLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.hutu.upms.api")
+@EnableFeignClients(basePackages = "com.hutu.api")
 @SpringBootApplication
 public class ServiceDemoApplication {
 

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hutu.common.security.config.PermissionHandlerConfig
+com.hutu.security.config.PermissionHandlerConfig
