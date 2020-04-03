@@ -1,6 +1,6 @@
 package com.hutu.auth.handler;
 
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
 import com.hutu.api.RemoteLogService;
 import com.hutu.api.RemoteLoginService;
 import org.springframework.beans.factory.annotation.Autowired;

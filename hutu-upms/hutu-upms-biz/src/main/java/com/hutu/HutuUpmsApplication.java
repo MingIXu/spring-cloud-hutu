@@ -7,7 +7,8 @@ import com.alicp.jetcache.anno.CacheRefresh;
 import com.alicp.jetcache.anno.CacheUpdate;
 import com.alicp.jetcache.anno.Cached;
 import com.hutu.cache.annotation.EnableHutuCache;
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
+import com.hutu.security.annotation.SkipAuth;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -28,6 +29,7 @@ public class HutuUpmsApplication {
     public class Test {
         /*jetCache缓存测试*/
         @RequestMapping("get")
+        @SkipAuth
         @CacheRefresh(refresh = 50,stopRefreshAfterLastAccess = 600)
         @Cached(name = "test-",key = "#name",expire = 60)
         public String getHelloWord(String name){
@@ -52,7 +54,7 @@ public class HutuUpmsApplication {
          */
         @GetMapping("/test")
         public R test(){
-            return R.ok().put("info","123456");
+            return R.ok("123456");
         }
 
         @GetMapping("/hello")

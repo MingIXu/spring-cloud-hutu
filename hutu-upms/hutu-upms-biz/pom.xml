@@ -43,6 +43,11 @@
             <artifactId>hutu-common-db</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-common-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>com.hutu</groupId>-->
 <!--            <artifactId>hutu-common-log</artifactId>-->
@@ -51,11 +56,6 @@
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-common-boot</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-sentinel</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

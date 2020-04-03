@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.service.OrganizationService;
 import com.hutu.admin.service.UserService;
 import com.hutu.api.entity.User;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.validator.group.UpdateGroup;
+import com.hutu.common.entity.R;
 import com.hutu.security.annotation.Logical;
 import com.hutu.security.annotation.PreAuth;
 import io.swagger.annotations.Api;
@@ -37,7 +36,6 @@ public class UserController{
     private UserService userService;
 
     @ApiOperation("获取page")
-    @PreAuth(value = {"user:page","user:add","user:aaa"},logical = Logical.OR)
     @GetMapping("/page/{current}/{pageSize}")
     public R getPage(@ApiParam("当前页")@PathVariable("current")int current, @ApiParam("分页大小")@PathVariable("pageSize")int pageSize,
                      @ApiParam("所在部门") @RequestParam(required = false) String departmentId, @ApiParam("关键字") @RequestParam(required = false) String keyWord) {
@@ -48,7 +46,7 @@ public class UserController{
         }
         queryWrapper.eq(StringUtils.isNotEmpty(departmentId),"departmentId",departmentId);
         userService.page(page,queryWrapper);
-        return R.ok().put("list",page.getRecords()).put("total",page.getTotal());
+        return R.ok(page);
     }
     @ApiOperation("新增")
     @PostMapping("/create")
@@ -62,14 +60,14 @@ public class UserController{
     }
     @ApiOperation("更新")
     @PostMapping("/update")
-    public R update(@RequestBody @ApiParam("数据对象")@Validated(UpdateGroup.class)User data){
+    public R update(@RequestBody @ApiParam("数据对象")User data){
         return userService.updateById(data)?R.ok():R.error("更新错误");
     }
     @ApiOperation("通过ID获取一条数据")
     @PreAuth("addRole")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
-        return R.ok().put("info",userService.getById(id));
+        return R.ok(userService.getById(id));
     }
 
     @Autowired
@@ -79,6 +77,6 @@ public class UserController{
     @GetMapping("/getOrgTree")
     public R getPermissionTree(){
         List treeData = organizationService.getPermissionTree();
-        return R.ok().put("treeData",treeData);
+        return R.ok(treeData);
     }
 }

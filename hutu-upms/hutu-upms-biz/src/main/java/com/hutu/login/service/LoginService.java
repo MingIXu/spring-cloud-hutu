@@ -2,7 +2,7 @@ package com.hutu.login.service;
 
 
 
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
 
 import java.util.List;
 

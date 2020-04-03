@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hutu.admin.mapper.OrganizationMapper;
 import com.hutu.admin.service.OrganizationService;
 import com.hutu.api.entity.Organization;
-import com.hutu.common.core.entity.TreeNode;
-import com.hutu.common.core.util.TreeUtil;
+import com.hutu.common.utils.TreeNode;
+import com.hutu.common.utils.TreeUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

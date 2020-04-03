@@ -3,8 +3,8 @@ package org.springframework.cloud.openfeign;
 
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.util.SpringContextHolder;
+import com.hutu.common.entity.R;
+import com.hutu.common.utils.SpringUtil;
 import feign.FeignException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -44,7 +44,7 @@ public class DefaultFeignFallback<T> implements MethodInterceptor {
 		String str = StrUtil.str(content, StandardCharsets.UTF_8);
 
 		log.error("DefaultFeignFallback:[{}.{}] serviceId:[{}] message:[{}]", targetType.getName(), method.getName(), targetName, str);
-		ObjectMapper objectMapper = SpringContextHolder.getBean(ObjectMapper.class);
+		ObjectMapper objectMapper = SpringUtil.getBean(ObjectMapper.class);
 		return objectMapper.readValue(str, R.class);
 	}
 

@@ -1,15 +1,17 @@
 package com.hutu.login.service.imlp;
 
+import cn.hutool.system.UserInfo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hutu.admin.mapper.*;
 import com.hutu.admin.service.RolePermissionService;
 import com.hutu.api.entity.*;
-import com.hutu.boot.utils.TokenUtils;
-import com.hutu.common.core.entity.CallerInfo;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.entity.TreeNode;
-import com.hutu.common.core.enums.ErrorMsgEnum;
-import com.hutu.common.core.util.TreeUtil;
+import com.hutu.common.entity.R;
+import com.hutu.common.enums.ResultCode;
+import com.hutu.common.utils.TreeNode;
+import com.hutu.common.utils.TreeUtil;
+import com.hutu.common.utils.token.LoginUser;
+import com.hutu.common.utils.token.TokenInfo;
+import com.hutu.common.utils.token.TokenUtil;
 import com.hutu.login.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,17 +45,17 @@ public class LoginServiceImpl implements LoginService {
     public R login(String username, String password) {
         List<User> list = userMapper.selectList(new QueryWrapper<User>().eq("name", username));
         User user = (list!=null&&list.size()==1)?list.get(0):null;
-        CallerInfo callerInfo = new CallerInfo();
-        String token;
+        LoginUser callerInfo = new LoginUser();
+        TokenInfo token;
         if(user==null||!user.getPass().equals(password)){
-            return R.error(ErrorMsgEnum.USERNAME_OR_PASS_ERROR);
+            return R.error(ResultCode.USERNAME_OR_PASS_ERROR);
         } else {
-            callerInfo.uid = user.getId();
-            callerInfo.name = user.getName();
-            callerInfo.nick = user.getNick();
-            token = TokenUtils.createToken(callerInfo);
+            callerInfo.setUserId(user.getId());
+            callerInfo.setUserName(user.getNick());
+            callerInfo.setAccount(user.getName());
+            token = TokenUtil.createToken(callerInfo);
         }
-        return R.ok().put("token",token);
+        return R.ok(token);
     }
     @Override
     public List<Permission> getPermissionByUserId(Integer userId) {

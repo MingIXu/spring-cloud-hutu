@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.service.DictionaryService;
 import com.hutu.api.entity.Dictionary;
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -41,7 +41,7 @@ public class DictionaryController{
         }
         queryWrapper.eq(StringUtils.isNotEmpty(type),"typeKey",type);
         dictionaryService.page(page,queryWrapper);
-        return R.ok().put("list",page.getRecords()).put("total",page.getTotal());
+        return R.ok(page);
     }
     @ApiOperation("新增或更新")
     @PostMapping("/createOrUpdate")
@@ -56,6 +56,6 @@ public class DictionaryController{
     @ApiOperation("通过ID获取一条数据")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
-        return R.ok().put("info",dictionaryService.getById(id));
+        return R.ok(dictionaryService.getById(id));
     }
 }

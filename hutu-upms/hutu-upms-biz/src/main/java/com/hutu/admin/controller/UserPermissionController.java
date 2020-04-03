@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.service.UserPermissionService;
 import com.hutu.api.entity.UserPermission;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.validator.group.UpdateGroup;
+import com.hutu.common.entity.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -40,7 +39,7 @@ public class UserPermissionController{
             queryWrapper.like("name", keyWord);
         }
         userPermissionService.page(page,queryWrapper);
-        return R.ok().put("list",page.getRecords()).put("total",page.getTotal());
+        return R.ok(page);
     }
     @ApiOperation("新增")
     @PostMapping("/create")
@@ -54,13 +53,13 @@ public class UserPermissionController{
     }
     @ApiOperation("更新")
     @PostMapping("/update")
-    public R update(@RequestBody @ApiParam("数据对象")@Validated(UpdateGroup.class)UserPermission data){
+    public R update(@RequestBody @ApiParam("数据对象")UserPermission data){
         return userPermissionService.updateById(data)?R.ok():R.error("更新错误");
     }
     @ApiOperation("通过ID获取一条数据")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
-        return R.ok().put("info",userPermissionService.getById(id));
+        return R.ok(userPermissionService.getById(id));
     }
 
 }

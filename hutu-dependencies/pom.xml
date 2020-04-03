@@ -16,13 +16,14 @@
         <knife4j.version>2.0.2</knife4j.version>
         <mybatis-plus-boot-starter>3.2.0</mybatis-plus-boot-starter>
         <mysql.version>8.0.11</mysql.version>
+        <mica.auto.version>1.1.0</mica.auto.version>
         <druid-spring-boot-starter>1.1.20</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
         <springboot.admin.version>2.0.1</springboot.admin.version>
         <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
         <servlet-api.version>3.1.0</servlet-api.version>
         <hutool.version>4.5.11</hutool.version>
-        <jwt.version>0.10.5</jwt.version>
+        <jwt.version>0.9.1</jwt.version>
         <caffeine.version>2.6.2</caffeine.version>
         <curator.version>2.10.0</curator.version>
         <jetcache.version>2.6.0.RC</jetcache.version>
@@ -104,17 +105,7 @@
             <!--jwt工具-->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
-                <version>${jwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
+                <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
             </dependency>
             <!--servlet依赖-->
@@ -160,6 +151,11 @@
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${javax.validation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.dreamlu</groupId>
+                <artifactId>mica-auto</artifactId>
+                <version>${mica.auto.version}</version>
             </dependency>
 
             <!--自己的版本-->

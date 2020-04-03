@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.service.OrganizationService;
 import com.hutu.api.entity.Organization;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.validator.group.UpdateGroup;
+import com.hutu.common.entity.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -40,7 +39,7 @@ public class OrganizationController{
             queryWrapper.like("name", keyWord);
         }
         organizationService.page(page,queryWrapper);
-        return R.ok().put("list",page.getRecords()).put("total",page.getTotal());
+        return R.ok(page);
     }
     @ApiOperation("新增")
     @PostMapping("/create")
@@ -54,13 +53,13 @@ public class OrganizationController{
     }
     @ApiOperation("更新")
     @PostMapping("/update")
-    public R update(@RequestBody @ApiParam("数据对象")@Validated(UpdateGroup.class)Organization data){
+    public R update(@RequestBody @ApiParam("数据对象")Organization data){
         return organizationService.updateById(data)?R.ok():R.error("更新错误");
     }
     @ApiOperation("通过ID获取一条数据")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
-        return R.ok().put("info",organizationService.getById(id));
+        return R.ok(organizationService.getById(id));
     }
 
 }

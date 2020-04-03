@@ -43,12 +43,12 @@ public class AccessGatewayFilter implements GlobalFilter {
             return chain.filter(exchange);
         }
         ServerHttpResponse resp = exchange.getResponse();
-        String headerToken = exchange.getRequest().getHeaders().getFirst(AuthProvider.AUTH_KEY);
-        String paramToken = exchange.getRequest().getQueryParams().getFirst(AuthProvider.AUTH_KEY);
-        if (StringUtils.isAllBlank(headerToken, paramToken)) {
-            return unAuth(resp, "缺失令牌,鉴权失败");
-        }
-        String auth = StringUtils.isBlank(headerToken) ? paramToken : headerToken;
+//        String headerToken = exchange.getRequest().getHeaders().getFirst(AuthProvider.AUTH_KEY);
+//        String paramToken = exchange.getRequest().getQueryParams().getFirst(AuthProvider.AUTH_KEY);
+//        if (StringUtils.isAllBlank(headerToken, paramToken)) {
+//            return unAuth(resp, "缺失令牌,鉴权失败");
+//        }
+//        String auth = StringUtils.isBlank(headerToken) ? paramToken : headerToken;
         // TODO 验证token是否为我们自己的
         String token = "";
         return chain.filter(exchange);

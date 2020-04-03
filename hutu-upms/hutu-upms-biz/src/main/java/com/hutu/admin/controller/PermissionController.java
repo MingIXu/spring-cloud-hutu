@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.dto.PermissionVo;
 import com.hutu.admin.service.PermissionService;
 import com.hutu.api.entity.Permission;
-import com.hutu.common.core.entity.R;
-import com.hutu.common.core.util.TreeUtil;
+import com.hutu.common.entity.R;
+import com.hutu.common.utils.TreeUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -44,7 +44,7 @@ public class PermissionController{
             queryWrapper.like("name", keyWord);
         }
         permissionService.page(page,queryWrapper);
-        return R.ok().put("list",page.getRecords()).put("total",page.getTotal());
+        return R.ok(page);
     }
     @ApiOperation("新增或更新")
     @PostMapping("/createOrUpdate")
@@ -59,7 +59,7 @@ public class PermissionController{
     @ApiOperation("通过ID获取一条数据")
     @GetMapping("/read/{id}")
     public R read(@ApiParam("数据对象id")@PathVariable("id")String id){
-        return R.ok().put("info",permissionService.getById(id));
+        return R.ok(permissionService.getById(id));
     }
 
     @ApiOperation("获取权限树")
@@ -71,6 +71,6 @@ public class PermissionController{
             PermissionVo treenode = new PermissionVo(obj.getId(), obj.getPid(), obj.getName(),obj);
             treeList.add(treenode);
         }
-        return R.ok().put("treeData", TreeUtil.buildByRecursive(treeList, 0));
+        return R.ok(TreeUtil.buildByRecursive(treeList, 0));
     }
 }

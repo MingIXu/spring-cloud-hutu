@@ -1,7 +1,7 @@
 package com.hutu.api;
 
-import com.hutu.common.core.constant.ServiceNameConstant;
-import com.hutu.common.core.entity.R;
+import com.hutu.common.constant.ServiceNameConstant;
+import com.hutu.common.entity.R;
 import com.hutu.api.entity.Log;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

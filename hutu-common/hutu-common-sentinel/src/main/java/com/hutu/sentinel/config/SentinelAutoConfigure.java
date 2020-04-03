@@ -3,7 +3,7 @@ package com.hutu.sentinel.config;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.fastjson.JSON;
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

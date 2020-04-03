@@ -1,6 +1,6 @@
 package com.hutu.api.fallback;
 
-import com.hutu.common.core.entity.R;
+import com.hutu.common.entity.R;
 import com.hutu.api.RemoteLoginService;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

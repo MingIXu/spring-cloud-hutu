@@ -2,11 +2,9 @@ package com.hutu.login.controller;
 
 import com.hutu.admin.service.OrganizationService;
 import com.hutu.api.entity.Organization;
-import com.hutu.common.core.entity.CallerInfo;
-import com.hutu.common.core.entity.R;
-
-import com.hutu.boot.utils.TokenUtils;
-import com.hutu.login.dto.UserInfo;
+import com.hutu.common.entity.R;
+import com.hutu.common.utils.token.LoginUser;
+import com.hutu.common.utils.token.TokenUtil;
 import com.hutu.login.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 
 /**
  * 登录逻辑
@@ -38,33 +38,28 @@ public class LoginController {
     @ApiOperation("获取用户信息")
     @GetMapping("getUserInfo")
     public R getUserInfo() {
-        Organization organization = organizationService.getById(TokenUtils.getTenantId());
-        UserInfo userInfo = new UserInfo();
-        CallerInfo callerInfo = TokenUtils.getCallerInfo();
-        userInfo.tenantId = callerInfo.tenantId;
-        userInfo.uid = callerInfo.uid;
-        userInfo.name = callerInfo.name;
-        userInfo.nick = callerInfo.nick;
-        userInfo.setOrgName(organization==null?"unknown":organization.getName());
-        return R.ok().put("user", userInfo);
+        return R.ok(new LoginUser());
     }
 
     @ApiOperation("获取用户权限信息")
     @GetMapping("getPermissionByUserId")
     public R getPermissionByUserId() {
-        return R.ok().put("list",loginService.getPermissionByUserId(TokenUtils.getUserId()));
+        return R.ok(loginService.getPermissionByUserId(TokenUtil.getUserId()));
     }
 
     @ApiOperation("获取角色权限树")
     @GetMapping("getRolePermissionTree")
     public R getRolePermissionTree(Integer roleId) {
-        return R.ok().put("treeData",loginService.getPermissionTree()).put("keys",loginService.getRolePermissionIds(roleId));
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("treeData",loginService.getPermissionTree());
+        map.put("keys",loginService.getRolePermissionIds(roleId));
+        return R.ok(map);
     }
 
     @ApiOperation("更新角色权限树")
     @PostMapping("updateRolePermission")
     public R updateRolePermission(@RequestBody Integer[] permissionIds, Integer roleId) {
-        return R.ok().put("list",loginService.updateRolePermission(permissionIds,roleId));
+        return R.ok(loginService.updateRolePermission(permissionIds,roleId));
     }
 
     @ApiOperation("退出登录")

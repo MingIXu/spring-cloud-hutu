@@ -33,6 +33,11 @@
             <artifactId>hutu-upms-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-common-log</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
