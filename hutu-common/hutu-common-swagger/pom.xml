@@ -23,5 +23,10 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-micro-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.dreamlu</groupId>
+            <artifactId>mica-auto</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

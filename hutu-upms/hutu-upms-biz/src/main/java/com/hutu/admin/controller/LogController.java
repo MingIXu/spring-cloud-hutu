@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hutu.admin.service.LogService;
 import com.hutu.api.entity.Log;
 import com.hutu.common.entity.R;
+import com.hutu.security.annotation.SkipAuth;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -30,6 +31,7 @@ public class LogController{
     private LogService logService;
 
     @ApiOperation("获取page")
+    @SkipAuth
     @GetMapping("/page/{current}/{pageSize}")
     public R getPage(@ApiParam("当前页")@PathVariable("current")int current, @ApiParam("分页大小")@PathVariable("pageSize")int pageSize,
                      @ApiParam("关键字") @RequestParam(required = false) String keyWord) {
