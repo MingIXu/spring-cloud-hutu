@@ -17,11 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-db</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hutu</groupId>
             <artifactId>hutu-upms-api</artifactId>
             <version>${project.version}</version>
         </dependency>

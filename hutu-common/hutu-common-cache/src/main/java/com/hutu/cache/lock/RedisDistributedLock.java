@@ -1,6 +1,6 @@
-//package com.hutu.common.cache.lock;
+//package com.hutu.cache.lock;
 //
-//import com.hutu.common.core.lock.AbstractDistributedLock;
+//import com.hutu.common.lock.AbstractDistributedLock;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.redis.connection.RedisStringCommands;

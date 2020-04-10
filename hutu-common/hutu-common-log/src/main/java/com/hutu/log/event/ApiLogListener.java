@@ -1,7 +1,7 @@
 package com.hutu.log.event;
 
-import com.hutu.log.entity.LogApi;
-import com.hutu.log.service.ApiLogService;
+import com.hutu.api.RemoteLogService;
+import com.hutu.api.entity.Log;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
@@ -18,13 +18,13 @@ import org.springframework.scheduling.annotation.Async;
 @AllArgsConstructor
 public class ApiLogListener {
 
-    private final ApiLogService apiLogService;
+    private final RemoteLogService remoteLogService;
 
     @Async
     @Order
     @EventListener(ApiLogEvent.class)
     public void saveSysLog(ApiLogEvent event) {
-        LogApi logApi = (LogApi) event.getSource();
-        apiLogService.saveLog(logApi);
+        Log logApi = (Log) event.getSource();
+        remoteLogService.create(logApi);
     }
 }

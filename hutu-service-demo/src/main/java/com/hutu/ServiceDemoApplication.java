@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.hutu.api")
 @SpringBootApplication
 @RestController
 public class ServiceDemoApplication {

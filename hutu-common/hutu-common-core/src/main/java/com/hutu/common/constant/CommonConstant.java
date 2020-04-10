@@ -13,4 +13,6 @@ public interface CommonConstant {
      */
     public final static String TOKEN = "token";
 
+    public final static String BASE_PACKAGES= "com.hutu";
+
 }

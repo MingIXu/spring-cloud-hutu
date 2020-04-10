@@ -1,12 +1,11 @@
-
 package com.hutu.log.config;
 
+import com.hutu.api.RemoteLogService;
+import com.hutu.common.constant.CommonConstant;
 import com.hutu.log.aspect.ApiLogAspect;
 import com.hutu.log.event.ApiLogListener;
-import com.hutu.log.service.ApiLogService;
-import com.hutu.log.service.ApiLogServiceImpl;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,14 +18,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Order
 @EnableAsync
 @Configuration
+@EnableFeignClients(CommonConstant.BASE_PACKAGES)
 @ConditionalOnWebApplication
 public class LogAutoConfiguration {
-
-    @Bean
-    @ConditionalOnMissingBean
-    public ApiLogService apiLogService() {
-        return new ApiLogServiceImpl();
-    }
 
     @Bean
     public ApiLogAspect apiLogAspect() {
@@ -34,7 +28,7 @@ public class LogAutoConfiguration {
     }
 
     @Bean
-    public ApiLogListener sysLogListener(ApiLogService apiLogService) {
-        return new ApiLogListener(apiLogService);
+    public ApiLogListener sysLogListener(RemoteLogService remoteLogService) {
+        return new ApiLogListener(remoteLogService);
     }
 }

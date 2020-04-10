@@ -34,6 +34,10 @@ public class Log implements Serializable {
      */
 	private String description;
     /**
+     * 日志类型
+     */
+    private String type;
+    /**
      * 操作用户
      */
 	private String username;
@@ -57,6 +61,10 @@ public class Log implements Serializable {
      * URL
      */
 	private String url;
+    /**
+     * 类名称
+     */
+    private String className;
     /**
      * 请求类型
      */

@@ -45,6 +45,7 @@ public class LogController{
     }
     @ApiOperation("新增")
     @PostMapping("/create")
+    @SkipAuth
     public R create(@RequestBody @ApiParam("数据对象")@Validated Log data){
         return logService.save(data)?R.ok():R.error("保存错误");
     }
