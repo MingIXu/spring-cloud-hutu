@@ -7,6 +7,14 @@ spring:
     enabled: false
   cloud:
     gateway:
+      # 跨域配置
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
       default-filters:
 #      - PrefixPath=/httpbin
       - AddResponseHeader=X-Response-Default-Foo, Default-Bar
