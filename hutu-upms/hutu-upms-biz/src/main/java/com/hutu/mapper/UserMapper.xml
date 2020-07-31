@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hutu.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="userResultMap" type="com.hutu.entity.User">
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="pass" property="pass"/>
+        <result column="nick" property="nick"/>
+        <result column="avatar" property="avatar"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="sex" property="sex"/>
+        <result column="sexShow" property="sexShow"/>
+        <result column="status" property="status"/>
+        <result column="statusShow" property="statusShow"/>
+        <result column="createName" property="createName"/>
+        <result column="createId" property="createId"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updateName" property="updateName"/>
+        <result column="updateId" property="updateId"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="isDeleted" property="isDeleted"/>
+        <result column="orgId" property="orgId"/>
+    </resultMap>
+
+
+    <select id="selectUserPage" resultMap="userResultMap">
+        select * from upms_user where isDeleted = 0
+    </select>
+
+</mapper>

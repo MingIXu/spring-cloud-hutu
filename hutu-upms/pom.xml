@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu</groupId>
         <artifactId>spring-cloud-hutu</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-upms</artifactId>

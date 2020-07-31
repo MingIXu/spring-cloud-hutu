@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hutu</groupId>
+        <artifactId>hutu-passport</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>hutu-passport-biz</artifactId>
+    <packaging>jar</packaging>
+    <description>鉴权中心业务</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-config</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-boot</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-upms-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-passport-api</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-starter-sentinel</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-starter-swagger</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-starter-security</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-starter-cache</artifactId>
+            <version>${revision}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.hutu</groupId>-->
+<!--            <artifactId>hutu-starter-stream-rocketmq</artifactId>-->
+<!--            <version>${revision}</version>-->
+<!--        </dependency>-->
+
+    </dependencies>
+</project>

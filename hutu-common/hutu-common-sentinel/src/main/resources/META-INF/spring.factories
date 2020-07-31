@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hutu.sentinel.config.SentinelAutoConfigure

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hutu</groupId>
+        <artifactId>spring-cloud-hutu</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>hutu-starters</artifactId>
+    <packaging>pom</packaging>
+    <description>starter集合</description>
+
+    <modules>
+        <module>hutu-starter-cache</module>
+        <module>hutu-starter-elasticsearch</module>
+        <module>hutu-starter-job</module>
+        <module>hutu-starter-log</module>
+        <module>hutu-starter-mybatis</module>
+        <module>hutu-starter-redisson</module>
+        <module>hutu-starter-security</module>
+        <module>hutu-starter-sentinel</module>
+        <module>hutu-starter-stream</module>
+        <module>hutu-starter-swagger</module>
+        <module>hutu-starter-transaction</module>
+    </modules>
+</project>

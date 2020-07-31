@@ -5,7 +5,7 @@
 
     <groupId>com.hutu</groupId>
     <artifactId>spring-cloud-hutu</artifactId>
-    <version>1.0.0</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>spring-cloud-hutu</name>
 
@@ -18,20 +18,30 @@
 
     <modules>
         <module>hutu-dependencies</module>
-        <module>hutu-common</module>
+        <module>hutu-core</module>
+        <module>hutu-boot</module>
         <module>hutu-config</module>
         <module>hutu-gateway</module>
-        <module>hutu-service-demo</module>
+        <module>hutu-job</module>
+        <module>hutu-parent</module>
+        <module>hutu-example</module>
         <module>hutu-upms</module>
-        <module>hutu-auth</module>
+        <module>hutu-starters</module>
+        <module>hutu-passport</module>
     </modules>
 
     <properties>
+        <!-- Project revision -->
+        <revision>1.0.0.RELEASE</revision>
+
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <!-- Dependency Versions -->
-        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <!-- Maven Plugin Versions -->
@@ -40,12 +50,24 @@
     </properties>
 
     <dependencies>
-    <!--Lombok-->
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <scope>provided</scope>
-    </dependency>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

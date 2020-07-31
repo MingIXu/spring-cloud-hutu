@@ -1,0 +1,66 @@
+
+spring:
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          # name-server地址
+          name-server: ${hutu.rocketmq.binder.name-server[0]}
+      bindings:
+        # 生产者
+        output:
+          # 指定topic
+          destination: passport-topic1
+        # 消费者
+        input:
+          # 指定topic
+          destination: upms-topic1
+          # rocketmq一定要设置group（随便写）其他的mq可以留空
+          group: consumer-group1
+#      bindings:
+#        # 生产者
+#        output1:
+#          # 指定topic
+#          destination: passport-topic1
+#        # 生产者
+#        output2:
+#          # 指定topic
+#          destination: passport-topic2
+#        # 生产者
+#        output3:
+#          # 指定topic
+#          destination: passport-topic3
+#        # 消费者
+#        input1:
+#          # 指定topic
+#          destination: upms-topic1
+#          # rocketmq一定要设置group（随便写）其他的mq可以留空
+#          group: consumer-group1
+#        # 消费者
+#        input2:
+#          # 指定topic
+#          destination: upms-topic1
+#          # rocketmq一定要设置group（随便写）其他的mq可以留空
+#          group: consumer-group2
+#        # 消费者
+#        input3:
+#          # 指定topic
+#          destination: upms-topic2
+#          # rocketmq一定要设置group（随便写）其他的mq可以留空
+#          group: consumer-group3
+#        # 消费者
+#        input4:
+#          # 指定topic
+#          destination: upms-topic3
+#          # rocketmq一定要设置group（随便写）其他的mq可以留空
+#          group: consumer-group4
+    sentinel:
+      # sentinel的动态数据源
+      datasource:
+        - nacos:
+            server-addr: ${spring.cloud.nacos.config.server-addr}
+            namespace: ${spring.cloud.nacos.config.namespace}
+            data-id: ${spring.application.name}-flow-rules
+            group-id: SENTINEL_GROUP
+            data-type: json
+            rule-type: flow

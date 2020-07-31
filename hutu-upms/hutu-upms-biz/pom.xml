@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu</groupId>
         <artifactId>hutu-upms</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-upms-biz</artifactId>
@@ -14,11 +14,6 @@
     <description>用户管理中心业务</description>
 
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compile.source>1.8</maven.compile.source>
-        <maven.compile.target>1.8</maven.compile.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skipTests>true</skipTests>
     </properties>
 
@@ -26,54 +21,43 @@
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-config</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-upms-api</artifactId>
-            <version>${project.version}</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-cache</artifactId>
-            <version>${project.version}</version>
+            <artifactId>hutu-starter-cache</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-db</artifactId>
-            <version>${project.version}</version>
+            <artifactId>hutu-boot</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hutu</groupId>
+            <artifactId>hutu-starter-mybatis</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-security</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.hutu</groupId>-->
-<!--            <artifactId>hutu-common-log</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-boot</artifactId>
-            <version>${project.version}</version>
+            <artifactId>hutu-starter-security</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-sentinel</artifactId>
-            <version>${project.version}</version>
+            <artifactId>hutu-starter-swagger</artifactId>
+            <version>${revision}</version>
         </dependency>
-        <!--swagger api生成-->
         <dependency>
             <groupId>com.hutu</groupId>
-            <artifactId>hutu-common-swagger</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!--测试-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>hutu-starter-redisson</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 
@@ -82,13 +66,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>repackage</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
             </plugin>
         </plugins>
     </build>

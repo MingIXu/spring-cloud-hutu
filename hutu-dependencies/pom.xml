@@ -6,29 +6,47 @@
 
     <groupId>com.hutu</groupId>
     <artifactId>hutu-dependencies</artifactId>
-    <version>1.0.0</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
+    <description>依赖管理</description>
 
     <properties>
+        <!--工程的版本-->
+        <revision>1.0.0.RELEASE</revision>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- Maven Plugin Versions -->
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+
+        <!-- Apache Dubbo -->
+        <dubbo.version>2.7.6</dubbo.version>
+        <curator.version>4.0.1</curator.version>
+
         <bucket4j.version>4.3.0</bucket4j.version>
-        <fastjson.version>1.2.47</fastjson.version>
         <spring4all.swagger.version>1.9.0.RELEASE</spring4all.swagger.version>
         <knife4j.version>2.0.2</knife4j.version>
-        <mybatis-plus-boot-starter>3.2.0</mybatis-plus-boot-starter>
+        <mybatis-plus-boot-starter>3.3.2</mybatis-plus-boot-starter>
+        <sharding-jdbc-starter>3.1.0</sharding-jdbc-starter>
         <mysql.version>8.0.11</mysql.version>
         <mica.auto.version>1.1.0</mica.auto.version>
-        <druid-spring-boot-starter>1.1.20</druid-spring-boot-starter>
+        <druid-spring-boot-starter>1.1.22</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
         <springboot.admin.version>2.0.1</springboot.admin.version>
         <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
         <servlet-api.version>3.1.0</servlet-api.version>
-        <hutool.version>4.5.11</hutool.version>
+        <hutool.version>5.3.5</hutool.version>
         <jwt.version>0.9.1</jwt.version>
         <caffeine.version>2.6.2</caffeine.version>
         <curator.version>2.10.0</curator.version>
-        <jetcache.version>2.6.0.RC</jetcache.version>
+        <jetcache.version>2.6.0</jetcache.version>
+        <redisson.version>3.13.0</redisson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
+        <swagger.version>1.5.22</swagger.version>
+        <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
+        <spring-data-elasticsearch.version>3.2.7.RELEASE</spring-data-elasticsearch.version>
+        <elasticsearch.version>7.8.0</elasticsearch.version>
     </properties>
 
     <dependencyManagement>
@@ -44,6 +62,11 @@
                 <artifactId>mybatis-plus-annotation</artifactId>
                 <version>${mybatis-plus-boot-starter}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-boot-starter}</version>
+            </dependency>
             <!--mysql驱动-->
             <dependency>
                 <groupId>mysql</groupId>
@@ -56,19 +79,18 @@
                 <artifactId>bucket4j-core</artifactId>
                 <version>${bucket4j.version}</version>
             </dependency>
-            <!--json工具-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
             <!--druid数据库连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid-spring-boot-starter}</version>
             </dependency>
-           <!--api生成工具-->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding-jdbc-starter}</version>
+            </dependency>
+            <!--api生成工具-->
             <dependency>
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
@@ -138,9 +160,22 @@
             </dependency>
             <dependency>
                 <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis</artifactId>
+                <version>${jetcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
                 <artifactId>jetcache-starter-redis-springdata</artifactId>
                 <version>${jetcache.version}</version>
             </dependency>
+
+            <!-- 分布式锁实现 -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -152,23 +187,68 @@
                 <artifactId>validation-api</artifactId>
                 <version>${javax.validation.version}</version>
             </dependency>
+            <!--自动生成spring-boot-starter的配置文件-->
             <dependency>
                 <groupId>net.dreamlu</groupId>
                 <artifactId>mica-auto</artifactId>
                 <version>${mica.auto.version}</version>
             </dependency>
+            <!-- Dubbo -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
 
-            <!--自己的版本-->
             <dependency>
-                <groupId>com.hutu</groupId>
-                <artifactId>hutu-config</artifactId>
-                <version>${project.version}</version>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--监控服务端-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring-data-elasticsearch.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
-                <artifactId>hutu-common</artifactId>
-                <version>${project.version}</version>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
+
