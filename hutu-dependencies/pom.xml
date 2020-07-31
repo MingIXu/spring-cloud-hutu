@@ -28,7 +28,7 @@
         <knife4j.version>2.0.2</knife4j.version>
         <mybatis-plus-boot-starter>3.3.2</mybatis-plus-boot-starter>
         <sharding-jdbc-starter>3.1.0</sharding-jdbc-starter>
-        <mysql.version>8.0.11</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <mica.auto.version>1.1.0</mica.auto.version>
         <druid-spring-boot-starter>1.1.22</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
