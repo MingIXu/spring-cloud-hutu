@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hutu</groupId>
+        <artifactId>spring-cloud-hutu</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>hutu-coverage</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+
+        <hutu-boot.version>${revision}</hutu-boot.version>
+        <hutu-config.version>${revision}</hutu-config.version>
+        <hutu-core.version>${revision}</hutu-core.version>
+        <hutu-gateway.version>${revision}</hutu-gateway.version>
+        <hutu-generator.version>${revision}</hutu-generator.version>
+        <hutu-job.version>${revision}</hutu-job.version>
+        <hutu-montior.version>${revision}</hutu-montior.version>
+        <hutu-passport.version>${revision}</hutu-passport.version>
+        <hutu-starters.version>${revision}</hutu-starters.version>
+        <hutu-upms.version>${revision}</hutu-upms.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-boot</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-config</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-core</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-gateway</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-generator</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-job</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-montior</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-passport</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-starters</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu</groupId>
+                <artifactId>hutu-upms</artifactId>
+                <version>${hutu-boot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

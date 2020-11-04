@@ -117,9 +117,9 @@ public class RestTemplateConfiguration {
 	}
 
 	@Bean
-	@ConditionalOnMissingBean(SsdevRestTemplate.class)
-	public SsdevRestTemplate ssdevRestTemplate(okhttp3.OkHttpClient httpClient) {
-		SsdevRestTemplate restTemplate = new SsdevRestTemplate(new OkHttp3ClientHttpRequestFactory(httpClient));
+	@ConditionalOnMissingBean(CustomRestTemplate.class)
+	public CustomRestTemplate ssdevRestTemplate(okhttp3.OkHttpClient httpClient) {
+		CustomRestTemplate restTemplate = new CustomRestTemplate(new OkHttp3ClientHttpRequestFactory(httpClient));
 		configMessageConverters(restTemplate.getMessageConverters());
 		return restTemplate;
 	}

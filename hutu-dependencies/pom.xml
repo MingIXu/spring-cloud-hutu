@@ -32,7 +32,6 @@
         <mica.auto.version>1.1.0</mica.auto.version>
         <druid-spring-boot-starter>1.1.22</druid-spring-boot-starter>
         <velocity.version>1.7</velocity.version>
-        <springboot.admin.version>2.0.1</springboot.admin.version>
         <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
         <servlet-api.version>3.1.0</servlet-api.version>
         <hutool.version>5.3.5</hutool.version>
@@ -45,7 +44,6 @@
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <swagger.version>1.5.22</swagger.version>
         <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
-        <spring-data-elasticsearch.version>3.2.7.RELEASE</spring-data-elasticsearch.version>
         <elasticsearch.version>7.8.0</elasticsearch.version>
     </properties>
 
@@ -117,12 +115,12 @@
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${springboot.admin.version}</version>
+                <version>${spring-boot-admin.version}</version>
             </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${springboot.admin.version}</version>
+                <version>${spring-boot-admin.version}</version>
             </dependency>
             <!--jwt工具-->
             <dependency>
@@ -199,24 +197,13 @@
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
-
+            <!--接口文档注解-->
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
-            <!--监控服务端-->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-elasticsearch</artifactId>
-                <version>${spring-data-elasticsearch.version}</version>
-            </dependency>
+            <!--spring-data es依赖-->
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-high-level-client</artifactId>

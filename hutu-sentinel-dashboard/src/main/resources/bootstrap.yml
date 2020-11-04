@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force: true
+
+logging:
+  level:
+    org:
+      springframework:
+        web: info
+  file:
+    name: ${user.home}/logs/csp/sentinel-dashboard.log
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+
+auth:
+  username: sentinel
+  password: sentinel
+  filter:
+    exclude-urls: /,/auth/login,/auth/logout,/registry/machine,/version
+    exclude-url-suffixes: htm,html,js,css,map,ico,ttf,woff,png
+
+sentinel:
+  dashboard:
+    version: 1.7.1
+#nacos:
+#  server:
+#    address: 192.168.2.221:8848
+spring:
+  application:
+    name: ehealth-sentinel-dashboard
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.221:8848
+        namespace: 132439b2-b383-4fd3-a956-ab4a91a49c9a
+      config:
+        server-addr: 192.168.2.221:8848
+        namespace: 132439b2-b383-4fd3-a956-ab4a91a49c9a
+        file-extension: yml
+
+#  elasticsearch:
+#    jest:
+#      connection-timeout: 5s
+#      read-timeout: 3s
+#      uris: http://192.168.2.221:9200

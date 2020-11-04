@@ -1,0 +1,10 @@
+server:
+  port: 8769
+spring:
+  application:
+    name: ehealth-monitor
+  # 安全配置
+  security:
+    user:
+      name: admin
+      password: 123456
