@@ -4,9 +4,9 @@ server:
 db:
   num: 1
   user: root
-  password: 123456
+  password: mysql806001926
   url:
-    0: jdbc:mysql://${MYSQL-HOST:192.168.2.221}:${MYSQL-PORT:3306}/${MYSQL-DB:nacos_dev}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
+    0: jdbc:mysql://${MYSQL-HOST:aliyun-mysql}:${MYSQL-PORT:3306}/${MYSQL-DB:nacos_dev}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true
 
 nacos:
   core:

@@ -6,24 +6,30 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   cloud:
+    stream:
+      rocketmq:
+        binder:
+          # name-server地址
+          name-server: ${ehealth.rocketmq.binder.name-server[0]}
+      bindings:
+        # 生产者
+        output:
+          # 指定topic
+          destination: upms-topic1
+        # 消费者
+        input:
+          # 指定topic
+          destination: passport-topic1
+          # rocketmq一定要设置group（随便写）其他的mq可以留空
+          group: consumer-group1
     sentinel:
+      # sentinel的动态数据源
       datasource:
-        ds1:
-          file:
-            file: 'classpath: flowrule.json'
+        - nacos:
+            server-addr: ${spring.cloud.nacos.config.server-addr}
+            namespace: ${spring.cloud.nacos.config.namespace}
+            data-id: ${spring.application.name}-flow-rules
+            group-id: SENTINEL_GROUP
             data-type: json
             rule-type: flow
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  global-config:
-    db-config:
-      id-type: auto
 
-#swagger配置参考： https://github.com/SpringForAll/spring-boot-starter-swagger
-swagger:
-  enabled: true
-  title: 管理系统api文档
-  version: 1.0.0
-  base-package: com.hutu.upms
-  base-path: /**
-  exclude-path: /error, /ops/**

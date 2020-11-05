@@ -1,5 +1,6 @@
 package com.hutu.core.constant;
 
+import cn.hutool.core.codec.Base64;
 import com.hutu.core.utils.SignHelper;
 
 /**
@@ -46,7 +47,7 @@ public interface CommonConstant {
     /**
      * 网关调用标识签名
      */
-    String GATEWAY_KEY_SIGN = SignHelper.sign(GATEWAY_KEY);
+    String GATEWAY_KEY_SIGN = SignHelper.sign(Base64.encode(GATEWAY_KEY));
 
     /**
      * 是否鉴权标识

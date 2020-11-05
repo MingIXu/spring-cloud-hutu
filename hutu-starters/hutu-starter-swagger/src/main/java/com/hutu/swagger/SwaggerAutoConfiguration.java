@@ -32,7 +32,7 @@ import java.util.List;
 @Configuration
 @EnableKnife4j
 @EnableSwagger2
-@Profile({"dev","test"})
+@Profile({"dev","test","hutu"})
 @EnableConfigurationProperties(SwaggerProperties.class)
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerAutoConfiguration {

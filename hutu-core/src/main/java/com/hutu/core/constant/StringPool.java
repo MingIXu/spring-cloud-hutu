@@ -11,6 +11,7 @@ public interface StringPool {
 	String AMPERSAND		= "&";
 	String AND				= "and";
 	String AT				= "@";
+	String SLASH_DOUBLE_STAR   = "/**";
 	String ASTERISK			= "*";
 	String STAR				= ASTERISK;
 	String SLASH				= "/";

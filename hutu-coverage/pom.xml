@@ -10,6 +10,7 @@
 
     <artifactId>hutu-coverage</artifactId>
     <packaging>pom</packaging>
+    <description>本项目自己包依赖管理</description>
 
     <properties>
 
@@ -28,52 +29,52 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-boot</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-config</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-core</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-gateway</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-generator</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-job</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-montior</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-passport</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-starters</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>hutu-upms</artifactId>
                 <version>${hutu-boot.version}</version>
             </dependency>

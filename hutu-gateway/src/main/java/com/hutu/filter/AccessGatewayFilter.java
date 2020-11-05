@@ -27,6 +27,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * token校验
@@ -86,8 +88,8 @@ public class AccessGatewayFilter implements GlobalFilter {
      * @return boolean
      */
     private boolean isSkip(String path) {
-        return AuthProvider.getDefaultSkipUrl().stream().map(url -> url.replace(StringPool.ASTERISK, StringPool.EMPTY)).anyMatch(path::contains)
-                || authProperties.getSkipUrl().stream().map(url -> url.replace(StringPool.ASTERISK, StringPool.EMPTY)).anyMatch(path::contains);
+        return AuthProvider.getDefaultSkipUrl().stream().map(url -> url.replace(StringPool.SLASH_DOUBLE_STAR, StringPool.EMPTY)).anyMatch(path::contains)
+                || authProperties.getSkipUrl().stream().map(url -> url.replace(StringPool.SLASH_DOUBLE_STAR, StringPool.EMPTY)).anyMatch(path::contains);
     }
 
     private Mono<Void> unAuth(ServerHttpResponse resp, String msg) {

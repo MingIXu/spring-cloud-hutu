@@ -1,5 +1,6 @@
 package com.hutu.interceptor;
 
+import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.StrUtil;
 import com.hutu.core.constant.CommonConstant;
 import com.hutu.core.constant.ProfilesConstant;
@@ -63,7 +64,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
         // 判断是否来自网关请求
         String gatewayKey = WebUtil.getRequestParameter(CommonConstant.GATEWAY_KEY);
-        if (StrUtil.isEmpty(gatewayKey)||!SignHelper.verify(CommonConstant.GATEWAY_KEY, gatewayKey)){
+        if (StrUtil.isEmpty(gatewayKey)||!SignHelper.verify(Base64.encode(CommonConstant.GATEWAY_KEY), gatewayKey)){
             throw new GlobalException(ResultCode.NOT_ACCEPTABLE);
         }
         return true;
@@ -76,7 +77,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
      * @return boolean
      */
     private boolean isSkip(String path) {
-        return securityProperties.getSkipUrl().stream().map(url -> url.replace(StringPool.ASTERISK, StringPool.EMPTY)).anyMatch(path::contains);
+        return securityProperties.getSkipUrl().stream().map(url -> url.replace(StringPool.SLASH_DOUBLE_STAR, StringPool.EMPTY)).anyMatch(path::contains);
     }
 
 }

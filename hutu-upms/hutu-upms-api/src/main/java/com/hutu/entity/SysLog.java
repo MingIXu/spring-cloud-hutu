@@ -3,6 +3,7 @@ package com.hutu.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
+@TableName("t_upms_log")
 @ApiModel(value = "SysLog对象", description = "SysLog对象")
 public class SysLog implements Serializable {
 

@@ -10,7 +10,7 @@ public interface ProfilesConstant {
     /**
      * 开发环境
      */
-    String DEV = "dev";
+    String DEV = "hutu";
     /**
      * 测试环境
      */
