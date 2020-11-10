@@ -1,9 +1,7 @@
-package com.ehealth;
+package com.hutu;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.ehealth.generator.CodeGenerator;
-
-import java.util.Arrays;
+import com.hutu.generator.CodeGenerator;
 
 /**
  * 生成代码

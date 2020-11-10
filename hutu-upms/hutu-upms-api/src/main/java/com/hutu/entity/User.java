@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Accessors(chain = true)
-@TableName("upms_user")
+@TableName("t_upms_user")
 @ApiModel(value = "User对象", description = "系统用户表")
 public class User implements Serializable {
 

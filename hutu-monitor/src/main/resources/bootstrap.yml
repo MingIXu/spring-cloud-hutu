@@ -7,4 +7,7 @@ spring:
   security:
     user:
       name: admin
-      password: 123456
+      password: 1234567
+      roles:
+        - ADMIN
+        - DEV

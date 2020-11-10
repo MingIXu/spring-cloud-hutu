@@ -1,4 +1,4 @@
-package com.ehealth.generator;
+package com.hutu.generator;
 
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.ITypeConvert;

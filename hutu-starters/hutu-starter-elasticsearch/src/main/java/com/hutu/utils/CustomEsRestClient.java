@@ -45,11 +45,11 @@ import java.util.concurrent.TimeUnit;
  * @author hutu
  * @date 2020/8/19 2:41 下午
  */
-public class CustomRestClient {
+public class CustomEsRestClient {
 
     final RestHighLevelClient client;
 
-    public CustomRestClient(RestHighLevelClient client) {
+    public CustomEsRestClient(RestHighLevelClient client) {
         this.client = client;
     }
 

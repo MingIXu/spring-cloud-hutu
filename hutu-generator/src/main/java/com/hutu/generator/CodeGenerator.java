@@ -1,4 +1,4 @@
-package com.ehealth.generator;
+package com.hutu.generator;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.setting.dialect.Props;

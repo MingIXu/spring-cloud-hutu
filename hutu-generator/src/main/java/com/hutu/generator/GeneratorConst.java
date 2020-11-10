@@ -1,4 +1,4 @@
-package com.ehealth.generator;
+package com.hutu.generator;
 
 public interface GeneratorConst {
 }
