@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.hutu.config.SecurityConfig,\
+  com.hutu.config.WebSecurityConfigurer,\
+  com.hutu.properties.SecurityProperties

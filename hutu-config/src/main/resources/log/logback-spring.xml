@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <!-- 参考 org/springframework/boot/logging/logback/base.xml -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <logger name="io.swagger.models.parameters.AbstractSerializableParameter" level="ERROR" />
+    <!--不打印nacos的心跳-->
+    <logger name="com.alibaba.nacos.client.naming" level="ERROR" />
+    <logger name="com.alibaba.nacos.client.config.impl.ClientWorker" level="ERROR" />
+
+    <!-- 开发、测试环境 -->
+    <springProfile name="dev,test">
+        <logger name="com.ehealth" level="DEBUG" />
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="pro">
+        <logger name="com.ehealth" level="INFO" />
+    </springProfile>
+
+    <!-- 异步日志 -->
+    <appender name ="ASYNC_FILEINFO" class= "ch.qos.logback.classic.AsyncAppender">
+        <!-- 设置为不丢失日志,默认如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold >0</discardingThreshold>
+        <!-- 更改默认的队列的深度,默认值为256 -->
+        <queueSize>1000</queueSize>
+        <appender-ref ref ="FILE"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="ASYNC_FILEINFO" />
+    </root>
+
+</configuration>

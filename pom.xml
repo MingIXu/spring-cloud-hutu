@@ -51,10 +51,6 @@
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
 
-<!--        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>-->
-<!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
-<!--        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>-->
-        <!-- Maven Plugin Versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
     </properties>

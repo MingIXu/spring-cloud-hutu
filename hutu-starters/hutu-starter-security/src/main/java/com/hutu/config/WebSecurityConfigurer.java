@@ -50,17 +50,4 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         //剩下的页面，允许访问
         http.authorizeRequests().anyRequest().permitAll();
     }
-
-    /*@Autowired
-    public  void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //添加两个账号用来做测试
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("lhdadmin")
-                .password(new BCryptPasswordEncoder().encode("123456"))
-                .roles("ADMIN","USER")
-                .and()
-                .withUser("lhduser")
-                .password(new BCryptPasswordEncoder().encode("123456"))
-                .roles("USER");
-    }*/
 }
