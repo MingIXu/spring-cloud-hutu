@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.reactive.function.server.*;
@@ -31,7 +32,7 @@ public class ErrorExceptionHandler extends DefaultErrorWebExceptionHandler {
      * 获取异常属性
      */
     @Override
-    protected Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
+    protected Map<String, Object> getErrorAttributes(ServerRequest request, ErrorAttributeOptions errorAttributeOptions) {
         int code = ResultCode.INTERNAL_SERVER_ERROR.code;
         Throwable error = super.getError(request);
         if (error instanceof ResponseStatusException) {
@@ -59,7 +60,11 @@ public class ErrorExceptionHandler extends DefaultErrorWebExceptionHandler {
      */
     @Override
     protected int getHttpStatus(Map<String, Object> errorAttributes) {
-        return (int) errorAttributes.get(ResponseProvider.CODE);
+        if (errorAttributes.containsKey(ResponseProvider.CODE)){
+            return (int) errorAttributes.get(ResponseProvider.CODE);
+        }else {
+            return super.getHttpStatus(errorAttributes);
+        }
     }
 
     /**
