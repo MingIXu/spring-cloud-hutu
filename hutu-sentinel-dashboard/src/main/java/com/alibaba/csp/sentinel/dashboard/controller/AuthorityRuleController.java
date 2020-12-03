@@ -12,15 +12,16 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author majun
+ * @author hutu
  * @description authority rule controller
- * @date 2020/4/27
+ * @date 2020/12/4 10:04 上午
  */
 @RestController
 @RequestMapping(value = "/authority")
@@ -31,9 +32,11 @@ public class AuthorityRuleController {
     private RuleRepository<AuthorityRuleEntity, Long> repository;
 
     @Autowired
+    @Qualifier("authorityRuleNacosProvider")
     private DynamicRuleProvider<List<AuthorityRuleEntity>> ruleProvider;
 
     @Autowired
+    @Qualifier("authorityRuleNacosPublisher")
     private DynamicRulePublisher<List<AuthorityRuleEntity>> rulePublisher;
 
     @GetMapping("/rules")

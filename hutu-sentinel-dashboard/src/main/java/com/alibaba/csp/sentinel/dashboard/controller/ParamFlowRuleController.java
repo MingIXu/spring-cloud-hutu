@@ -6,6 +6,7 @@ import com.alibaba.csp.sentinel.dashboard.client.CommandNotFoundException;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion;
 import com.alibaba.csp.sentinel.dashboard.datasource.entity.rule.ParamFlowRuleEntity;
 import com.alibaba.csp.sentinel.dashboard.discovery.AppManagement;
+import com.alibaba.csp.sentinel.dashboard.discovery.MachineInfo;
 import com.alibaba.csp.sentinel.dashboard.domain.Result;
 import com.alibaba.csp.sentinel.dashboard.repository.rule.RuleRepository;
 import com.alibaba.csp.sentinel.dashboard.rule.DynamicRuleProvider;
@@ -16,17 +17,19 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author majun
+ * @author hutu
  * @description param flow rule controller
- * @date 2020/4/27
+ * @date 2020/12/4 10:04 上午
  */
 @RestController
 @RequestMapping(value = "/paramFlow")
@@ -40,9 +43,11 @@ public class ParamFlowRuleController {
     private RuleRepository<ParamFlowRuleEntity, Long> repository;
 
     @Autowired
+    @Qualifier("paramFlowRuleNacosProvider")
     private DynamicRuleProvider<List<ParamFlowRuleEntity>> ruleProvider;
 
     @Autowired
+    @Qualifier("paramFlowRuleNacosPublisher")
     private DynamicRulePublisher<List<ParamFlowRuleEntity>> rulePublisher;
 
     private boolean checkIfSupported(String app, String ip, int port) {

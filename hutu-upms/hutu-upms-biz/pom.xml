@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu</groupId>
         <artifactId>hutu-upms</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>hutu-upms-biz</artifactId>
@@ -21,43 +21,43 @@
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-config</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-upms-api</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-starter-cache</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-boot</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-starter-mybatis</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-starter-security</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-starter-swagger</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-starter-redisson</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

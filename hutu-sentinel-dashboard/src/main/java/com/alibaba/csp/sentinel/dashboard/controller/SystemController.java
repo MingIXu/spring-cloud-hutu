@@ -19,9 +19,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author majun
+ * @author hutu
  * @description system controller
- * @date 2020/4/27
+ * @date 2020/12/4 10:04 上午
  */
 @RestController
 @RequestMapping("/system")

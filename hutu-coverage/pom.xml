@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.hutu</groupId>
         <artifactId>spring-cloud-hutu</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>hutu-coverage</artifactId>
@@ -14,16 +14,16 @@
 
     <properties>
 
-        <hutu-boot.version>${revision}</hutu-boot.version>
-        <hutu-config.version>${revision}</hutu-config.version>
-        <hutu-core.version>${revision}</hutu-core.version>
-        <hutu-gateway.version>${revision}</hutu-gateway.version>
-        <hutu-generator.version>${revision}</hutu-generator.version>
-        <hutu-job.version>${revision}</hutu-job.version>
-        <hutu-montior.version>${revision}</hutu-montior.version>
-        <hutu-passport.version>${revision}</hutu-passport.version>
-        <hutu-starters.version>${revision}</hutu-starters.version>
-        <hutu-upms.version>${revision}</hutu-upms.version>
+        <hutu-boot.version>1.0.0-SNAPSHOT</hutu-boot.version>
+        <hutu-config.version>1.0.0-SNAPSHOT</hutu-config.version>
+        <hutu-core.version>1.0.0-SNAPSHOT</hutu-core.version>
+        <hutu-gateway.version>1.0.0-SNAPSHOT</hutu-gateway.version>
+        <hutu-generator.version>1.0.0-SNAPSHOT</hutu-generator.version>
+        <hutu-job.version>1.0.0-SNAPSHOT</hutu-job.version>
+        <hutu-montior.version>1.0.0-SNAPSHOT</hutu-montior.version>
+        <hutu-passport.version>1.0.0-SNAPSHOT</hutu-passport.version>
+        <hutu-starters.version>1.0.0-SNAPSHOT</hutu-starters.version>
+        <hutu-upms.version>1.0.0-SNAPSHOT</hutu-upms.version>
     </properties>
 
     <dependencyManagement>

@@ -23,25 +23,27 @@ auth:
 
 sentinel:
   dashboard:
-    version: 1.7.1
-#nacos:
-#  server:
-#    address: 192.168.2.221:8848
+    version: 1.8.1-SNAPSHOT
+nacos:
+  server:
+    address: 192.168.2.221:8848
+    namesapace: 132439b2-b383-4fd3-a956-ab4a91a49c9a
 spring:
   application:
     name: ehealth-sentinel-dashboard
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.2.221:8848
-        namespace: 132439b2-b383-4fd3-a956-ab4a91a49c9a
+        server-addr: ${nacos.server.address}
+        namespace: ${nacos.server.namesapace}
       config:
-        server-addr: 192.168.2.221:8848
-        namespace: 132439b2-b383-4fd3-a956-ab4a91a49c9a
+        server-addr: ${nacos.server.address}
+        namespace: ${nacos.server.namesapace}
         file-extension: yml
 
-#  elasticsearch:
-#    jest:
-#      connection-timeout: 5s
-#      read-timeout: 3s
-#      uris: http://192.168.2.221:9200
+  elasticsearch:
+    rest:
+      connection-timeout: 5s
+      uris: http://192.168.2.221:9200
+      password:
+      username:

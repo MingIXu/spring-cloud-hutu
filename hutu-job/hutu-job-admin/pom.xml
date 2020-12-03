@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.hutu</groupId>
 		<artifactId>hutu-job</artifactId>
-		<version>${revision}</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>hutu-job-admin</artifactId>
 	<packaging>jar</packaging>

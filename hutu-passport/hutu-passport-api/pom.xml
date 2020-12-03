@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.hutu</groupId>
         <artifactId>hutu-passport</artifactId>
-        <version>${revision}</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>hutu-passport-api</artifactId>
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.hutu</groupId>
             <artifactId>hutu-core</artifactId>
-            <version>${revision}</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
