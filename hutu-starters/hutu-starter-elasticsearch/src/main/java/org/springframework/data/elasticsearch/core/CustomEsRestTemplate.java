@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.hutu.properties.ElasticsearchProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -40,24 +41,30 @@ import java.util.stream.Collectors;
 public class CustomEsRestTemplate extends ElasticsearchRestTemplate {
 
 	final static String DEFAULT_PREFERENCE = "hutu";
+	final ElasticsearchProperties elasticsearchProperties;
+
 	@Override
 	public <T> SearchHits<T> search(Query query, Class<T> clazz, IndexCoordinates index) {
 		assert requestFactory != null;
 		SearchRequest searchRequest = requestFactory.searchRequest(query, clazz, index);
 
-		String preference = DEFAULT_PREFERENCE;
+		// 这里需要处理es查询分片优先逻辑,再分片数据环境有不同时则可解决问题，此处也可做读写分离等
+		if (elasticsearchProperties.isEnablePreference()) {
 
+			String preference = DEFAULT_PREFERENCE;
+			searchRequest.preference(preference);
+		}
 
-		searchRequest.preference(preference);
 		log.info(" 完整的dsl：{}",searchRequest.source().toString());
 		SearchResponse response = execute(client -> client.search(searchRequest, RequestOptions.DEFAULT));
 
 		SearchDocumentResponseCallback<SearchHits<T>> callback = new ReadSearchDocumentResponseCallback<>(clazz, index);
 		return callback.doWith(SearchDocumentResponse.from(response));
 	}
-	
-	public CustomEsRestTemplate(RestHighLevelClient client, ElasticsearchConverter elasticsearchConverter) {
+
+	public CustomEsRestTemplate(RestHighLevelClient client, ElasticsearchConverter elasticsearchConverter,ElasticsearchProperties elasticsearchProperties) {
 		super(client, elasticsearchConverter);
+		this.elasticsearchProperties = elasticsearchProperties;
 	}
 
 	/**

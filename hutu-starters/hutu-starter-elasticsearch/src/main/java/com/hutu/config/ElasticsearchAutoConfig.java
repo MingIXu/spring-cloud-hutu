@@ -7,10 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.core.CustomEsRestTemplate;
 import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 /**
- * 此处 @EnableElasticsearchRepositories 注解开启 elasticsearch-jap 功能
+ * es 配置信息
  *
  * @author hutu
  * @date 2020/12/3 5:17 下午
@@ -20,7 +19,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 public class ElasticsearchAutoConfig {
 
     @Bean(name = { "elasticsearchOperations", "elasticsearchTemplate" })
-    public CustomEsRestTemplate customEsRestTemplate(RestHighLevelClient client, ElasticsearchConverter elasticsearchConverter) {
-        return new CustomEsRestTemplate(client, elasticsearchConverter);
+    public CustomEsRestTemplate customEsRestTemplate(RestHighLevelClient client, ElasticsearchConverter elasticsearchConverter,ElasticsearchProperties elasticsearchProperties) {
+        return new CustomEsRestTemplate(client, elasticsearchConverter,elasticsearchProperties);
     }
 }
