@@ -7,31 +7,9 @@
         <artifactId>spring-cloud-hutu</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>hutu-example</artifactId>
-    <packaging>jar</packaging>
-    <description>Demo project for Spring Boot</description>
-
-    <dependencies>
-        <!--工具包-->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
-        <!--日志-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <!-- JWT -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-        <!-- 验证接口 -->
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-        </dependency>
-    </dependencies>
+    <packaging>pom</packaging>
+    <modules>
+        <module>es-demo</module>
+    </modules>
 </project>

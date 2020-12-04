@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hutu.config.EsAutoConfig
+com.hutu.config.ElasticsearchAutoConfig
