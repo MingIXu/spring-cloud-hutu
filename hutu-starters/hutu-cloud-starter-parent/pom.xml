@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.hutu.cloud</groupId>
+        <artifactId>hutu-starters</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>hutu-cloud-starter-parent</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <hutu-cloud-starter.version>1.0.0-SNAPSHOT</hutu-cloud-starter.version>
+        <hutu-cloud-starter-feign.version>1.0.0-SNAPSHOT</hutu-cloud-starter-feign.version>
+        <hutu-cloud-starter-jackson.version>1.0.0-SNAPSHOT</hutu-cloud-starter-jackson.version>
+        <hutu-cloud-starter-mybatis.version>1.0.0-SNAPSHOT</hutu-cloud-starter-mybatis.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.hutu.cloud</groupId>
+                <artifactId>hutu-cloud-starter</artifactId>
+                <version>${hutu-cloud-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu.cloud</groupId>
+                <artifactId>hutu-cloud-starter-feign</artifactId>
+                <version>${hutu-cloud-starter-feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu.cloud</groupId>
+                <artifactId>hutu-cloud-starter-jackson</artifactId>
+                <version>${hutu-cloud-starter-jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hutu.cloud</groupId>
+                <artifactId>hutu-cloud-starter-mybatis</artifactId>
+                <version>${hutu-cloud-starter-mybatis.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

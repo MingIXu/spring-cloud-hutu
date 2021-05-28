@@ -1,0 +1,14 @@
+# 此配置只适合开发测试环境，详细配置参考： http://t.cn/A64RaHJm
+server:
+  port: 8762
+  servlet:
+    context-path: /xxl-job-admin
+
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        metadata:
+          management.context-path: ${server.servlet.context-path}/actuator

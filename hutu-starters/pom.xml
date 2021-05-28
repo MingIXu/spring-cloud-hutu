@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.hutu</groupId>
+        <groupId>com.hutu.cloud</groupId>
         <artifactId>spring-cloud-hutu</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -13,16 +13,26 @@
     <description>starter集合</description>
 
     <modules>
-        <module>hutu-starter-cache</module>
-        <module>hutu-starter-elasticsearch</module>
-        <module>hutu-starter-job</module>
-        <module>hutu-starter-log</module>
-        <module>hutu-starter-mybatis</module>
-        <module>hutu-starter-redisson</module>
-        <module>hutu-starter-security</module>
-        <module>hutu-starter-sentinel</module>
-        <module>hutu-starter-stream</module>
-        <module>hutu-starter-swagger</module>
-        <module>hutu-starter-transaction</module>
+        <module>hutu-cloud-common</module>
+        <module>hutu-cloud-starter</module>
+        <module>hutu-cloud-starter-cache</module>
+        <module>hutu-cloud-starter-config</module>
+        <module>hutu-cloud-starter-elasticsearch</module>
+        <module>hutu-cloud-starter-feign</module>
+        <module>hutu-cloud-starter-jackson</module>
+        <module>hutu-cloud-starter-log</module>
+        <module>hutu-cloud-starter-mybatis</module>
+        <module>hutu-cloud-starter-parent</module>
+        <module>hutu-cloud-starter-redisson</module>
+        <module>hutu-cloud-starter-register-center</module>
+        <module>hutu-cloud-starter-scheduler</module>
+        <module>hutu-cloud-starter-security</module>
+        <module>hutu-cloud-starter-social</module>
+        <module>hutu-cloud-starter-stream-rocketmq</module>
+        <module>hutu-cloud-starter-stream-kafka</module>
+        <module>hutu-cloud-starter-stream</module>
+        <module>hutu-cloud-starter-swagger</module>
+        <module>hutu-cloud-starter-token</module>
+        <module>hutu-cloud-starter-transaction</module>
     </modules>
 </project>

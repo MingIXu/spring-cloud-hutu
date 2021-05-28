@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.hutu</groupId>
+        <groupId>com.hutu.cloud</groupId>
         <artifactId>spring-cloud-hutu</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>hutu-core</artifactId>
     <packaging>jar</packaging>
-    <description>Demo project for Spring Boot</description>
+    <description>基础包</description>
 
     <dependencies>
         <!--工具包-->
@@ -23,20 +23,16 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <!-- JWT -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>jakarta.validation</groupId>-->
-<!--            <artifactId>jakarta.validation-api</artifactId>-->
-<!--        </dependency>-->
-
+        <!--json-->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
+        <!--引入spring核心包-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

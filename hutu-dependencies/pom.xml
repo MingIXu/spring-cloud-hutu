@@ -4,47 +4,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hutu</groupId>
+    <groupId>com.hutu.cloud</groupId>
     <artifactId>hutu-dependencies</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>第三方包依赖管理</description>
+    <description>依赖管理</description>
 
     <properties>
-        <!--工程的版本-->
-        <revision>1.0.0.RELEASE</revision>
         <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <!-- Maven Plugin Versions -->
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 
         <!-- Apache Dubbo -->
         <dubbo.version>2.7.6</dubbo.version>
-        <curator.version>4.0.1</curator.version>
 
         <bucket4j.version>4.3.0</bucket4j.version>
-        <spring4all.swagger.version>1.9.0.RELEASE</spring4all.swagger.version>
         <knife4j.version>2.0.2</knife4j.version>
-        <mybatis-plus-boot-starter>3.3.2</mybatis-plus-boot-starter>
+        <mybatis-plus-boot-starter>3.4.2</mybatis-plus-boot-starter>
         <sharding-jdbc-starter>3.1.0</sharding-jdbc-starter>
-        <mysql.version>8.0.16</mysql.version>
         <mica.auto.version>1.1.0</mica.auto.version>
         <druid-spring-boot-starter>1.1.22</druid-spring-boot-starter>
-        <commons-lang3.vsersion>3.3.2</commons-lang3.vsersion>
-        <servlet-api.version>3.1.0</servlet-api.version>
-        <hutool.version>5.3.5</hutool.version>
+        <hutool.version>5.4.3</hutool.version>
+        <guava.version>20.0</guava.version>
+        <fastjson.version>1.2.76</fastjson.version>
         <jwt.version>0.9.1</jwt.version>
-        <caffeine.version>2.6.2</caffeine.version>
-        <curator.version>2.10.0</curator.version>
         <jetcache.version>2.6.0</jetcache.version>
         <redisson.version>3.13.0</redisson.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <javax.validation.version>2.0.1.Final</javax.validation.version>
         <swagger.version>1.5.22</swagger.version>
-        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
-        <elasticsearch.version>7.6.2</elasticsearch.version>
-        <spring-data-elasticsearch.version>4.0.0.RELEASE</spring-data-elasticsearch.version>
+        <spring-boot-admin.version>2.4.0</spring-boot-admin.version>
+        <xxl-job.version>2.3.0</xxl-job.version>
+        <nacos.version>2.0.1</nacos.version>
+        <rocketmq-stream.version>2.2.5-RocketMQ-RC1</rocketmq-stream.version>
+        <apollo.version>1.4.2-SNAPSHOT</apollo.version>
+        <mvel2.version>2.4.7.Final</mvel2.version>
+        <objenesis.version>3.1</objenesis.version>
+        <javassist.version>3.25.0-GA</javassist.version>
     </properties>
 
     <dependencyManagement>
@@ -63,13 +55,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis-plus-boot-starter}</version>
-            </dependency>
-            <!--mysql驱动-->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
+                <version>3.4.1</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.github.vladimir-bukhtoyarov/bucket4j-core -->
             <dependency>
@@ -90,11 +76,6 @@
             </dependency>
             <!--api生成工具-->
             <dependency>
-                <groupId>com.spring4all</groupId>
-                <artifactId>swagger-spring-boot-starter</artifactId>
-                <version>${spring4all.swagger.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-micro-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
@@ -103,6 +84,18 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--模板引擎-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
+                <scope>test</scope>
             </dependency>
             <!--springBoot监控管理-->
             <dependency>
@@ -121,12 +114,6 @@
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
             </dependency>
-            <!--servlet依赖-->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet-api.version}</version>
-            </dependency>
             <!--hutool 工具类-->
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -134,14 +121,14 @@
                 <version>${hutool.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.curator</groupId>
-                <artifactId>curator-framework</artifactId>
-                <version>${curator.version}</version>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
             <!--缓存-->
             <dependency>
@@ -159,24 +146,11 @@
                 <artifactId>jetcache-starter-redis-springdata</artifactId>
                 <version>${jetcache.version}</version>
             </dependency>
-
             <!-- 分布式锁实现 -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <!--校验依赖-->
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${javax.validation.version}</version>
             </dependency>
             <!--自动生成spring-boot-starter的配置文件-->
             <dependency>
@@ -184,55 +158,89 @@
                 <artifactId>mica-auto</artifactId>
                 <version>${mica.auto.version}</version>
             </dependency>
-            <!-- Dubbo -->
+            <!--xxl job-->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
-            <!--接口文档注解-->
+            <!--强制指定 nacos-client 版本-->
             <dependency>
-                <groupId>io.swagger</groupId>
-                <artifactId>swagger-annotations</artifactId>
-                <version>${swagger.version}</version>
-            </dependency>
-            <!--spring-data es依赖-->
-            <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-high-level-client</artifactId>
-                <version>${elasticsearch.version}</version>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.elasticsearch.client</groupId>
-                <artifactId>elasticsearch-rest-client</artifactId>
-                <version>${elasticsearch.version}</version>
+                <groupId>org.mvel</groupId>
+                <artifactId>mvel2</artifactId>
+                <version>${mvel2.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch</artifactId>
-                <version>${elasticsearch.version}</version>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>${objenesis.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-elasticsearch</artifactId>
-                <version>${spring-data-elasticsearch.version}</version>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+
+            <!--兼容hutu降低版本-->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>2.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>2.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                <version>1.0.b2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+                <version>${rocketmq-stream.version}</version>
+
+            </dependency>
+            <!--  引入 Apollo 客户端，内置对 Apollo 的自动化配置 -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <inherited>true</inherited>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <parameters>true</parameters>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://maven.hutuhealth.com:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://maven.hutuhealth.com:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

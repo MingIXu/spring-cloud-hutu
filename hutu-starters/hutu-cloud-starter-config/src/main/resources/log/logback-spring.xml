@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <!--错误日志打印文件名与报错代码行号-->
+    <property name="FILE_ERROR_PATTERN"
+              value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} %file:%line: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!--logback 默认配置-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--不打印 swagger 的警告信息-->
+    <logger name="io.swagger.models.parameters.AbstractSerializableParameter" level="ERROR"/>
+    <!--不打印 nacos 的心跳-->
+    <logger name="com.alibaba.nacos.client.naming" level="ERROR"/>
+    <logger name="com.alibaba.nacos.client.config.impl.ClientWorker" level="ERROR"/>
+    <logger name="com.alibaba.nacos.common.remote.client" level="ERROR"/>
+    <!--打印es详细dsl语句-->
+    <logger name="org.springframework.data.elasticsearch.client.WIRE" level="TRACE"/>
+    <!-- 开发、测试环境 -->
+    <springProfile name="dev,test">
+        <logger name="com.hutu.cloud" level="INFO"/>
+    </springProfile>
+    <!-- 生产环境 -->
+    <springProfile name="pro">
+        <logger name="com.hutu.cloud" level="ERROR"/>
+    </springProfile>
+    <!--控制台输出-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!--引入日志文件输出appender-->
+    <include resource="log/file-appender.xml"/>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="ASYNC_FILE_INFO"/>
+    </root>
+</configuration>

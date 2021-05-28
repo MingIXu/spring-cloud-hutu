@@ -3,56 +3,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hutu</groupId>
+    <groupId>com.hutu.cloud</groupId>
     <artifactId>spring-cloud-hutu</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>spring-cloud-hutu</name>
-
-    <developers>
-        <developer>
-            <name>hutu</name>
-            <email>806001926@qq.com</email>
-        </developer>
-    </developers>
 
     <modules>
-
-        <module>hutu-boot</module>
-        <module>hutu-config</module>
         <module>hutu-core</module>
-        <module>hutu-coverage</module>
         <module>hutu-dependencies</module>
         <module>hutu-example</module>
-        <module>hutu-gateway</module>
-        <module>hutu-generator</module>
-        <module>hutu-job</module>
-        <module>hutu-monitor</module>
-        <module>hutu-nacos</module>
-        <module>hutu-passport</module>
-        <module>hutu-sentinel-dashboard</module>
+        <module>hutu-servers</module>
         <module>hutu-starters</module>
-        <module>hutu-upms</module>
-
     </modules>
 
     <properties>
         <!-- Project revision -->
-        <revision>1.0.0.RELEASE</revision>
+        <revision>1.0.0-SNAPSHOT</revision>
 
         <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <!-- Dependency Versions -->
-        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
 
+        <!-- Dependency Versions -->
+        <spring-boot.version>2.4.4</spring-boot.version>
+        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+
+        <!-- Maven Plugin Versions -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -61,11 +39,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-        <!--监控-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--Lombok-->
         <dependency>
@@ -76,10 +49,9 @@
     </dependencies>
 
     <dependencyManagement>
-        <!--放前面的bom优先级高-->
         <dependencies>
             <dependency>
-                <groupId>com.hutu</groupId>
+                <groupId>com.hutu.cloud</groupId>
                 <artifactId>hutu-dependencies</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
@@ -106,18 +78,29 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -125,27 +108,47 @@
                 <inherited>true</inherited>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
+            <!--测试覆盖率-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
-                    <delimiters>@</delimiters>
-                    <useDefaultDelimiters>false</useDefaultDelimiters>
-                </configuration>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                            <goal>prepare-agent-integration</goal>
+                            <goal>report</goal>
+                            <goal>report-integration</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.spring.javaformat</groupId>
+                <artifactId>spring-javaformat-maven-plugin</artifactId>
+                <version>0.0.23</version>
             </plugin>
         </plugins>
-
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

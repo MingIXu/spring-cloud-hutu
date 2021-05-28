@@ -1,0 +1,33 @@
+server:
+  port: 8764
+spring:
+  profiles:
+    active: dev
+  application:
+    name: hutu-passport
+
+#第三方登陆配置
+hutu:
+  social:
+    domain: 127.0.0.1:xxx #此处为线上回调线上域名
+    oauth:
+      github:
+        client-id: 233************
+        client-secret: 233************************************
+        redirect-uri: ${social.domain}/oauth/redirect/github
+      gitee:
+        client-id: 233************
+        client-secret: 233************************************
+        redirect-uri: ${social.domain}/oauth/redirect/gitee
+      wechat_open:
+        client-id: 233************
+        client-secret: 233************************************
+        redirect-uri: ${social.domain}/oauth/redirect/wechat
+      qq:
+        client-id: 233************
+        client-secret: 233************************************
+        redirect-uri: ${social.domain}/oauth/redirect/qq
+      dingtalk:
+        client-id: 233************
+        client-secret: 233************************************
+        redirect-uri: ${social.domain}/oauth/redirect/dingtalk

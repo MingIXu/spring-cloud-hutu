@@ -1,0 +1,14 @@
+server:
+  port: 8761
+spring:
+  profiles:
+    active: dev
+  application:
+    name: tempest-gateway
+  cloud:
+    nacos:
+      config:
+        extension-configs:
+          - data-id: ${spring.application.name}-route.yml
+            group: DEFAULT_GROUP
+            refresh: true
