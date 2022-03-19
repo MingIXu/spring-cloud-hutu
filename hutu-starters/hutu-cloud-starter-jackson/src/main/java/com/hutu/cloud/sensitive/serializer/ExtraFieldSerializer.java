@@ -2,6 +2,7 @@ package com.hutu.cloud.sensitive.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.ObjectIdWriter;
 import com.fasterxml.jackson.databind.ser.std.BeanSerializerBase;
 import com.hutu.cloud.core.utils.AnnotationUtils;
@@ -43,12 +44,22 @@ public class ExtraFieldSerializer extends BeanSerializerBase {
 	}
 
 	@Override
+	protected BeanSerializerBase withByNameInclusion(Set<String> set, Set<String> set1) {
+		return null;
+	}
+
+	@Override
 	protected BeanSerializerBase asArraySerializer() {
 		return null;
 	}
 
 	@Override
 	public BeanSerializerBase withFilterId(Object filterId) {
+		return null;
+	}
+
+	@Override
+	protected BeanSerializerBase withProperties(BeanPropertyWriter[] beanPropertyWriters, BeanPropertyWriter[] beanPropertyWriters1) {
 		return null;
 	}
 

@@ -13,6 +13,6 @@
     <description>各种栗子</description>
 
     <modules>
-
+        <module>helloWord-example</module>
     </modules>
 </project>
