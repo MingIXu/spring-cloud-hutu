@@ -20,7 +20,7 @@ import java.lang.annotation.*;
 @FeignClient
 public @interface CustomFeignClient {
 
-	String hutu_CLIENT = "hutu_client";
+	String HUTU_CLIENT = "hutu_client";
 
 	/**
 	 * The name of the service with optional protocol prefix. Synonym for {@link #name()
@@ -29,7 +29,7 @@ public @interface CustomFeignClient {
 	 * @return the name of the service with optional protocol prefix
 	 */
 	@AliasFor("name")
-	String value() default hutu_CLIENT;
+	String value() default HUTU_CLIENT;
 
 	/**
 	 * This will be used as the bean name instead of name if present, but will not be used
@@ -43,7 +43,7 @@ public @interface CustomFeignClient {
 	 * value}.
 	 */
 	@AliasFor("value")
-	String name() default hutu_CLIENT;
+	String name() default HUTU_CLIENT;
 
 	/**
 	 * @return the <code>@Qualifier</code> value for the feign client.
