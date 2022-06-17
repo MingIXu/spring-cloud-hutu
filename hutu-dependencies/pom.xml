@@ -24,7 +24,7 @@
         <druid-spring-boot-starter>1.1.22</druid-spring-boot-starter>
         <hutool.version>5.7.22</hutool.version>
         <guava.version>20.0</guava.version>
-        <fastjson.version>1.2.76</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <jwt.version>0.9.1</jwt.version>
         <jetcache.version>2.6.0</jetcache.version>
         <redisson.version>3.13.0</redisson.version>
