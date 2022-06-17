@@ -39,7 +39,7 @@ public class ReflectionUtils {
 	 */
 	public static void invokeSetter(Object obj, String propertyName, Object value) {
 		Object object = obj;
-		String[] names = StrUtil.split(propertyName, ".");
+		String[] names = StrUtil.splitToArray(propertyName, ".");
 		for (int i = 0; i < names.length; i++) {
 			if (i < names.length - 1) {
 				String getterMethodName = GETTER_PREFIX + StrUtil.upperFirst(names[i]);
