@@ -31,11 +31,11 @@ public interface HeaderConstant {
 	/**
 	 * 灰度类型
 	 */
-	String HEADER_GRAY_TYPE = "Gray-Type";
+	String HEADER_GRAY_TYPE = "gray-type";
 
 	/**
 	 * 灰度类型的值
 	 */
-	String HEADER_GRAY_VALUE = "Gray-Value";
+	String HEADER_GRAY_VALUE = "gray-value";
 
 }

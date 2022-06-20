@@ -2,6 +2,7 @@ package com.hutu.cloud.gateway.util;
 
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.Singleton;
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.HMac;
 import cn.hutool.crypto.digest.HmacAlgorithm;
@@ -23,7 +24,7 @@ public class SignUtil {
 	private static AuthProperties authProperties;
 
 	public static String doSign(String source) {
-		return Base64.encode(getHMac().digest(source, StringPool.UTF_8));
+		return Base64.encode(getHMac().digest(source, CharsetUtil.CHARSET_UTF_8));
 	}
 
 	/**

@@ -72,11 +72,6 @@ public class MybatisAutoConfiguration {
 		return interceptor;
 	}
 
-	@Bean
-	public ConfigurationCustomizer configurationCustomizer() {
-		return configuration -> configuration.setUseDeprecatedExecutor(false);
-	}
-
 	/**
 	 * 由于开发人员水平参差不齐，即使订了开发规范很多人也不遵守
 	 * <p>
@@ -86,7 +81,7 @@ public class MybatisAutoConfiguration {
 	 */
 	@Bean
 	@Profile({ ProfilesConstant.DEV, ProfilesConstant.TEST })
-	public IllegalSQLInnerInterceptor illegalSQLInnerInterceptor(MybatisPlusInterceptor mybatisPlusInterceptor) {
+	public IllegalSQLInnerInterceptor illegalsqlinnerinterceptor(MybatisPlusInterceptor mybatisPlusInterceptor) {
 		IllegalSQLInnerInterceptor illegalSqlInnerInterceptor = new IllegalSQLInnerInterceptor();
 		mybatisPlusInterceptor.addInnerInterceptor(illegalSqlInnerInterceptor);
 		return illegalSqlInnerInterceptor;

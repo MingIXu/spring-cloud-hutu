@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu.cloud</groupId>
         <artifactId>hutu-upms</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-upms-api</artifactId>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>

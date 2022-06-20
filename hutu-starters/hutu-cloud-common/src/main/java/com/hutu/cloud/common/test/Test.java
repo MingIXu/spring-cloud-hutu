@@ -17,7 +17,7 @@ public class Test {
         BeanProperty beanProperty = new BeanProperty("hutu", String.class);
         Object generator = BeanUtil.generator(source, beanProperty);
         BeanUtil.setProperty(generator,beanProperty.getName(),"湖图");
-        System.out.println("generator："+ JsonUtil.toJsonPrettyString(generator));
+        System.out.println("generator："+ JsonUtil.toPrettyJson(generator));
 
     }
 }

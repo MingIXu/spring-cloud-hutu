@@ -25,15 +25,15 @@ public class R<T> implements Serializable {
 
 	private String message;
 
-	private T body;
+	private T data;
 
 	public R() {
 	}
 
-	private R(int code, String msg, T body) {
+	private R(int code, String msg, T data) {
 		this.code = code;
 		this.message = msg;
-		this.body = body;
+		this.data = data;
 	}
 
 	public static <T> R<T> ok() {
@@ -60,8 +60,8 @@ public class R<T> implements Serializable {
 		return data(null, code, msg);
 	}
 
-	private static <T> R<T> data(T body, int code, String msg) {
-		return new R<>(code, msg, body);
+	private static <T> R<T> data(T data, int code, String msg) {
+		return new R<>(code, msg, data);
 	}
 
 }

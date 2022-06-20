@@ -1,4 +1,0 @@
-spring:
-  elasticsearch:
-    rest:
-      uris: 192.168.2.221:9200

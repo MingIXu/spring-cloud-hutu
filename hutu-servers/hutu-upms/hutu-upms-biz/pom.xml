@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu.cloud</groupId>
         <artifactId>hutu-upms</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-upms-biz</artifactId>
@@ -21,33 +21,33 @@
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-config</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-upms-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-cache</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
 
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-mybatis</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-redisson</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

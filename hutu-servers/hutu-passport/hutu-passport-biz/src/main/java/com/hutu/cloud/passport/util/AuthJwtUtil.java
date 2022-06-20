@@ -19,7 +19,7 @@ public class AuthJwtUtil extends JwtUtil {
 	 * 生成 jwt token
 	 */
 	public static String createToken(String key, Object sourceToken, long expire) {
-		return Jwts.builder().setHeaderParam("typ", "JWT").setSubject(JsonUtil.toJsonString(sourceToken))
+		return Jwts.builder().setHeaderParam("typ", "JWT").setSubject(JsonUtil.toJson(sourceToken))
 				.setIssuedAt(new Date()).setExpiration(new Date(expire + System.currentTimeMillis())).setId(key)
 				.signWith(SignatureAlgorithm.HS512, getTokenProperties().getSecretKey()).compact();
 	}

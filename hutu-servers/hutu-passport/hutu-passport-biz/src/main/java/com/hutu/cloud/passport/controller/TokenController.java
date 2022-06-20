@@ -45,11 +45,12 @@ public class TokenController {
 	 */
 	@GetMapping("/list")
 	public R<List> getToken() {
-		List<String> list = redisUtil.keys(PassportConstant.CACHE_TOKEN_PREFIX + PassportUtil.getClientType()
-				+ StringPool.DASH + StringPool.ASTERISK);
-		ArrayList<LoginUser> loginUsers = new ArrayList<>(list.size());
-		list.forEach(str -> loginUsers.add(TokenUtil.getLoginUser(str)));
-		return R.ok(loginUsers);
+//		List<String> list = redisUtil.keys(PassportConstant.CACHE_TOKEN_PREFIX + PassportUtil.getClientType()
+//				+ StringPool.DASH + StringPool.ASTERISK);
+//		ArrayList<LoginUser> loginUsers = new ArrayList<>(list.size());
+//		list.forEach(str -> loginUsers.add(TokenUtil.getLoginUser(str)));
+//		return R.ok(loginUsers);
+		return null;
 	}
 
 	/**

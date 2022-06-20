@@ -3,7 +3,6 @@ package com.hutu.cloud.core.entity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.beans.Transient;
 import java.io.Serializable;
 
 /**
@@ -44,11 +43,6 @@ public class LoginUser implements Serializable {
 	private String userName;
 
 	/**
-	 * 用户 urt
-	 */
-	private String urtId;
-
-	/**
 	 * 角色id,多个都好隔开
 	 */
 	private String roleId;
@@ -66,6 +60,6 @@ public class LoginUser implements Serializable {
 	/**
 	 * 手机号
 	 */
-	private String phoneNum;
+	private String phone;
 
 }

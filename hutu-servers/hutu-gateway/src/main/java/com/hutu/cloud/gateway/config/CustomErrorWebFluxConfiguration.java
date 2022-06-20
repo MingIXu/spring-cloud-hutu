@@ -39,8 +39,7 @@ import java.util.stream.Collectors;
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnClass(WebFluxConfigurer.class)
 @AutoConfigureBefore(WebFluxAutoConfiguration.class)
-@EnableConfigurationProperties({ ServerProperties.class,
-		org.springframework.boot.autoconfigure.web.ResourceProperties.class, WebProperties.class })
+@EnableConfigurationProperties({ ServerProperties.class, WebProperties.class })
 public class CustomErrorWebFluxConfiguration {
 
 	private final ServerProperties serverProperties;
@@ -56,11 +55,9 @@ public class CustomErrorWebFluxConfiguration {
 	@ConditionalOnMissingBean(value = ErrorWebExceptionHandler.class, search = SearchStrategy.CURRENT)
 	@Order(-1)
 	public ErrorWebExceptionHandler errorWebExceptionHandler(ErrorAttributes errorAttributes,
-			org.springframework.boot.autoconfigure.web.ResourceProperties resourceProperties,
 			WebProperties webProperties, ObjectProvider<ViewResolver> viewResolvers,
 			ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext) {
-		DefaultErrorWebExceptionHandler exceptionHandler = new GlobalErrorExceptionHandler(errorAttributes,
-				resourceProperties.hasBeenCustomized() ? resourceProperties : webProperties.getResources(),
+		DefaultErrorWebExceptionHandler exceptionHandler = new GlobalErrorExceptionHandler(errorAttributes, webProperties.getResources(),
 				this.serverProperties.getError(), applicationContext, objectMapper);
 		exceptionHandler.setViewResolvers(viewResolvers.orderedStream().collect(Collectors.toList()));
 		exceptionHandler.setMessageWriters(serverCodecConfigurer.getWriters());

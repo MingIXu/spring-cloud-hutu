@@ -1,9 +1,9 @@
 package com.hutu.cloud.common.util;
 
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.hutu.cloud.core.constant.StringPool;
-import com.hutu.cloud.core.utils.Charsets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
@@ -184,7 +184,7 @@ public class WebUtil extends org.springframework.web.util.WebUtils {
 	public static String getRequestStr(HttpServletRequest request) throws IOException {
 		String queryString = request.getQueryString();
 		if (StrUtil.isNotBlank(queryString)) {
-			return new String(queryString.getBytes(Charsets.ISO_8859_1), Charsets.UTF_8).replaceAll("&amp;", "&")
+			return new String(queryString.getBytes(CharsetUtil.CHARSET_ISO_8859_1), CharsetUtil.CHARSET_UTF_8).replaceAll("&amp;", "&")
 					.replaceAll("%22", "\"");
 		}
 		return getRequestStr(request, getRequestBytes(request));

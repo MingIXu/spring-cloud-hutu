@@ -20,7 +20,7 @@ public class LoginUserServiceFallback implements LoginUserService {
 	public LoginUser getLoginUserInfo(String account, String tenantId) {
 		// 测试
 		return new LoginUser().setUserId(1L).setUserName("张三").setRoleId("1").setRoleName("admin").setClientId("web")
-				.setTenantId("platform").setAccount("admin").setPassword("123456").setPhoneNum("17600001111");
+				.setTenantId("platform").setAccount("admin").setPassword("123456").setPhone("17600001111");
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.hutu.cloud.sensitive.converter;
 
+import cn.hutool.core.util.CharsetUtil;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,7 +10,6 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.hutu.cloud.core.utils.Charsets;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConversionException;
@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public abstract class AbstractReadWriteJackson2HttpMessageConverter extends AbstractJackson2HttpMessageConverter {
 
-	private static final Charset DEFAULT_CHARSET = Charsets.UTF_8;
+	private static final Charset DEFAULT_CHARSET = CharsetUtil.CHARSET_UTF_8;
 
 	private ObjectMapper writeObjectMapper;
 

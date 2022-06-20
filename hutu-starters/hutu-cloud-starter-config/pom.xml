@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.hutu.cloud</groupId>
         <artifactId>hutu-starters</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-cloud-starter-config</artifactId>

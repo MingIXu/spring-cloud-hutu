@@ -51,13 +51,13 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 		}
 		else {
 			log.warn("签名认证失败，请求接口：{}，请求IP：{}，请求参数：{}", request.getRequestURI(), WebUtil.getIP(request),
-					JsonUtil.toJsonString(request.getParameterMap()));
+					JsonUtil.toJson(request.getParameterMap()));
 			R result = R.failed(CommonStatusEnum.UNAUTHORIZED);
 			response.setCharacterEncoding(StringPool.UTF_8);
 			response.setHeader(CommonConstant.CONTENT_TYPE_NAME, MediaType.APPLICATION_JSON_VALUE);
 			response.setStatus(HttpServletResponse.SC_OK);
 			try {
-				response.getWriter().write(Objects.requireNonNull(JsonUtil.toJsonString(result)));
+				response.getWriter().write(Objects.requireNonNull(JsonUtil.toJson(result)));
 			}
 			catch (IOException ex) {
 				log.error(ex.getMessage());

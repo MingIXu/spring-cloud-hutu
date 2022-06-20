@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.hutu.cloud</groupId>
         <artifactId>hutu-starters</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>hutu-cloud-starter</artifactId>
@@ -17,13 +17,13 @@
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-config</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <!--注册中心依赖-->
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-register-center</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <!--spring web 服务依赖-->
         <dependency>
@@ -39,19 +39,19 @@
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-feign</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <!--安全模块-->
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-security</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <!--处理敏感数据模块-->
         <dependency>
             <groupId>com.hutu.cloud</groupId>
             <artifactId>hutu-cloud-starter-jackson</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <!--监控-->
         <dependency>

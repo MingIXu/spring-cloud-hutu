@@ -22,7 +22,7 @@ public class AnnotationUtils extends AnnotationUtil {
 	 * @param annotationClazz 目标注解类
 	 * @return 注解实例
 	 */
-	public static Object getFieldAnnotation(Class clazz, String fieldName,
+	public static Object getFieldAnnotation(Class<?> clazz, String fieldName,
 			Class<? extends Annotation> annotationClazz) {
 		Field field;
 		try {
@@ -42,7 +42,7 @@ public class AnnotationUtils extends AnnotationUtil {
 	 * @param annotationClazz 目标注解类
 	 * @return 注解实例
 	 */
-	public static Object getFieldAnnotationValue(Class clazz, String fieldName,
+	public static Object getFieldAnnotationValue(Class<?> clazz, String fieldName,
 			Class<? extends Annotation> annotationClazz) {
 		try {
 			Field field = clazz.getDeclaredField(fieldName);

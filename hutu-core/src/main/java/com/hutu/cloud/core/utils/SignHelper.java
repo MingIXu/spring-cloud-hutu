@@ -68,10 +68,10 @@ public class SignHelper {
 	/**
 	 * 生成随机公钥，私钥
 	 */
-	private static void getKeys() {
-		Sign sign1 = SecureUtil.sign(SignAlgorithm.MD5withRSA);
-		String publicKeyBase64 = sign1.getPublicKeyBase64();
-		String privateKeyBase64 = sign1.getPrivateKeyBase64();
+	private static void getAutoGenerateKeysPair() {
+		Sign sign = SecureUtil.sign(SignAlgorithm.MD5withRSA);
+		String publicKeyBase64 = sign.getPublicKeyBase64();
+		String privateKeyBase64 = sign.getPrivateKeyBase64();
 		System.out.println("publicKey: " + publicKeyBase64);
 		System.out.println("privateKey: " + privateKeyBase64);
 	}

@@ -1,7 +1,7 @@
 package com.hutu.cloud.sensitive.converter;
 
+import cn.hutool.core.util.CharsetUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hutu.cloud.core.utils.Charsets;
 import com.hutu.cloud.sensitive.format.DesensitizeFormatter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -35,7 +35,7 @@ public class MessageConfiguration implements WebMvcConfigurer {
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.removeIf(
 				x -> x instanceof StringHttpMessageConverter || x instanceof AbstractJackson2HttpMessageConverter);
-		converters.add(new StringHttpMessageConverter(Charsets.UTF_8));
+		converters.add(new StringHttpMessageConverter(CharsetUtil.CHARSET_UTF_8));
 		converters.add(new ByteArrayHttpMessageConverter());
 		converters.add(new ResourceHttpMessageConverter());
 		converters.add(new ResourceRegionHttpMessageConverter());

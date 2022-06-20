@@ -67,9 +67,9 @@ public class ResponseGlobalFilter implements GlobalFilter, Ordered {
                 Mono modifiedBody = clientResponse.bodyToMono(inClass).flatMap(originalBody -> {
                     log.debug("加密返回数据原文：{}",originalBody);
                     R newBody = (R) originalBody;
-                    String dataStr = newBody.getBody().toString();
+                    String dataStr = newBody.getData().toString();
                     String s = SecureUtils.aesEncode(dataStr);
-                    newBody.setBody(s);
+                    newBody.setData(s);
                     return Mono.just(newBody);
                 });
 

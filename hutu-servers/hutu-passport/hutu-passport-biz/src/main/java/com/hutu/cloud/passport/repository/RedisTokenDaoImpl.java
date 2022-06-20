@@ -38,7 +38,7 @@ public class RedisTokenDaoImpl implements TokenDao {
 			redisUtil.set(key, value);
 		}
 		else {
-			redisUtil.set(key, value, timeout, TimeUnit.SECONDS);
+			redisUtil.setEx(key, value, timeout, TimeUnit.SECONDS);
 		}
 	}
 
@@ -68,7 +68,7 @@ public class RedisTokenDaoImpl implements TokenDao {
 	 */
 	@Override
 	public long getTimeout(String key) {
-		return redisUtil.getExpire(key);
+		return redisUtil.ttl(key);
 	}
 
 	/**

@@ -103,7 +103,7 @@ public class CustomSentinelInvocationHandler implements InvocationHandler {
                 // --------- 执行前初始化 sentinel
 
                 if (annotation != null) {
-                    Object[] objects = new Object[]{JsonUtil.toJsonString(args)};
+                    Object[] objects = new Object[]{JsonUtil.toJson(args)};
                     result = methodHandler.invoke(objects);
                 } else {
                     result = methodHandler.invoke(args);

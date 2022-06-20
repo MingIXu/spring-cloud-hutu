@@ -1,12 +1,14 @@
 package com.hutu.cloud.core.constant;
 
+import cn.hutool.core.text.StrPool;
+
 /**
  * 静态 String 池
  *
  * @author hutu
  * @date 2020/6/1 10:51 上午
  */
-public interface StringPool {
+public interface StringPool extends StrPool {
 
 	String AMPERSAND = "&";
 

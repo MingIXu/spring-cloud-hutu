@@ -10,8 +10,16 @@ import java.io.Serializable;
  */
 public interface IResultCode extends Serializable {
 
-	int getCode();
+    /**
+     * 状态码
+     * @return code
+     */
+    int getCode();
 
-	String getMsg();
+    /**
+     * 提示信息
+     * @return msg
+     */
+    String getMsg();
 
 }

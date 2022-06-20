@@ -41,7 +41,7 @@ public class TempestStreamBridge {
 	public boolean publishTransactionWithHeaders(String bindingName, Object msg, String tag, Object arg,
 			Map<String, String> headers) {
 		MessageBuilder<Object> builder = MessageBuilder.withPayload(msg).setHeader(MessageConst.PROPERTY_TAGS, tag)
-				.setHeader("TRANSACTIONAL_ARGS", JsonUtil.toJsonString(arg));
+				.setHeader("TRANSACTIONAL_ARGS", JsonUtil.toJson(arg));
 		if (headers != null && !headers.isEmpty()) {
 			for (Map.Entry<String, String> e : headers.entrySet()) {
 				builder.setHeader(e.getKey(), e.getValue());

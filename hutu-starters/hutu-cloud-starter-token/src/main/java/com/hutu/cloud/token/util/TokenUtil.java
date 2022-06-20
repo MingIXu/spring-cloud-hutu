@@ -84,32 +84,6 @@ public class TokenUtil {
 	}
 
 	/**
-	 * 获取urt
-	 * @return urt
-	 */
-	public static String getUrtId() {
-		Object rpc_urt = null;
-		return rpc_urt == null ? getLoginUser().getUrtId() : rpc_urt.toString();
-	}
-	/**
-	 * 获取 requestId
-	 * @return requestId
-	 */
-	/*
-	 * public static RpcTracker getRequestId() { return (RpcTracker)
-	 * ContextUtils.get(Context.RPC_TRACKER); }
-	 */
-
-	/**
-	 * 获取用户账号
-	 * @return userAccount
-	 */
-	public static String getUserAccount() {
-		LoginUser user = getLoginUser();
-		return (null == user) ? StringPool.EMPTY : user.getAccount();
-	}
-
-	/**
 	 * 获取用户名
 	 * @return userName
 	 */

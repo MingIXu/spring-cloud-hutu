@@ -1,7 +1,7 @@
 package com.hutu.cloud.http;
 
+import cn.hutool.core.util.CharsetUtil;
 import com.hutu.cloud.core.constant.ProfilesConstant;
-import com.hutu.cloud.core.utils.Charsets;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hutu.cloud.props.FeignHeadersProperties;
 import com.hutu.cloud.props.HttpClientProperties;
@@ -140,7 +140,7 @@ public class RestTemplateConfiguration {
 	private void configMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.removeIf(
 				x -> x instanceof StringHttpMessageConverter || x instanceof MappingJackson2HttpMessageConverter);
-		converters.add(new StringHttpMessageConverter(Charsets.UTF_8));
+		converters.add(new StringHttpMessageConverter(CharsetUtil.CHARSET_UTF_8));
 		converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
 	}
 

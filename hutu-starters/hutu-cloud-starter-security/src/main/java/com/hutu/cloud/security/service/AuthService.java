@@ -52,7 +52,7 @@ public class AuthService {
 		if (StrUtil.isBlank(userRole)) {
 			return false;
 		}
-		String[] roles = StrUtil.split(userRole, StringPool.COMMA);
+		String[] roles = StrUtil.splitToArray(userRole, StringPool.COMMA);
 		for (String r : role) {
 			if (ArrayUtil.contains(roles, r)) {
 				return true;
@@ -77,7 +77,7 @@ public class AuthService {
 		if (StrUtil.isBlank(userRole)) {
 			return false;
 		}
-		String[] roles = StrUtil.split(userRole, StringPool.COMMA);
+		String[] roles = StrUtil.splitToArray(userRole, StringPool.COMMA);
 		// TODO 通过role获取所有authorities 这里只是模拟数据
 		String[] authorities = { "user:read", "user:write" };
 

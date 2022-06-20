@@ -52,7 +52,7 @@ public class WebmvcBlockHandler implements BlockExceptionHandler {
 				StrUtil.isNotEmpty(e.getMessage()) ? e.getMessage() : CommonStatusEnum.SERVICE_IS_BUSY.msg);
 		response.setCharacterEncoding(StringPool.UTF_8);
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		response.getWriter().print(JsonUtil.toJsonString(result));
+		response.getWriter().print(JsonUtil.toJson(result));
 	}
 
 }
