@@ -2,7 +2,7 @@ package com.hutu.cloud.gateway.filter;
 
 import cn.hutool.core.util.StrUtil;
 import com.hutu.cloud.core.constant.HeaderConstant;
-import com.hutu.cloud.core.utils.SignHelper;
+import com.hutu.cloud.core.utils.secure.SignUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -42,7 +42,7 @@ public class HeaderGlobalFilter implements GlobalFilter, Ordered {
 				// 追加网关标识
 				.headers(h -> h.add(HeaderConstant.CLIENT_ID_KEY, HeaderConstant.GATEWAY_CLIENT_ID))
 				.headers(
-						h -> h.add(HeaderConstant.CLIENT_SECRET_KEY, SignHelper.sign(HeaderConstant.GATEWAY_CLIENT_ID)))
+						h -> h.add(HeaderConstant.CLIENT_SECRET_KEY, SignUtil.sign(HeaderConstant.GATEWAY_CLIENT_ID,SignUtil.DEFAULT_PRIVATE_KEY)))
 				// 强制设置返回为json
 				.headers(h -> h.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON)))
 				// 处理灰度条件请求头

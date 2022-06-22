@@ -23,6 +23,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--json-->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -37,6 +42,11 @@
         <dependency>
             <groupId>net.dreamlu</groupId>
             <artifactId>mica-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

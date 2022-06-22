@@ -55,10 +55,6 @@ public final class PatternUtils {
 		return Pattern.matches(regex, mobile);
 	}
 
-	public static void main(String[] args) {
-		System.out.println(isMobile("16102108922"));
-	}
-
 	/**
 	 * 验证固定电话号码
 	 * @param phone 电话号码，格式：国家（地区）电话代码 + 区号（城市代码） + 电话号码，如：+8602085588447

@@ -1,8 +1,8 @@
 package com.hutu.cloud.gateway.filter;
 
 import com.hutu.cloud.core.R;
-import com.hutu.cloud.core.utils.SecureUtils;
 import lombok.extern.slf4j.Slf4j;
+import net.dreamlu.mica.core.utils.AesUtil;
 import org.reactivestreams.Publisher;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -68,7 +68,7 @@ public class ResponseGlobalFilter implements GlobalFilter, Ordered {
                     log.debug("加密返回数据原文：{}",originalBody);
                     R newBody = (R) originalBody;
                     String dataStr = newBody.getData().toString();
-                    String s = SecureUtils.aesEncode(dataStr);
+                    String s = AesUtil.encryptToBase64(dataStr,"12345678912345678912345678912345");
                     newBody.setData(s);
                     return Mono.just(newBody);
                 });

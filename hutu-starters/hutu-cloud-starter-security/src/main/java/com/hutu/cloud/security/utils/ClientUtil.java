@@ -2,7 +2,7 @@ package com.hutu.cloud.security.utils;
 
 import cn.hutool.core.util.StrUtil;
 import com.hutu.cloud.core.constant.HeaderConstant;
-import com.hutu.cloud.core.utils.SignHelper;
+import com.hutu.cloud.core.utils.secure.SignUtil;
 import com.hutu.cloud.common.util.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +21,7 @@ public class ClientUtil {
 	public static boolean isInnerClient() {
 		String clientId = WebUtil.getRequestParameter(HeaderConstant.CLIENT_ID_KEY);
 		String clientSecret = WebUtil.getRequestParameter(HeaderConstant.CLIENT_SECRET_KEY);
-		if (SignHelper.verify(clientId, clientSecret)) {
+		if (SignUtil.verify(clientId, clientSecret,SignUtil.DEFAULT_PUBLIC_KEY)) {
 			log.trace("client check pass, clientId: {}", clientId);
 			return true;
 		}

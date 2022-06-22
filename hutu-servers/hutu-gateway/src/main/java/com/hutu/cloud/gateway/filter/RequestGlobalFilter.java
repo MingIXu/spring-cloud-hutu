@@ -5,10 +5,10 @@ import com.hutu.cloud.core.constant.StringPool;
 import com.hutu.cloud.core.enums.CommonStatusEnum;
 import com.hutu.cloud.core.exception.GlobalException;
 import com.hutu.cloud.core.utils.ReflectionUtils;
-import com.hutu.cloud.core.utils.SecureUtils;
 import com.hutu.cloud.gateway.constant.GatewayConstant;
 import com.hutu.cloud.gateway.util.SignUtil;
 import lombok.extern.slf4j.Slf4j;
+import net.dreamlu.mica.core.utils.AesUtil;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.NettyWriteResponseFilter;
@@ -96,7 +96,7 @@ public class RequestGlobalFilter implements GlobalFilter, Ordered {
         Mono<?> modifiedBody = serverRequest.bodyToMono(inClass)
                 .flatMap(originalBody -> {
                     log.debug("解密参数原文：{}",originalBody);
-                    String newBody = SecureUtils.aesDecode((String) originalBody);
+                    String newBody = AesUtil.decryptFormBase64ToString((String) originalBody,"12345678912345678912345678912345");
                     return Mono.just(newBody);
                 })
                 .switchIfEmpty(Mono.defer(() -> Mono.just(null)));
