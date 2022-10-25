@@ -166,4 +166,15 @@
             </plugins>
         </pluginManagement>
     </build>
+    <!--阿里云私有maven仓库-->
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2078068-release-QD5WSC/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2078068-snapshot-RfgwPt/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

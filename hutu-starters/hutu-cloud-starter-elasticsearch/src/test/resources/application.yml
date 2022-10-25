@@ -1,0 +1,8 @@
+spring:
+  elasticsearch:
+    uris: 192.168.2.221
+    username: 123
+    password: 123
+    enable-log: true
+    enable-scan-for-entities: true
+    base-packages: com.hutu.cloud.es.entity

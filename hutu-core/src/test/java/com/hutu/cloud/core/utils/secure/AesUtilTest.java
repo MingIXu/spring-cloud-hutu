@@ -20,15 +20,15 @@ class AesUtilTest {
     void aesEncode() {
         String secretKey = "1234567891234567891234567891234a";
         String text = "abcd123你好@";
-        String en = AesUtil.encryptToBase64(text, secretKey);
-        String de = AesUtil.decryptFormBase64ToString(en, secretKey);
-        System.out.println(en);
-        System.out.println(de);
-
-        String desEn = DesUtil.encryptToBase64(text, secretKey);
-        String desDe = DesUtil.decryptFormBase64(desEn, secretKey);
-        System.out.println(desEn);
-        System.out.println(desDe);
+//        String en = AesUtil.encryptToBase64(text, secretKey);
+//        String de = AesUtil.decryptFormBase64ToString(en, secretKey);
+//        System.out.println(en);
+//        System.out.println(de);
+//
+//        String desEn = DesUtil.encryptToBase64(text, secretKey);
+//        String desDe = DesUtil.decryptFormBase64(desEn, secretKey);
+//        System.out.println(desEn);
+//        System.out.println(desDe);
 
         KeyPair keyPair = RsaUtil.genKeyPair();
         String rsaEn = RsaUtil.encryptToBase64(keyPair.getPublicBase64(), text);
