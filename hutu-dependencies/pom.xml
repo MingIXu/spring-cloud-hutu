@@ -30,7 +30,7 @@
         <redisson.version>3.13.0</redisson.version>
         <swagger.version>1.5.22</swagger.version>
         <spring-boot-admin.version>2.4.0</spring-boot-admin.version>
-        <xxl-job.version>2.3.0</xxl-job.version>
+        <xxl-job.version>2.3.1</xxl-job.version>
         <nacos.version>2.0.1</nacos.version>
         <rocketmq-stream.version>2.2.5-RocketMQ-RC1</rocketmq-stream.version>
         <apollo.version>1.4.2-SNAPSHOT</apollo.version>
